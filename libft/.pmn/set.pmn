@@ -1,8 +1,0 @@
-&&Language&&##c##
-&&ProgType&&##library##
-&&ProgName&&##libft##
-&&AdvancedMake&&##true##
-&&AMKWidth&&##50##
-&&AMKSleep&&##0##
-&&SortedMakefile&&##true##
-&&SMKFolder&&##objs##
