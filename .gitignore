@@ -1,3 +1,4 @@
 .context.md
 .pmn
 .manager
+*.o
