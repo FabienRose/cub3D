@@ -26,7 +26,8 @@ MLX_FLAGS=-L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
 
 #----- Sources -----
 SRCS=	./main.c \
-		./map/map.c
+		./map/map.c \
+		./hooks/hooks.c
 
 #----- Objects -----
 OBJS=$(SRCS:.c=.o)

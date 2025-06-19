@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   hooks.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 10:27:35 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/19 10:27:52 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/19 10:31:47 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/19 10:31:47 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef HOOKS_H
+#define HOOKS_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
-# include "map/map.h"
-# include "hooks/hooks.h"
+# include "../cub3d.h"
 
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
+void setup_hooks(void *win_ptr);
+int handle_window_close(void *param);
+int handle_escape(int keycode, void *param);
 
-typedef struct s_data
-{
-    void    *mlx;
-    void    *win;
-} t_data;
 
-#endif 
+#endif // HOOKS_H 

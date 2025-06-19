@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   hooks.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 10:27:35 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/19 10:27:52 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/19 10:35:45 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/19 10:37:02 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "hooks.h"
+#include <stdlib.h>
+#include <X11/keysym.h>
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
-# include "map/map.h"
-# include "hooks/hooks.h"
-
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
-
-typedef struct s_data
+int	handle_window_close(void *param)
 {
-    void    *mlx;
-    void    *win;
-} t_data;
+	(void)param;
+	exit(0);
+	return (0);
+}
 
-#endif 
+int	handle_escape(int keycode, void *param)
+{
+	(void)param;
+	if (keycode == XK_Escape)
+		exit(0);
+	return (0);
+}
+
+void	setup_hooks(void *win_ptr)
+{
+	mlx_hook(win_ptr, 17, 0, handle_window_close, NULL);
+	mlx_hook(win_ptr, 2, 1L << 0, handle_escape, NULL);
+}

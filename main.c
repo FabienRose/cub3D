@@ -5,19 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 15/06/2025 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 16/06/2025 22:27:26 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/19 10:32:13 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/19 10:32:13 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	close_window(t_data *data)
-{
-	mlx_destroy_window(data->mlx, data->win);
-	exit(0);
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -42,7 +35,7 @@ int	main(int argc, char **argv)
 		free(data.mlx);
 		return (1);
 	}
-	mlx_hook(data.win, 17, 0, close_window, &data);
+	setup_hooks(data.win);
 	mlx_loop(data.mlx);
 	return (0);
 }
