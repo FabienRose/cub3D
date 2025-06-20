@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 11:21:21 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/19 11:21:21 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/19 23:03:54 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/19 23:37:44 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOKS_H
-#define HOOKS_H
+#ifndef RENDER_H
+# define RENDER_H
 
 # include "../cub3d.h"
 
-void setup_hooks(void *win_ptr);
-int handle_window_close(void *param);
-int handle_escape(int keycode, void *param);
+typedef struct s_game	t_game;
 
+void	draw_square(int x, int y, t_game *game, int color);
 
 #endif

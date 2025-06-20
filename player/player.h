@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 11:21:21 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/19 11:21:21 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/20 16:39:41 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/20 16:39:41 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOKS_H
-#define HOOKS_H
+#ifndef PLAYER_H
+# define PLAYER_H
 
 # include "../cub3d.h"
 
-void setup_hooks(void *win_ptr);
-int handle_window_close(void *param);
-int handle_escape(int keycode, void *param);
+typedef struct s_game	t_game;
 
+void	player_init(int x, int y, t_game *game);
 
 #endif
