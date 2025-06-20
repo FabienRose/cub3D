@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 22:29:15 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/19 14:17:52 by diana            ###   ########.fr       */
+/*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
+/*   Updated: 2025/06/20 17:41:47 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef PARSING_H
+# define PARSING_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
-# include "map/map.h"
-# include "parsing/parsing.h"
+# include "../map/map.h"
 
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
+//----parsing.c----
+int			parse_config_line(char *line, t_map_config *config);
+int			parse_map(int fd, char *first_line, t_map_config *config);
 
-typedef struct s_data
-{
-    void    *mlx;
-    void    *win;
-} t_data;
+//----parsing_utils.c----
+int			parse_color(char *str, t_color *color);
+void		free_split(char **arr);
 
-int     close_window(t_data *data);
 
-#endif 
+#endif

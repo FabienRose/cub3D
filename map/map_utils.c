@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 22:29:15 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/19 14:17:52 by diana            ###   ########.fr       */
+/*   Created: 2025/06/19 13:13:04 by diana             #+#    #+#             */
+/*   Updated: 2025/06/20 17:42:03 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "map.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
-# include "map/map.h"
-# include "parsing/parsing.h"
-
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
-
-typedef struct s_data
+int	check_extension(char *filename)
 {
-    void    *mlx;
-    void    *win;
-} t_data;
+	int	len;
 
-int     close_window(t_data *data);
+	len = ft_strlen(filename);
+	if (len < 5)
+		return (0);
+	if (ft_strncmp(filename + len - 4, ".cub", 4) != 0)
+		return (0);
+	return (1);
+} 
 
-#endif 
+char	**load_cub_file(char *filename)
+{
+	if (!check_extension(filename))
+	{
+		ft_putstr_fd("Error: The file doesn't have a extension .cub\n", 2);
+		return (NULL);
+	}
+	return (read_file_lines(filename));
+} 
+

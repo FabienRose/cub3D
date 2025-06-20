@@ -1,35 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   config.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 22:29:15 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/19 14:17:52 by diana            ###   ########.fr       */
+/*   Created: 2025/06/19 13:13:46 by diana             #+#    #+#             */
+/*   Updated: 2025/06/19 13:13:53 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "map.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
-# include "map/map.h"
-# include "parsing/parsing.h"
-
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
-
-typedef struct s_data
-{
-    void    *mlx;
-    void    *win;
-} t_data;
-
-int     close_window(t_data *data);
-
-#endif 

@@ -3,23 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 16/06/2025 22:24:03 by fmixtur           #+#    #+#             */
-/*   Updated: 16/06/2025 22:28:01 by fmixtur          ###   ########.ch       */
+/*   Created: 2016/06/20 22:24:03 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/20 17:45:56 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-int	check_extension(char *filename)
+int	validate_map(t_map_config *config)
 {
-	int	len;
+	int	player_found = 0;
+	int	y = -1;
+	int	x;
 
-	len = ft_strlen(filename);
-	if (len < 5)
-		return (0);
-	if (ft_strncmp(filename + len - 4, ".cub", 4) != 0)
-		return (0);
-	return (1);
-} 
+	while (config->map[++y])
+	{
+		x = -1;
+		while (config->map[y][++x])
+		{
+			char c = config->map[y][x];
+			if (!is_valid_map_char(c))
+				return (0);
+			if (is_player_char(c))
+			{
+				if (player_found)
+					return (0);
+				player_found = 1;
+				config->player_x = x;
+				config->player_y = y;
+				config->player_dir = c;
+			}
+			if (!check_surroundings(config->map, x, y))
+				return (0);
+		}
+	}
+	return (player_found);
+}
