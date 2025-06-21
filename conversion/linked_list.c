@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node.c                                             :+:      :+:    :+:   */
+/*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 13:56:51 by diana             #+#    #+#             */
-/*   Updated: 2025/06/21 19:05:31 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/21 21:33:35 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ t_node *read_file_to_list(const char *filename)
         perror("Error opening file");
         return (NULL);
     }
-
-    while ((line = ft_gnl(fd)))
+    line = ft_gnl(fd);
+    while (line)
     {
         append_node(&head, line);
+        line = ft_gnl(fd);
     }
     close(fd);
     return (head);
 }
+
 //free all the memory linked to the linked list
 //first the line after the node 
 void	free_linked_list(t_node *head)

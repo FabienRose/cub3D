@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:10:22 by diana             #+#    #+#             */
-/*   Updated: 2025/06/21 19:22:38 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/21 21:59:56 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,27 @@ int list_size(t_node *head)
 
 char **linked_list_to_array(t_node *head)
 {
-	int i = 0;
-	char **array;
-	int size = list_size(head);
+    int     count = list_size(head);
+    char    **array;
+    int     i = 0;
 
-	array = malloc(sizeof(char *) * (size + 1));
-	if (!array)
-		return (NULL);
-	while (head)
-	{
-		array[i++] = head->line;
-		head = head->next;
-	}
-	array[i] = NULL;
-	return (array);
+    array = malloc(sizeof(char *) * (count + 1));
+    if (!array)
+        return (NULL);
+
+    while (i < count)
+    {
+        array[i] = ft_strdup(head->line);
+        if (!array[i])
+        {
+            while (--i >= 0)
+                free(array[i]);
+            free(array);
+            return (NULL);
+        }
+        head = head->next;
+        i++;
+    }
+    array[i] = NULL;
+    return (array);
 }

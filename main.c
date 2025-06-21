@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/21 19:29:43 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/21 21:59:30 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ int	main(int argc, char **argv)
 }
 */
 
-//convierte linked list to array
+//nos dice donde empieza el mapa 
 int main(int argc, char **argv)
 {
-    t_node *lines_list;
-    char **lines_array;
-    int i = 0;
+    t_node *list = NULL;
+    char **lines;
+    int map_start;
 
     if (argc != 2)
     {
@@ -61,27 +61,16 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    lines_list = read_file_to_list(argv[1]);
-    if (!lines_list)
-    {
-        fprintf(stderr, "Failed to read file\n");
-        return (1);
-    }
+    list = read_file_to_list(argv[1]);
+    lines = linked_list_to_array(list);
+    map_start = find_map_start_index(lines);
 
-    lines_array = linked_list_to_array(lines_list);
-    if (!lines_array)
-    {
-        free_linked_list(lines_list);
-        fprintf(stderr, "Failed to convert to array\n");
-        return (1);
-    }
-    while (lines_array[i])
-    {
-        printf("%s", lines_array[i]);
-        i++;
-    }
-    free(lines_array); 
-    free_linked_list(lines_list); 
+    if (map_start >= 0)
+        printf("El mapa empieza en la línea %d: %s\n", map_start, lines[map_start]);
+    else
+        printf("No se encontró mapa.\n");
 
-    return 0;
+    free_linked_list(list);
+    free_array(lines);
+    return (0);
 }

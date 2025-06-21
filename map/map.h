@@ -6,16 +6,13 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/21 15:25:12 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/21 22:00:40 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# include "../cub3d.h"
-# include "../parsing/parsing.h"
-# include "../node/node.h"
 
 typedef struct s_color
 {
@@ -48,10 +45,12 @@ typedef struct s_map_config
 } t_map_config;
 
 
-
 //----map.c----
-int			validate_map(t_map *map, t_map_config *config);
-
+int			find_map_start_index(char **lines);
+int			is_map_line(const char *line);
+void		free_array(char **array);
+//int			validate_map(t_map *map, t_map_config *config);
+/*
 //----map_utils.c----
 char		**load_cub_file(char *filename);
 int			check_extension(char *filename);
@@ -60,6 +59,6 @@ int			check_extension(char *filename);
 int			is_player_char(char c);
 int			is_valid_map_char(char c);
 int			check_surroundings(t_map *map, int x, int y);
-
+*/
 
 #endif 
