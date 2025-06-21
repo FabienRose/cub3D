@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/21 15:40:30 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/21 19:29:43 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ int	main(int argc, char **argv)
 }
 */
 
-
+//convierte linked list to array
 int main(int argc, char **argv)
 {
-    t_node *lines, *tmp;
+    t_node *lines_list;
+    char **lines_array;
+    int i = 0;
 
     if (argc != 2)
     {
@@ -59,13 +61,27 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    lines = read_file_to_list(argv[1]);
-    tmp = lines;
-    while (tmp)
+    lines_list = read_file_to_list(argv[1]);
+    if (!lines_list)
     {
-        printf("%s", tmp->line);
-        tmp = tmp->next;
+        fprintf(stderr, "Failed to read file\n");
+        return (1);
     }
 
-    return (0);
+    lines_array = linked_list_to_array(lines_list);
+    if (!lines_array)
+    {
+        free_linked_list(lines_list);
+        fprintf(stderr, "Failed to convert to array\n");
+        return (1);
+    }
+    while (lines_array[i])
+    {
+        printf("%s", lines_array[i]);
+        i++;
+    }
+    free(lines_array); 
+    free_linked_list(lines_list); 
+
+    return 0;
 }

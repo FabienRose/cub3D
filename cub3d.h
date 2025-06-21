@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:29:15 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/21 16:13:09 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/21 19:09:26 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "libft/libft.h"
 //# include "map/map.h"
 //# include "parsing/parsing.h"
-# include "node/node.h"
+# include "conversion/conversion.h"
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720

@@ -26,7 +26,8 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 #----- Sources -----
 SRCS=	./main.c \
-		./node/node.c \
+		./conversion/linked_list.c \
+		./conversion/list_to_array.c \
 
 #----- Objects -----
 OBJS=$(SRCS:.c=.o)
