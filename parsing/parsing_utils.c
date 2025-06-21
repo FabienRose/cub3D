@@ -6,12 +6,12 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 15:46:58 by diana             #+#    #+#             */
-/*   Updated: 2025/06/20 17:41:26 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/21 15:06:36 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-
+# include "../cub3d.h"
+/*
 int	parse_color(char *str, t_color *color)
 {
 	char	**components = ft_split(str, ',');
@@ -32,3 +32,4 @@ void	free_split(char **arr)
 		free(arr[i++]);
 	free(arr);
 }
+*/

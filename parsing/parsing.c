@@ -6,12 +6,12 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/20 17:41:20 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/21 15:05:23 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-
+# include "../cub3d.h"
+/*
 //interprete each line of the .cub file and extract colors and textures
 int	parse_config_line(char *line, t_map_config *config)
 {
@@ -75,4 +75,5 @@ int	parse_map(int fd, char *first_line, t_map_config *config)
 		config->map_width = ft_strlen(lines[0]);
 	
 	return(1);
-}
+}*/
+
