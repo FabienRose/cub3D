@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 16:39:50 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/20 16:40:37 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/22 13:13:44 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/22 13:13:44 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 # include "minilibx-linux/mlx.h"
 # include "libft/libft.h"
 # include "map/map.h"
