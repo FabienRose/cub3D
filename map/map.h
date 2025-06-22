@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 17:05:34 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/22 17:23:41 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void		free_array(char **array);
 
 //----extract.c----
 char		**extract_map(char **array, int start_index);
+
+//----config.c----
+char		**extract_config_lines(char **array, int start_index);
+
 /*
 //----map_utils.c----
 char		**load_cub_file(char *filename);

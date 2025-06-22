@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 17:11:29 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/22 17:27:22 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int main(int argc, char **argv)
     char **array;
     int start_index;
 	char **map;
+	char **config;
 
     if (argc != 2)
     {
@@ -84,11 +85,15 @@ int main(int argc, char **argv)
    		free_array(array);
    		return (1);
 	}
-	printf("Contenido del mapa aislado:\n");
-	for (int i = 0; map[i]; i++)
-    	printf("%s\n", map[i]);
-	
-    free_array(map);
+	config = extract_config_lines(array, start_index);
+	if (!config)
+{
+    free_array(array);
+    return (1);
+}
+	printf("Líneas de configuración:\n");
+	for (int i = 0; config[i]; i++)
+		printf("%s\n", config[i]);
+    free_array(config);
     return (0);
 }
-
