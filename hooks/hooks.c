@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/22 13:07:31 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 13:08:13 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/22 17:18:37 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/22 17:18:37 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int key_press(int keycode, void *param)
 {
 	t_game *game = (t_game *)param;
 	if (keycode == XK_w)
-	{
 		game->player.key_up = 1;
-		ft_putstr_fd("W",1);
-	}
 	else if (keycode == XK_s)
 		game->player.key_down = 1;
 	else if (keycode == XK_a)

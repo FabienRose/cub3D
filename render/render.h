@@ -17,6 +17,6 @@
 
 typedef struct s_game	t_game;
 
-void	draw_square(int x, int y, t_game *game, int color);
+void	draw_square(int x, int y, t_game *game, int size, int color);
 
 #endif

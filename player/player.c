@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/22 13:44:21 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 13:44:21 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/22 18:21:50 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/22 18:21:55 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	player_init(int x, int y, t_game *game)
 	game->player.key_right = 0;
 	game->player.left_rotate = 0;
 	game->player.right_rotate = 0;
-	draw_square(game->player.x, game->player.y, game, 0x00FF00);
+	draw_square(game->player.x, game->player.y, game, WINDOW_WIDTH / 10, 0x00FF00);
 }
