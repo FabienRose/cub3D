@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 16:42:27 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/22 17:05:34 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int			is_map_line(const char *line);
 void		free_array(char **array);
 //int			validate_map(t_map *map, t_map_config *config);
 
+//----extract.c----
+char		**extract_map(char **array, int start_index);
 /*
 //----map_utils.c----
 char		**load_cub_file(char *filename);

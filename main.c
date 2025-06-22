@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 16:41:01 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/22 17:11:29 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ int	main(int argc, char **argv)
 }
 */
 
-//version con funciones de chato, libera pero no encuentra mapa
+//extract the map from the file.cub
 int main(int argc, char **argv)
 {
     t_node *lines;
     char **array;
     int start_index;
+	char **map;
 
     if (argc != 2)
     {
@@ -77,13 +78,17 @@ int main(int argc, char **argv)
         free_array(array);
         return (1);
     }
-
-    printf("El mapa empieza en la línea: %d\n", start_index);
-
-    for (int i = start_index; array[i]; i++)
-        printf("%s\n", array[i]);
-
-    free_array(array);
+	map = extract_map(array, start_index);
+	if (!map)
+	{
+   		free_array(array);
+   		return (1);
+	}
+	printf("Contenido del mapa aislado:\n");
+	for (int i = 0; map[i]; i++)
+    	printf("%s\n", map[i]);
+	
+    free_array(map);
     return (0);
 }
 
