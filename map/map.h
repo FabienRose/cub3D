@@ -6,14 +6,19 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/21 22:00:40 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/22 16:42:27 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
+typedef struct {
+    char **config_lines;
+    char **map_lines;
+} t_file_content;
 
+/*estas estructuras las puse para el primer commit que hice
 typedef struct s_color
 {
 	int r;
@@ -43,13 +48,15 @@ typedef struct s_map_config
 	t_color	floor_color;
 	t_color	ceiling_color;
 } t_map_config;
-
+*/
 
 //----map.c----
-int			find_map_start_index(char **lines);
+int			find_map_start(char **array);
+int			starts_with_map_char(const char *line);
 int			is_map_line(const char *line);
 void		free_array(char **array);
 //int			validate_map(t_map *map, t_map_config *config);
+
 /*
 //----map_utils.c----
 char		**load_cub_file(char *filename);

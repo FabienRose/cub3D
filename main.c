@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/21 21:59:30 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/22 16:41:01 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,42 @@ int	main(int argc, char **argv)
 }
 */
 
-//nos dice donde empieza el mapa 
+//version con funciones de chato, libera pero no encuentra mapa
 int main(int argc, char **argv)
 {
-    t_node *list = NULL;
-    char **lines;
-    int map_start;
+    t_node *lines;
+    char **array;
+    int start_index;
 
     if (argc != 2)
     {
-        printf("Usage: ./parser map.cub\n");
+        fprintf(stderr, "Uso: ./parser archivo.cub\n");
         return (1);
     }
 
-    list = read_file_to_list(argv[1]);
-    lines = linked_list_to_array(list);
-    map_start = find_map_start_index(lines);
+    lines = read_file_to_list(argv[1]);
+    if (!lines)
+        return (1);
 
-    if (map_start >= 0)
-        printf("El mapa empieza en la línea %d: %s\n", map_start, lines[map_start]);
-    else
-        printf("No se encontró mapa.\n");
+    array = linked_list_to_array(lines);
+    free_linked_list(lines);
 
-    free_linked_list(list);
-    free_array(lines);
+    if (!array)
+        return (1);
+
+    start_index = find_map_start(array);
+    if (start_index == -1)
+    {
+        free_array(array);
+        return (1);
+    }
+
+    printf("El mapa empieza en la línea: %d\n", start_index);
+
+    for (int i = start_index; array[i]; i++)
+        printf("%s\n", array[i]);
+
+    free_array(array);
     return (0);
 }
+
