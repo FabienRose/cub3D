@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/23 11:13:01 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/23 15:40:06 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
     lines = read_file_to_list(argv[1]);
     if (!lines)
         return (1);
-
+	printf("lee el archivo\n");
     array = linked_list_to_array(lines);
     free_linked_list(lines);
 
@@ -80,6 +80,7 @@ int main(int argc, char **argv)
         free_array(array);
         return (1);
     }
+	printf("extrae el mapa\n");
 	map = extract_map(array, start_index);
 	if (!map)
 	{
@@ -92,6 +93,7 @@ int main(int argc, char **argv)
    		free_array(array);
     	return (1);
 	}
+	printf("extrae las lineas de config\n");
 	config_data = parse_config(config);
 	if (!config_data)
 	{
@@ -99,7 +101,7 @@ int main(int argc, char **argv)
     	free_array(config);
     	return (1);
 	}
-
+	printf("llega a imprimir las lineas?");
 	printf("Texturas:\n");
 	printf("NO: %s\n", config_data->no_texture);
 	printf("SO: %s\n", config_data->so_texture);

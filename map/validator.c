@@ -6,35 +6,52 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:14:11 by diana             #+#    #+#             */
-/*   Updated: 2025/06/21 15:06:27 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/23 15:38:20 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../cub3d.h"
-/*
-int	is_player_char(char c)
-{
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
-}
 
-int	is_valid_map_char(char c)
-{
-	return (c == '0' || c == '1' || c == ' ' || is_player_char(c));
-}
 
-int	check_surroundings(t_map *map, int x, int y)
+int	is_valid_component(char *str)
 {
-	char **lines = map->lines;
+	int	i;
+	int	val;
 
-	if (x <= 0 || y <= 0 || y >= map->heigth - 1 || x >= (int)ft_strlen(lines[y]) - 1)
+	i = 0;
+	if (!str || !*str)
 		return (0);
-
-	if (lines[y][x] == '0' || is_player_char(lines[y][x]))
+	while (str[i])
 	{
-		if (lines[y - 1][x] == ' ' || lines[y + 1][x] == ' ' ||
-			lines[y][x - 1] == ' ' || lines[y][x + 1] == ' ')
+		if (!ft_isdigit(str[i]))
 			return (0);
+		i++;
 	}
+	val = ft_atoi(str);
+	if (val < 0 || val > 255)
+		return (0);
 	return (1);
 }
-*/
+
+int	validate_rgb_format(char *line)
+{
+	char	**parts;
+	int		valid;
+
+	parts = ft_split(line, ',');
+	if (!parts)
+		return (0);
+	if (!parts[0] || !parts[1] || !parts[2] || parts[3] != NULL)
+	{
+		free_array(parts);
+		return (0);
+	}
+	valid = (is_valid_component(parts[0])
+		&& is_valid_component(parts[1])
+		&& is_valid_component(parts[2]));
+	printf("Validando línea RGB: [%s]\n", line);
+	free_array(parts);
+	return (valid);
+}
+
+

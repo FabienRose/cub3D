@@ -30,8 +30,10 @@ SRCS=	./main.c \
 		./conversion/list_to_array.c \
 		./map/extract_map.c \
 		./map/map.c \
-		./map/config.c \
+		./map/validator.c \
+		./map/extract_config.c \
 		./parsing/parsing.c \
+
 
 #----- Objects -----
 OBJS=$(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/06/23 12:55:33 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/23 17:10:54 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,10 @@ typedef struct s_config
 
 
 //----parsing.c----
-t_config		*parse_config(char **config_lines);
 int             parse_config_line(t_config *cfg, char *line);
 int             missing_fields(t_config *cfg);
-t_config	    *parse_config(char **lines);
-//int			parse_config_line(char *line, t_map_config *config);
-//int			parse_map(int fd, char *first_line, t_map_config *config);
-
-//----parsing_utils.c----
-//int			parse_color(char *str, t_color *color);
-//void		free_split(char **arr);
-
+t_config	    *parse_config(char **config_lines);
+void	        free_config(t_config *cfg);
 
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.c                                           :+:      :+:    :+:   */
+/*   extract_config.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:21:30 by diana             #+#    #+#             */
-/*   Updated: 2025/06/22 17:22:36 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/23 14:44:49 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char **extract_config_lines(char **array, int start_index)
     {
         if (array[i][0] != '\0' && array[i][0] != '\n')
         {
-            config[j] = strdup(array[i]);
+            config[j] = ft_strdup(array[i]);
             if (!config[j++])
             {
                 while (j > 0)
