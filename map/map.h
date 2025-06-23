@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/23 14:42:35 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/23 18:49:11 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void		free_array(char **array);
 char		**extract_map(char **array, int start_index);
 
 //----extract_config.c----
+int			is_line_empty_or_spaces_only(const char *line);
 char		**extract_config_lines(char **array, int start_index);
 
 //----validator.c----

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/23 17:11:29 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/23 18:45:38 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,33 +96,51 @@ int	missing_fields(t_config *cfg)
 //pass all the file.cub lines before the map 
 t_config *parse_config(char **config_lines)
 {
-	t_config *cfg;
-	int i;
+    t_config *cfg;
+    int i = 0;
+    char *line;
+    size_t len;
 
-	cfg = malloc(sizeof(t_config));
-	if (!cfg)
-		return (NULL);
-	cfg->no_texture = NULL;
-	cfg->so_texture = NULL;
-	cfg->we_texture = NULL;
-	cfg->ea_texture = NULL;
-	cfg->floor_color = NULL;
-	cfg->ceiling_color = NULL;
+    cfg = malloc(sizeof(t_config));
+    if (!cfg)
+        return (NULL);
 
-	i = 0;
-	while (config_lines[i])
-	{
-		printf("Analizando config_lines[%d]: [%s]\n", i, config_lines[i]);
-		if (parse_config_line(cfg, config_lines[i]) != 0)
-		{
-			printf("Error procesando línea de config: [%s]\n", config_lines[i]);
-			free_config(cfg);
-			return (NULL);
-		}
-		i++;
-	}
-	return (cfg);
+    cfg->no_texture = NULL;
+    cfg->so_texture = NULL;
+    cfg->ea_texture = NULL;
+    cfg->we_texture = NULL;
+    cfg->floor_color = NULL;
+    cfg->ceiling_color = NULL;
+
+    while (config_lines[i])
+    {
+        line = ft_strdup(config_lines[i]);
+        if (!line)
+        {
+            free_config(cfg);
+            return (NULL);
+        }
+        len = ft_strlen(line);
+        if (len > 0 && line[len - 1] == '\n')
+            line[len - 1] = '\0';
+
+        printf("Analizando config_lines[%d]: [%s]\n", i, line);
+
+        if (parse_config_line(cfg, line) != 0)
+        {
+            fprintf(stderr, "Error procesando línea de config: [%s]\n", line);
+            free(line);
+            free_config(cfg);
+            return (NULL);
+        }
+
+        free(line);
+        i++;
+    }
+
+    return (cfg);
 }
+
 
 void	free_config(t_config *cfg)
 {
