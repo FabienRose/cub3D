@@ -31,7 +31,7 @@ SRCS=	./main.c \
 		./map/extract_map.c \
 		./map/map.c \
 		./map/config.c \
-		
+		./parsing/parsing.c \
 
 #----- Objects -----
 OBJS=$(SRCS:.c=.o)

@@ -6,11 +6,49 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/21 15:05:23 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/22 17:38:38 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../cub3d.h"
+
+t_config *parse_config(char **config_lines)
+{
+    t_config *config = malloc(sizeof(t_config));
+    if (!config)
+        return NULL;
+    ft_memset(config, 0, sizeof(t_config));
+
+    for (int i = 0; config_lines[i]; i++)
+    {
+        char *line = config_lines[i];
+
+        while (*line == ' ')
+            line++;
+
+        if (ft_strncmp(line, "NO ", 3) == 0)
+            config->no_texture = strdup(line + 3);
+        else if (ft_strncmp(line, "SO ", 3) == 0)
+            config->so_texture = strdup(line + 3);
+        else if (ft_strncmp(line, "EA ", 3) == 0)
+            config->ea_texture = strdup(line + 3);
+        else if (ft_strncmp(line, "WE ", 3) == 0)
+            config->we_texture = strdup(line + 3);
+        else if (ft_strncmp(line, "F ", 2) == 0)
+            config->floor_color = strdup(line + 2);
+        else if (ft_strncmp(line, "C ", 2) == 0)
+            config->ceiling_color = strdup(line + 2);
+        else
+        {
+            printf("Error: Línea de configuración no válida: %s\n", line);
+            free(config);
+            return NULL;
+        }
+    }
+    return config;
+}
+
+
 /*
 //interprete each line of the .cub file and extract colors and textures
 int	parse_config_line(char *line, t_map_config *config)

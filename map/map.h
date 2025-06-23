@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 17:23:41 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/22 17:30:22 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,6 @@ typedef struct s_map_config
 	int		player_y;
 	//N, S, E, W
 	char	player_dir;
-	//texture
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
-	t_color	floor_color;
-	t_color	ceiling_color;
 } t_map_config;
 */
 

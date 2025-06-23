@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 17:27:22 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/23 11:13:01 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 }
 */
 
-//extract the map from the file.cub
+//
 int main(int argc, char **argv)
 {
     t_node *lines;
@@ -56,6 +56,7 @@ int main(int argc, char **argv)
     int start_index;
 	char **map;
 	char **config;
+	t_config *config_data;
 
     if (argc != 2)
     {
@@ -87,13 +88,35 @@ int main(int argc, char **argv)
 	}
 	config = extract_config_lines(array, start_index);
 	if (!config)
-{
-    free_array(array);
-    return (1);
-}
-	printf("Líneas de configuración:\n");
-	for (int i = 0; config[i]; i++)
-		printf("%s\n", config[i]);
-    free_array(config);
+	{
+   		free_array(array);
+    	return (1);
+	}
+	config_data = parse_config(config);
+	if (!config_data)
+	{
+    	free_array(array);
+    	free_array(config);
+    	return (1);
+	}
+
+	printf("Texturas:\n");
+	printf("NO: %s\n", config_data->no_texture);
+	printf("SO: %s\n", config_data->so_texture);
+	printf("EA: %s\n", config_data->ea_texture);
+	printf("WE: %s\n", config_data->we_texture);
+	printf("Floor: %s\n", config_data->floor_color);
+	printf("Ceiling: %s\n", config_data->ceiling_color);
+
+	free_array(array);
+	free_array(config);
+	free(config_data->no_texture);
+	free(config_data->so_texture);
+	free(config_data->ea_texture);
+	free(config_data->we_texture);
+	free(config_data->floor_color);
+	free(config_data->ceiling_color);
+	free(config_data);
+
     return (0);
 }
