@@ -33,6 +33,7 @@ SRCS=	./main.c \
 		./map/validator.c \
 		./map/extract_config.c \
 		./parsing/parsing.c \
+		./parsing/parsing_utils.c \
 
 
 #----- Objects -----

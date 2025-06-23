@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/23 18:45:38 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/23 19:00:19 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,12 @@ int	missing_fields(t_config *cfg)
 		|| !cfg->floor_color || !cfg->ceiling_color);
 }
 
-//pass all the file.cub lines before the map 
+
 t_config *parse_config(char **config_lines)
 {
     t_config *cfg;
     int i = 0;
     char *line;
-    size_t len;
 
     cfg = malloc(sizeof(t_config));
     if (!cfg)
@@ -114,16 +113,12 @@ t_config *parse_config(char **config_lines)
 
     while (config_lines[i])
     {
-        line = ft_strdup(config_lines[i]);
-        if (!line)
-        {
-            free_config(cfg);
-            return (NULL);
-        }
-        len = ft_strlen(line);
-        if (len > 0 && line[len - 1] == '\n')
-            line[len - 1] = '\0';
-
+        line = ft_strtrim_newline(config_lines[i]);
+		if (!line)
+		{
+    		free_config(cfg);
+    		return (NULL);
+		}
         printf("Analizando config_lines[%d]: [%s]\n", i, line);
 
         if (parse_config_line(cfg, line) != 0)
