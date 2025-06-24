@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/23 19:00:19 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 09:49:51 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_config *parse_config(char **config_lines)
 
     while (config_lines[i])
     {
-        line = ft_strtrim_newline(config_lines[i]);
+        line = ft_strtrim_right(config_lines[i]);
 		if (!line)
 		{
     		free_config(cfg);
@@ -135,7 +135,6 @@ t_config *parse_config(char **config_lines)
 
     return (cfg);
 }
-
 
 void	free_config(t_config *cfg)
 {

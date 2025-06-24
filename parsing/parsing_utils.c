@@ -6,31 +6,32 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 15:46:58 by diana             #+#    #+#             */
-/*   Updated: 2025/06/23 18:52:59 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 09:40:13 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../cub3d.h"
 
-char *ft_strtrim_newline(const char *str)
+char *ft_strtrim_right(const char *str)
 {
-    size_t len;
+    size_t end;
     char *trimmed;
 
     if (!str)
         return (NULL);
 
-    len = ft_strlen(str);
-    if (len > 0 && str[len - 1] == '\n')
-        len--;
+    end = strlen(str);
+    while (end > 0 && ft_isspace((unsigned char)str[end - 1]))
+        end--;
 
-    trimmed = malloc(sizeof(char) * (len + 1));
+    trimmed = malloc(sizeof(char) * (end + 1));
     if (!trimmed)
         return (NULL);
 
-    for (size_t i = 0; i < len; i++)
+    for (size_t i = 0; i < end; i++)
         trimmed[i] = str[i];
-    trimmed[len] = '\0';
+    trimmed[end] = '\0';
 
     return trimmed;
 }
+
