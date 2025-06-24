@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 15:46:58 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 16:07:23 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 17:07:30 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*ft_clean_path(const char *str)
 	char	*clean;
 	int		i = 0;
 
-	clean = malloc(ft_strlen(str) + 1); // suficiente espacio
+	clean = malloc(ft_strlen(str) + 1);
 	if (!clean)
 		return (NULL);
 	while (*str)
