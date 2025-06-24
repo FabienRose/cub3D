@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 17:40:20 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 17:46:22 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static char	*rebuild_clean_rgb(char **parts)
 	char	*result;
 	char	*tmp;
 
-	trimmed[0] = ft_strtrim(parts[0], " \t\n");
-	trimmed[1] = ft_strtrim(parts[1], " \t\n");
-	trimmed[2] = ft_strtrim(parts[2], " \t\n");
+	trimmed[0] = ft_strtrim(parts[0], " \t\n\r\v\f");
+	trimmed[1] = ft_strtrim(parts[1], " \t\n\r\v\f");
+	trimmed[2] = ft_strtrim(parts[2], " \t\n\r\v\f");
 
 	if (!trimmed[0] || !trimmed[1] || !trimmed[2])
 		return (NULL);
@@ -70,7 +70,7 @@ static int	assign_color(char **field, char *value)
 
 	if (*field != NULL)
 		return (1);
-	trimmed = ft_strtrim(value, " \n\t");
+	trimmed = ft_strtrim(value, " \t\n\r\v\f");
 	if (!trimmed)
 		return (1);
 	if (!validate_rgb_format(trimmed))
