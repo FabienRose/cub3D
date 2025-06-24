@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 17:07:15 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 17:40:20 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,44 @@ static int	assign_texture(char **field, char *value)
 	return (0);
 }
 
+static char	*rebuild_clean_rgb(char **parts)
+{
+	char	*trimmed[3];
+	char	*result;
+	char	*tmp;
+
+	trimmed[0] = ft_strtrim(parts[0], " \t\n");
+	trimmed[1] = ft_strtrim(parts[1], " \t\n");
+	trimmed[2] = ft_strtrim(parts[2], " \t\n");
+
+	if (!trimmed[0] || !trimmed[1] || !trimmed[2])
+		return (NULL);
+
+	tmp = ft_strjoin(trimmed[0], ",");
+	result = ft_strjoin(tmp, trimmed[1]);
+	free(tmp);
+	tmp = result;
+	result = ft_strjoin(result, ",");
+	free(tmp);
+	tmp = result;
+	result = ft_strjoin(result, trimmed[2]);
+	free(tmp);
+
+	free(trimmed[0]);
+	free(trimmed[1]);
+	free(trimmed[2]);
+	return (result);
+}
 
 static int	assign_color(char **field, char *value)
 {
-	char *trimmed;
+	char	*trimmed;
+	char	**parts;
+	char	*cleaned;
 
 	if (*field != NULL)
 		return (1);
-	trimmed = ft_strtrim(value, " \n");
-	printf("Valor trimmeado: [%s]\n", trimmed);
+	trimmed = ft_strtrim(value, " \n\t");
 	if (!trimmed)
 		return (1);
 	if (!validate_rgb_format(trimmed))
@@ -49,9 +78,18 @@ static int	assign_color(char **field, char *value)
 		free(trimmed);
 		return (1);
 	}
-	*field = trimmed;
+	parts = ft_split(trimmed, ',');
+	free(trimmed);
+	if (!parts)
+		return (1);
+	cleaned = rebuild_clean_rgb(parts);
+	free_array(parts);
+	if (!cleaned)
+		return (1);
+	*field = cleaned;
 	return (0);
 }
+
 
 int	parse_config_line(t_config *cfg, char *line)
 {

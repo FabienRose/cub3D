@@ -30,7 +30,7 @@ SRCS=	./main.c \
 		./conversion/list_to_array.c \
 		./map/extract_map.c \
 		./map/map.c \
-		./map/validator.c \
+		./map/color.c \
 		./map/extract_config.c \
 		./parsing/parsing.c \
 		./parsing/parsing_utils.c \
