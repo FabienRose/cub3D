@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 09:49:51 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 16:35:11 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,31 +53,86 @@ static int	assign_color(char **field, char *value)
 	return (0);
 }
 
+
 int	parse_config_line(t_config *cfg, char *line)
 {
-	char *newline_pos;
-	
-		newline_pos = ft_strchr(line, '\n');
+	char	*newline_pos;
+	char	*value;
+
+	newline_pos = ft_strchr(line, '\n');
 	if (newline_pos)
 		*newline_pos = '\0';
-	printf("Analizando linea: [%s]\n", line);
 	while (*line == ' ')
 		line++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		return (assign_texture(&cfg->no_texture, line + 3));
+	{
+		value = line + 3;
+		while (*value == ' ')
+			value++;
+		char *clean_path = ft_clean_path(value);
+		if (!clean_path)
+			return (1);
+		int result = assign_texture(&cfg->no_texture, clean_path);
+		free(clean_path);
+		return (result);
+	}
 	if (ft_strncmp(line, "SO ", 3) == 0)
-		return (assign_texture(&cfg->so_texture, line + 3));
+	{
+		value = line + 3;
+		while (*value == ' ')
+			value++;
+		char *clean_path = ft_clean_path(value);
+		if (!clean_path)
+			return (1);
+		int result = assign_texture(&cfg->no_texture, clean_path);
+		free(clean_path);
+		return (result);
+	}
 	if (ft_strncmp(line, "EA ", 3) == 0)
-		return (assign_texture(&cfg->ea_texture, line + 3));
+	{
+		value = line + 3;
+		while (*value == ' ')
+			value++;
+		char *clean_path = ft_clean_path(value);
+		if (!clean_path)
+			return (1);
+		int result = assign_texture(&cfg->no_texture, clean_path);
+		free(clean_path);
+		return (result);
+	}
 	if (ft_strncmp(line, "WE ", 3) == 0)
-		return (assign_texture(&cfg->we_texture, line + 3));
+	{
+		value = line + 3;
+		while (*value == ' ')
+			value++;
+		char *clean_path = ft_clean_path(value);
+		if (!clean_path)
+			return (1); // Error de malloc
+		int result = assign_texture(&cfg->no_texture, clean_path);
+		free(clean_path);
+		return (result);
+	}
+
+	// Colores (no verificamos espacios aquí, pero podrías validar formato RGB después)
 	if (ft_strncmp(line, "F ", 2) == 0)
-		return (assign_color(&cfg->floor_color, line + 2));
+	{
+		value = line + 2;
+		while (*value == ' ')
+			value++;
+		return (assign_color(&cfg->floor_color, value));
+	}
 	if (ft_strncmp(line, "C ", 2) == 0)
-		return (assign_color(&cfg->ceiling_color, line + 2));
-	printf("Linea invalida: [%s]\n", line);
+	{
+		value = line + 2;
+		while (*value == ' ')
+			value++;
+		return (assign_color(&cfg->ceiling_color, value));
+	}
+
+	fprintf(stderr, "Línea inválida: [%s]\n", line);
 	return (1);
 }
+
 
 int	missing_fields(t_config *cfg)
 {
@@ -94,46 +149,42 @@ int	missing_fields(t_config *cfg)
 }
 
 
-t_config *parse_config(char **config_lines)
+t_config	*parse_config(char **config_lines)
 {
-    t_config *cfg;
-    int i = 0;
-    char *line;
+	t_config	*cfg;
+	int			i;
+	char		*clean_line;
 
-    cfg = malloc(sizeof(t_config));
-    if (!cfg)
-        return (NULL);
+	i = 0;
+	cfg = malloc(sizeof(t_config));
+	if (!cfg)
+		return (NULL);
+	cfg->no_texture = NULL;
+	cfg->so_texture = NULL;
+	cfg->ea_texture = NULL;
+	cfg->we_texture = NULL;
+	cfg->floor_color = NULL;
+	cfg->ceiling_color = NULL;
+	while (config_lines[i])
+	{
+		clean_line = ft_reduce_spaces(config_lines[i]);
+		if (!clean_line)
+			return (free_config(cfg), NULL);
+		printf("Analizando config_lines[%d]: [%s]\n", i, clean_line);
+		printf("Original: [%s]\n", config_lines[i]);
+		printf("Limpia  : [%s]\n", clean_line);
 
-    cfg->no_texture = NULL;
-    cfg->so_texture = NULL;
-    cfg->ea_texture = NULL;
-    cfg->we_texture = NULL;
-    cfg->floor_color = NULL;
-    cfg->ceiling_color = NULL;
-
-    while (config_lines[i])
-    {
-        line = ft_strtrim_right(config_lines[i]);
-		if (!line)
+		if (parse_config_line(cfg, clean_line) != 0)
 		{
-    		free_config(cfg);
-    		return (NULL);
+			fprintf(stderr, "Error procesando línea de config: [%s]\n", clean_line);
+			free(clean_line);
+			free_config(cfg);
+			return (NULL);
 		}
-        printf("Analizando config_lines[%d]: [%s]\n", i, line);
-
-        if (parse_config_line(cfg, line) != 0)
-        {
-            fprintf(stderr, "Error procesando línea de config: [%s]\n", line);
-            free(line);
-            free_config(cfg);
-            return (NULL);
-        }
-
-        free(line);
-        i++;
-    }
-
-    return (cfg);
+		free(clean_line);
+		i++;
+	}
+	return (cfg);
 }
 
 void	free_config(t_config *cfg)

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 09:40:35 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 16:07:54 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ t_config	    *parse_config(char **config_lines);
 void	        free_config(t_config *cfg);
 
 //----parsing_utils.c----
-char            *ft_strtrim_right(const char *str);
-
+int             is_space_tab(char c);
+int             count_clean_len(char *str);
+char            *ft_reduce_spaces(char *str);
+char	        *ft_clean_path(const char *str);
 
 
 #endif

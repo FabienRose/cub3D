@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/23 15:40:06 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 15:49:14 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 */
 
 //
+
 int main(int argc, char **argv)
 {
     t_node *lines;
@@ -122,3 +123,4 @@ int main(int argc, char **argv)
 
     return (0);
 }
+
