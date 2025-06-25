@@ -6,17 +6,20 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/24 19:16:55 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/25 21:19:43 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
+# include "../conversion/conversion.h"
+
 typedef struct {
     char **config_lines;
     char **map_lines;
 } t_file_content;
+
 
 /*estas estructuras las puse para el primer commit que hice
 typedef struct s_color
@@ -62,6 +65,9 @@ int			is_valid_component(char *str);
 int			validate_rgb_format(char *line);
 int			create_rgb_color(int r, int g, int b);
 char		*ft_strtrim_whitespace(const char *s);
+
+//----validate_key_extension.c----
+int			ends_with_cub(const char *filename);
 /*
 //----map_utils.c----
 char		**load_cub_file(char *filename);

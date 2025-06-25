@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/06/25 16:27:33 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/25 17:51:10 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_config
     int floor_color;
     int ceiling_color;
 }   t_config;
-
 
 
 //----parsing.c----
@@ -44,5 +43,9 @@ int             ft_isdigit_str(char *str);
 int             clean_component(char *str);
 int             parse_rgb(char *str);
 void            free_split(char **arr);
+
+//----parse_map.c----
+//int             parse_map(t_node *lines);
+
 
 #endif
