@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/25 11:38:47 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/25 17:01:41 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,54 +24,79 @@ static int	assign_texture(char **field, char *value)
 	*field = trimmed;
 	return (0);
 }
-
-/* No necesito por ahora esta funcion....quizas mas adelante?
-esta funcion es sutituida por la linea
-cleaned = ft_strtrim(value, " \t\n\r\v\f");
-static char	*rebuild_clean_rgb(char **parts) 
+//put together the F & C configuration lines 
+char *ft_strjoin_three(char *s1, char *s2, char *s3)
 {
-	char	*trimmed[3];
-	char	*result;
 	char	*tmp;
+	char	*result;
 
-	trimmed[0] = ft_strtrim(parts[0], " \t\n\r\v\f");
-	trimmed[1] = ft_strtrim(parts[1], " \t\n\r\v\f");
-	trimmed[2] = ft_strtrim(parts[2], " \t\n\r\v\f");
-
-	if (!trimmed[0] || !trimmed[1] || !trimmed[2])
+	tmp = ft_strjoin(s1, s2);
+	if (!tmp)
 		return (NULL);
-
-	tmp = ft_strjoin(trimmed[0], ",");
-	result = ft_strjoin(tmp, trimmed[1]);
+	result = ft_strjoin(tmp, s3);
 	free(tmp);
-	tmp = result;
-	result = ft_strjoin(result, ",");
-	free(tmp);
-	tmp = result;
-	result = ft_strjoin(result, trimmed[2]);
-	free(tmp);
-
-	free(trimmed[0]);
-	free(trimmed[1]);
-	free(trimmed[2]);
 	return (result);
-}*/
+}
 
-static int	assign_color(int *field, char *value)
+//if is neccesary we can convert this function to char later
+static char	*rebuild_clean_rgb(char **parts)
 {
+	char	*tmp;
+	char	*clean;
+	char	*result;
+	int		i;
+
+	if (!parts)
+		return (NULL);
+	result = NULL;
+	i = 0;
+	while (parts[i])
+	{
+		clean = ft_strtrim(parts[i], " \t\n\r\v\f");
+		if (!clean)
+			return (free(result), NULL);
+		tmp = result;
+		if (i == 0)
+			result = ft_strdup(clean);
+		else
+			result = ft_strjoin_three(tmp, ",", clean);
+		free(tmp);
+		free(clean);
+		if (!result)
+			return (NULL);
+		i++;
+	}
+	return (result);
+}
+
+int	assign_color(t_config *cfg, char *key, char *value)
+{
+	char	**parts;
 	char	*cleaned;
 	int		color;
 
-	cleaned = ft_strtrim(value, " \t\n\r\v\f");
+	if (!cfg || !key || !value)
+		return (1);
+	parts = ft_split(value, ',');
+	if (!parts)
+		return (1);
+	cleaned = rebuild_clean_rgb(parts);
+	free_split(parts);
 	if (!cleaned)
 		return (1);
-	color = parse_rgb(cleaned); // función que convierte string a entero RGB
+	color = parse_rgb(cleaned);
 	free(cleaned);
-	if (color == -1) // usamos -1 como indicador de error
+	if (color == -1)
 		return (1);
-	*field = color;
+	if (ft_strncmp(key, "F", 2) == 0)
+		cfg->floor_color = color;
+	else if (ft_strncmp(key, "C", 2) == 0)
+		cfg->ceiling_color = color;
+	else
+		return (1);
 	return (0);
 }
+
 
 int	parse_config_line(t_config *cfg, char *line)
 {
@@ -96,14 +121,14 @@ int	parse_config_line(t_config *cfg, char *line)
 
 	if (ft_strncmp(clean_line, "F ", 2) == 0)
 	{
-		if (assign_color(&cfg->floor_color, clean_line + 2))
+		if (assign_color(cfg, "F", clean_line + 2))
 			return (1);
 		printf("DEBUG: Floor color (int) = %d, hex = %#06x\n", cfg->floor_color, cfg->floor_color);
 		return (0);
 	}
 	if (ft_strncmp(clean_line, "C ", 2) == 0)
 	{
-		if (assign_color(&cfg->ceiling_color, clean_line + 2))
+		if (assign_color(cfg, "C", clean_line + 2))
 			return (1);
 		printf("DEBUG: Ceiling color (int) = %d, hex = %#06x\n", cfg->ceiling_color, cfg->ceiling_color);
 		return (0);

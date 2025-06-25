@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 20:12:21 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/25 16:27:33 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ typedef struct s_config
 //----parsing.c----
 int             parse_config_line(t_config *cfg, char *line);
 int             missing_fields(t_config *cfg);
+int	            assign_color(t_config *cfg, char *key, char *value);
 t_config	    *parse_config(char **config_lines);
 void	        free_config(t_config *cfg);
+char            *ft_strjoin_three(char *s1, char *s2, char *s3);
 
 //----parsing_utils.c----
 int             is_space_tab(char c);
