@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 17:46:22 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/25 11:38:47 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,18 @@ static int	assign_texture(char **field, char *value)
 	char *trimmed;
 
 	if (*field != NULL)
-	{
-		printf("Ya asignado previamente\n");
 		return (1);
-	}
-	printf("Original value recibido: [%s]\n", value);
 	trimmed = ft_strtrim(value, " \n");
 	if (!trimmed)
-	{
-		printf("Fallo en ft_strtrim\n");
 		return (1);
-	}
-	printf("Valor trimmed: [%s]\n", trimmed);
 	*field = trimmed;
 	return (0);
 }
 
-static char	*rebuild_clean_rgb(char **parts)
+/* No necesito por ahora esta funcion....quizas mas adelante?
+esta funcion es sutituida por la linea
+cleaned = ft_strtrim(value, " \t\n\r\v\f");
+static char	*rebuild_clean_rgb(char **parts) 
 {
 	char	*trimmed[3];
 	char	*result;
@@ -60,36 +55,23 @@ static char	*rebuild_clean_rgb(char **parts)
 	free(trimmed[1]);
 	free(trimmed[2]);
 	return (result);
-}
+}*/
 
-static int	assign_color(char **field, char *value)
+static int	assign_color(int *field, char *value)
 {
-	char	*trimmed;
-	char	**parts;
 	char	*cleaned;
+	int		color;
 
-	if (*field != NULL)
-		return (1);
-	trimmed = ft_strtrim(value, " \t\n\r\v\f");
-	if (!trimmed)
-		return (1);
-	if (!validate_rgb_format(trimmed))
-	{
-		free(trimmed);
-		return (1);
-	}
-	parts = ft_split(trimmed, ',');
-	free(trimmed);
-	if (!parts)
-		return (1);
-	cleaned = rebuild_clean_rgb(parts);
-	free_array(parts);
+	cleaned = ft_strtrim(value, " \t\n\r\v\f");
 	if (!cleaned)
 		return (1);
-	*field = cleaned;
+	color = parse_rgb(cleaned); // función que convierte string a entero RGB
+	free(cleaned);
+	if (color == -1) // usamos -1 como indicador de error
+		return (1);
+	*field = color;
 	return (0);
 }
-
 
 int	parse_config_line(t_config *cfg, char *line)
 {
@@ -99,9 +81,7 @@ int	parse_config_line(t_config *cfg, char *line)
 	newline_pos = ft_strchr(line, '\n');
 	if (newline_pos)
 		*newline_pos = '\0';
-	// Reducir espacios entre palabras
 	clean_line = ft_reduce_spaces(line);
-	// Saltar espacios iniciales
 	while (*clean_line == ' ')
 		clean_line++;
 
@@ -115,15 +95,21 @@ int	parse_config_line(t_config *cfg, char *line)
 		return (assign_texture(&cfg->ea_texture, ft_clean_path(clean_line + 3)));
 
 	if (ft_strncmp(clean_line, "F ", 2) == 0)
-		return (assign_color(&cfg->floor_color, clean_line + 2));
+	{
+		if (assign_color(&cfg->floor_color, clean_line + 2))
+			return (1);
+		printf("DEBUG: Floor color (int) = %d, hex = %#06x\n", cfg->floor_color, cfg->floor_color);
+		return (0);
+	}
 	if (ft_strncmp(clean_line, "C ", 2) == 0)
-		return (assign_color(&cfg->ceiling_color, clean_line + 2));
-
-	printf("Linea invalida: [%s]\n", clean_line);
+	{
+		if (assign_color(&cfg->ceiling_color, clean_line + 2))
+			return (1);
+		printf("DEBUG: Ceiling color (int) = %d, hex = %#06x\n", cfg->ceiling_color, cfg->ceiling_color);
+		return (0);
+	}
 	return (1);
 }
-
-
 
 int	missing_fields(t_config *cfg)
 {
@@ -131,12 +117,12 @@ int	missing_fields(t_config *cfg)
 	if (!cfg->so_texture) printf("Falta SO\n");
 	if (!cfg->ea_texture) printf("Falta EA\n");
 	if (!cfg->we_texture) printf("Falta WE\n");
-	if (!cfg->floor_color) printf("Falta Floor\n");
-	if (!cfg->ceiling_color) printf("Falta Ceiling\n");
+	if (cfg->floor_color == -1) printf("Falta Floor\n");
+	if (cfg->ceiling_color == -1) printf("Falta Ceiling\n");
 
 	return (!cfg->no_texture || !cfg->so_texture
 		|| !cfg->ea_texture || !cfg->we_texture
-		|| !cfg->floor_color || !cfg->ceiling_color);
+		|| cfg->floor_color == -1 || cfg->ceiling_color == -1);
 }
 
 
@@ -154,8 +140,8 @@ t_config	*parse_config(char **config_lines)
 	cfg->so_texture = NULL;
 	cfg->ea_texture = NULL;
 	cfg->we_texture = NULL;
-	cfg->floor_color = NULL;
-	cfg->ceiling_color = NULL;
+	cfg->floor_color = -1;
+	cfg->ceiling_color = -1;
 	while (config_lines[i])
 	{
 		clean_line = ft_reduce_spaces(config_lines[i]);
@@ -163,11 +149,11 @@ t_config	*parse_config(char **config_lines)
 			return (free_config(cfg), NULL);
 		if (parse_config_line(cfg, clean_line) != 0)
 		{
-			fprintf(stderr, "Error procesando línea de config: [%s]\n", clean_line);
 			free(clean_line);
 			free_config(cfg);
 			return (NULL);
 		}
+		
 		free(clean_line);
 		i++;
 	}
@@ -186,9 +172,5 @@ void	free_config(t_config *cfg)
 		free(cfg->we_texture);
 	if (cfg->ea_texture)
 		free(cfg->ea_texture);
-	if (cfg->floor_color)
-		free(cfg->floor_color);
-	if (cfg->ceiling_color)
-		free(cfg->ceiling_color);
 	free(cfg);
 }

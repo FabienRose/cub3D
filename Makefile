@@ -34,6 +34,7 @@ SRCS=	./main.c \
 		./map/extract_config.c \
 		./parsing/parsing.c \
 		./parsing/parsing_utils.c \
+		./parsing/parse_rgb.c \
 
 
 #----- Objects -----

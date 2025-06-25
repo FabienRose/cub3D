@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/24 15:49:14 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/24 20:15:08 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ int main(int argc, char **argv)
 	printf("SO: %s\n", config_data->so_texture);
 	printf("EA: %s\n", config_data->ea_texture);
 	printf("WE: %s\n", config_data->we_texture);
-	printf("Floor: %s\n", config_data->floor_color);
-	printf("Ceiling: %s\n", config_data->ceiling_color);
+	printf("Floor: %i\n", config_data->floor_color);
+	printf("Ceiling: %i\n", config_data->ceiling_color);
 
 	free_array(array);
 	free_array(config);
@@ -117,10 +117,7 @@ int main(int argc, char **argv)
 	free(config_data->so_texture);
 	free(config_data->ea_texture);
 	free(config_data->we_texture);
-	free(config_data->floor_color);
-	free(config_data->ceiling_color);
 	free(config_data);
 
     return (0);
 }
-
