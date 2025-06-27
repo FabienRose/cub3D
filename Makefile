@@ -39,6 +39,7 @@ SRCS=	./main.c \
 		./parsing/parse_map.c \
 		./parsing/parse_spaces.c \
 		./parsing/parse_color.c \
+		./parsing/parse_validate.c \
 
 #----- Objects -----
 OBJS=$(SRCS:.c=.o)

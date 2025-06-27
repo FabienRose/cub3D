@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 18:22:32 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 18:50:13 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ void	        free_list(t_node *head);
 //----parse_color.c----
 int	            assign_color(t_config *cfg, char *key, char *value);
 
+//----parse_validate.c----
+int             is_valid_xpm_path(char *path);
+int             is_valid_rgb(char *str);
+int             check_rgb_parts(char **parts);
 
 #endif

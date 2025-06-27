@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:27:27 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 15:38:25 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 19:18:58 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	all_flags_set(t_flags *flags)
 	return (flags->no && flags->so && flags->we && flags->ea
 		&& flags->f && flags->c);
 }
-
 
 int	is_valid_key(const char *line)
 {

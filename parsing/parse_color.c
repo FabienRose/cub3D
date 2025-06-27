@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:19:25 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 18:20:16 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 19:42:50 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	assign_color(t_config *cfg, char *key, char *value)
 	int		color;
 
 	if (!cfg || !key || !value)
+		return (1);
+	if (!is_valid_rgb(value))
 		return (1);
 	parts = ft_split(value, ',');
 	if (!parts)
