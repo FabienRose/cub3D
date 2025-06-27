@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/25 21:19:43 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:03:10 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ typedef struct {
     char **map_lines;
 } t_file_content;
 
+typedef struct s_flags {
+	int no;
+	int so;
+	int we;
+	int ea;
+	int f;
+	int c;
+}	t_flags;
 
 /*estas estructuras las puse para el primer commit que hice
 typedef struct s_color
@@ -68,6 +76,8 @@ char		*ft_strtrim_whitespace(const char *s);
 
 //----validate_key_extension.c----
 int			ends_with_cub(const char *filename);
+int			check_and_set_flag(const char *line, t_flags *flags);
+int			all_flags_set(t_flags *flags);
 /*
 //----map_utils.c----
 char		**load_cub_file(char *filename);

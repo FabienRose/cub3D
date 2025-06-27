@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/06/25 17:51:10 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:13:25 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	            assign_color(t_config *cfg, char *key, char *value);
 t_config	    *parse_config(char **config_lines);
 void	        free_config(t_config *cfg);
 char            *ft_strjoin_three(char *s1, char *s2, char *s3);
+int             parse_map(t_node *head);
+void	        free_list(t_node *head);
 
 //----parsing_utils.c----
 int             is_space_tab(char c);
