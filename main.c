@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/27 15:07:20 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:37:51 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(int argc, char **argv)
 */
 
 //
-
 int main(int argc, char **argv)
 {
     t_node *lines;
@@ -71,23 +70,29 @@ int main(int argc, char **argv)
         return (1);
     }
 
-	lines = read_file_to_list(argv[1]);
-	if (!lines)
-		return 1;
-    if (!parse_map(lines))
-	{
-		ft_putendl_fd("Fallo el parseo.", 2);
-		// free_list(lines); // si tienes función para liberar
-		return (1);
-	}
-    ft_putendl_fd("Configuración válida", 1);
-    // Convertimos la lista completa a array para procesamiento
-    array = linked_list_to_array(lines);
-    free_linked_list(lines);
-    if (!array)
+    lines = read_file_to_list(argv[1]);
+    if (!lines)
         return (1);
 
-    // Buscamos índice donde empieza el mapa
+    if (!validate_unique_keys(lines))
+    {
+        ft_putendl_fd("Error\nClaves inválidas o duplicadas en el archivo .cub", 2);
+        free_list(lines);
+        return (1);
+    }
+
+    if (!parse_map(lines))
+    {
+        ft_putendl_fd("Fallo el parseo.", 2);
+        free_list(lines);
+        return (1);
+    }
+    ft_putendl_fd("Configuración válida", 1);
+
+    array = linked_list_to_array(lines);
+    free_list(lines);
+    if (!array)
+        return (1);
     start_index = find_map_start(array);
     if (start_index == -1)
     {
@@ -97,7 +102,6 @@ int main(int argc, char **argv)
 
     ft_putendl_fd("extrae el mapa", 1);
 
-    // Extraemos el mapa y config
     map = extract_map(array, start_index);
     if (!map)
     {
@@ -115,7 +119,6 @@ int main(int argc, char **argv)
 
     ft_putendl_fd("extrae las lineas de config", 1);
 
-    // Parseamos las líneas de config para cargar texturas y colores
     config_data = parse_config(config);
     if (!config_data)
     {
@@ -125,7 +128,6 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Imprimimos para verificar
     ft_putendl_fd("llega a imprimir las lineas?", 1);
     printf("Texturas:\n");
     printf("NO: %s\n", config_data->no_texture);
@@ -135,7 +137,6 @@ int main(int argc, char **argv)
     printf("Floor: %i\n", config_data->floor_color);
     printf("Ceiling: %i\n", config_data->ceiling_color);
 
-    // Liberar memoria
     free_array(array);
     free_array(config);
     free_array(map);

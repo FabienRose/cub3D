@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/27 15:03:10 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:38:32 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,7 @@ char		*ft_strtrim_whitespace(const char *s);
 int			ends_with_cub(const char *filename);
 int			check_and_set_flag(const char *line, t_flags *flags);
 int			all_flags_set(t_flags *flags);
-/*
-//----map_utils.c----
-char		**load_cub_file(char *filename);
-int			check_extension(char *filename);
+int			validate_unique_keys(t_node *list);
 
-//----validator.c----
-int			is_player_char(char c);
-int			is_valid_map_char(char c);
-int			check_surroundings(t_map *map, int x, int y);
-*/
 
 #endif 
