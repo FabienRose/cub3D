@@ -30,13 +30,15 @@ SRCS=	./main.c \
 		./conversion/list_to_array.c \
 		./map/extract_map.c \
 		./map/map.c \
-		./map/color.c \
+		./map/rgb.c \
 		./map/validate_key_extension.c \
 		./map/extract_config_lines.c \
 		./parsing/parsing.c \
 		./parsing/parsing_utils.c \
 		./parsing/parse_rgb.c \
-
+		./parsing/parse_map.c \
+		./parsing/parse_spaces.c \
+		./parsing/parse_color.c \
 
 #----- Objects -----
 OBJS=$(SRCS:.c=.o)

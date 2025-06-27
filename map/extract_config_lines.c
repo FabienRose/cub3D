@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extract_config.c                                   :+:      :+:    :+:   */
+/*   extract_config_lines.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:21:30 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 17:28:47 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 16:12:10 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	is_line_empty_or_spaces_only(const char *line)
 	}
 	return (1);
 }
-
 
 char **extract_config_lines(char **array, int start_index)
 {

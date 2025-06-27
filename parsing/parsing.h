@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 15:13:25 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 18:22:32 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,16 @@ typedef struct s_config
 
 //----parsing.c----
 int             parse_config_line(t_config *cfg, char *line);
-int             missing_fields(t_config *cfg);
-int	            assign_color(t_config *cfg, char *key, char *value);
 t_config	    *parse_config(char **config_lines);
 void	        free_config(t_config *cfg);
-char            *ft_strjoin_three(char *s1, char *s2, char *s3);
-int             parse_map(t_node *head);
-void	        free_list(t_node *head);
+
 
 //----parsing_utils.c----
+void	        free_config(t_config *cfg);
+char            *ft_strjoin_three(char *s1, char *s2, char *s3);
+int             missing_fields(t_config *cfg);
+
+//----parse_spaces.c----
 int             is_space_tab(char c);
 int             count_clean_len(char *str);
 char            *ft_reduce_spaces(char *str);
@@ -47,7 +48,11 @@ int             parse_rgb(char *str);
 void            free_split(char **arr);
 
 //----parse_map.c----
-//int             parse_map(t_node *lines);
+int             parse_map(t_node *head);
+void	        free_list(t_node *head);
+
+//----parse_color.c----
+int	            assign_color(t_config *cfg, char *key, char *value);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/27 15:38:32 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 18:26:32 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char		**extract_map(char **array, int start_index);
 int			is_line_empty_or_spaces_only(const char *line);
 char		**extract_config_lines(char **array, int start_index);
 
-//----color.c----
+//----rgb.c----
 int			is_valid_component(char *str);
 int			validate_rgb_format(char *line);
 int			create_rgb_color(int r, int g, int b);

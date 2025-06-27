@@ -6,95 +6,50 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 15:46:58 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 17:07:30 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 18:19:47 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../cub3d.h"
 
-int	is_space_tab(char c)
+void	free_config(t_config *cfg)
 {
-	if (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\f' || c == '\r')
-		return (1);
-	return (0);
+	if (!cfg)
+		return;
+	if (cfg->no_texture)
+		free(cfg->no_texture);
+	if (cfg->so_texture)
+		free(cfg->so_texture);
+	if (cfg->we_texture)
+		free(cfg->we_texture);
+	if (cfg->ea_texture)
+		free(cfg->ea_texture);
+	free(cfg);
 }
 
-int	count_clean_len(char *str)
+char *ft_strjoin_three(char *s1, char *s2, char *s3)
 {
-	int	i;
-	int	len;
-	int	space;
+	char	*tmp;
+	char	*result;
 
-	i = 0;
-	len = 0;
-	space = 1;
-	while (str[i])
-	{
-		if (!is_space_tab(str[i]))
-		{
-			len++;
-			space = 0;
-		}
-		else if (!space)
-		{
-			len++;
-			space = 1;
-		}
-		i++;
-	}
-	if (len > 0 && space)
-		len--;
-	return (len);
-}
-
-char	*ft_reduce_spaces(char *str)
-{
-	int		i;
-	int		j;
-	int		space;
-	char	*new;
-
-	i = 0;
-	j = 0;
-	space = 1;
-	new = malloc(sizeof(char) * (count_clean_len(str) + 1));
-	if (!new)
+	tmp = ft_strjoin(s1, s2);
+	if (!tmp)
 		return (NULL);
-	while (str[i])
-	{
-		if (!is_space_tab(str[i]))
-		{
-			new[j++] = str[i];
-			space = 0;
-		}
-		else if (!space)
-		{
-			new[j++] = ' ';
-			space = 1;
-		}
-		i++;
-	}
-	if (j > 0 && new[j - 1] == ' ')
-		j--;
-	new[j] = '\0';
-	return (new);
+	result = ft_strjoin(tmp, s3);
+	free(tmp);
+	return (result);
 }
 
-char	*ft_clean_path(const char *str)
+int	missing_fields(t_config *cfg)
 {
-	char	*clean;
-	int		i = 0;
+	if (!cfg->no_texture) printf("Falta NO\n");
+	if (!cfg->so_texture) printf("Falta SO\n");
+	if (!cfg->ea_texture) printf("Falta EA\n");
+	if (!cfg->we_texture) printf("Falta WE\n");
+	if (cfg->floor_color == -1) printf("Falta Floor\n");
+	if (cfg->ceiling_color == -1) printf("Falta Ceiling\n");
 
-	clean = malloc(ft_strlen(str) + 1);
-	if (!clean)
-		return (NULL);
-	while (*str)
-	{
-		if (*str != ' ')
-			clean[i++] = *str;
-		str++;
-	}
-	clean[i] = '\0';
-	return (clean);
+	return (!cfg->no_texture || !cfg->so_texture
+		|| !cfg->ea_texture || !cfg->we_texture
+		|| cfg->floor_color == -1 || cfg->ceiling_color == -1);
 }

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:24:03 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 16:34:14 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 18:28:03 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,13 @@ int find_map_start(char **array)
             map_started = 1;
             return i;
         }
-
         if (map_started && array[i][0] == '\0')
         {
             fprintf(stderr, "Error: mapa interrumpido por línea vacía\n");
             return -1;
         }
-
         i++;
     }
-
     fprintf(stderr, "Error: no se encontró el mapa\n");
     return -1;
 }
@@ -76,35 +73,3 @@ void free_array(char **array)
     }
     free(array);
 }
-
-/*
-int	validate_map(t_map *map, t_map_config *config)//porque map? si deberia ser **lines no? estructura
-{
-	int	player_found = 0;
-	int	y = -1;
-	int	x;
-
-	while (map->lines[++y])
-	{
-		x = -1;
-		while (map->lines[y][++x])
-		{
-			char c = map->lines[y][x];
-			if (!is_valid_map_char(c))
-				return (0);
-			if (is_player_char(c))
-			{
-				if (player_found)
-					return (0);
-				player_found = 1;
-				config->player_x = x;
-				config->player_y = y;
-				config->player_dir = c;
-			}
-			if (!check_surroundings(map, x, y))
-				return (0);
-		}
-	}
-	return (player_found);
-}
-*/
