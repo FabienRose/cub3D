@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:10:22 by diana             #+#    #+#             */
-/*   Updated: 2025/06/21 21:59:56 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/28 15:50:26 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,30 @@ int list_size(t_node *head)
 	return (count);
 }
 
-char **linked_list_to_array(t_node *head)
+char	**linked_list_to_array(t_node *head)
 {
-    int     count = list_size(head);
-    char    **array;
-    int     i = 0;
+	int		count;
+	char	**array;
+	int		i;
 
-    array = malloc(sizeof(char *) * (count + 1));
-    if (!array)
-        return (NULL);
-
-    while (i < count)
-    {
-        array[i] = ft_strdup(head->line);
-        if (!array[i])
-        {
-            while (--i >= 0)
-                free(array[i]);
-            free(array);
-            return (NULL);
-        }
-        head = head->next;
-        i++;
-    }
-    array[i] = NULL;
-    return (array);
+	count = list_size(head);
+	array = malloc(sizeof(char *) * (count + 1));
+	if (!array)
+		return (NULL);
+	i = 0;
+	while (i < count)
+	{
+		array[i] = ft_strdup(head->line);
+		if (!array[i])
+		{
+			while (--i >= 0)
+				free(array[i]);
+			free(array);
+			return (NULL);
+		}
+		head = head->next;
+		i++;
+	}
+	array[i] = NULL;
+	return (array);
 }

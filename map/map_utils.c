@@ -6,10 +6,22 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:13:04 by diana             #+#    #+#             */
-/*   Updated: 2025/06/25 17:41:02 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/27 21:23:30 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../cub3d.h"
 
+void free_array(char **array)
+{
+    int i = 0;
 
+    if (!array)
+        return;
+    while (array[i])
+    {
+        free(array[i]);
+        i++;
+    }
+    free(array);
+}

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:27:27 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 19:18:58 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/28 16:13:16 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ int	validate_unique_keys(t_node *list)
 		}
 		current = current->next;
 	}
-
 	for (int i = 0; i < 6; i++)
 	{
 		if (key_count[i] == 0)

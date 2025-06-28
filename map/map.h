@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/27 18:26:32 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/28 16:33:50 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,15 @@ typedef struct s_map_config
 int			find_map_start(char **array);
 int			starts_with_map_char(const char *line);
 int			is_map_line(const char *line);
-void		free_array(char **array);
-//int			validate_map(t_map *map, t_map_config *config);
+int			validate_map_lines(char **map);
+//temporal
+void		print_map_ascii_codes(char **map);
 
-//----extract.c----
-char		**extract_map(char **array, int start_index);
+//----map_utils.c----
+void		free_array(char **array);
+
+//----extract_map.c----
+char		**extract_map(char **array, int start);
 
 //----extract_config.c----
 int			is_line_empty_or_spaces_only(const char *line);

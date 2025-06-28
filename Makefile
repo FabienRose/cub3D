@@ -30,6 +30,7 @@ SRCS=	./main.c \
 		./conversion/list_to_array.c \
 		./map/extract_map.c \
 		./map/map.c \
+		./map/map_utils.c \
 		./map/rgb.c \
 		./map/validate_key_extension.c \
 		./map/extract_config_lines.c \

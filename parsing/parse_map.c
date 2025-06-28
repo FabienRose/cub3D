@@ -6,39 +6,29 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 15:58:59 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 16:01:29 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/28 16:57:59 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../cub3d.h"
 
-int	parse_map(t_node *head)
+void	clean_line(char *line)
 {
-	t_node	*current = head;
-	t_flags	flags = {0};
+	int	i;
+	int	j;
 
-	while (current && !all_flags_set(&flags))
+	i = 0;
+	j = 0;
+	while (line[i])
 	{
-		if (is_line_empty_or_spaces_only(current->line))
+		if (line[i] != '\n' && line[i] != '\r' && line[i] != '\t')
 		{
-			current = current->next;
-			continue;
+			line[j] = line[i];
+			j++;
 		}
-		if (!check_and_set_flag(current->line, &flags))
-		{
-			ft_putendl_fd("Error", 2);
-			ft_putendl_fd("Clave no reconocida", 2);
-			return (0);
-		}
-		current = current->next;
+		i++;
 	}
-	if (!all_flags_set(&flags))
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Faltan claves obligatorias", 2);
-		return (0);
-	}
-	return (1);
+	line[j] = '\0';
 }
 
 void	free_list(t_node *head)
@@ -53,4 +43,66 @@ void	free_list(t_node *head)
 		free(head);
 		head = tmp;
 	}
+}
+
+static int process_line_from_string(char *line, t_flags *flags)
+{
+    if (is_line_empty_or_spaces_only(line))
+        return (1);
+    clean_line(line);
+    if (!check_and_set_flag(line, flags))
+    {
+        ft_putendl_fd("Error", 2);
+        ft_putendl_fd("Clave no reconocida", 2);
+        return (0);
+    }
+    return (1);
+}
+
+
+int	parse_map(char **array)
+{
+	t_flags	flags;
+	int		i;
+
+	i = 0;
+	flags.no = 0;
+	flags.so = 0;
+	flags.we = 0;
+	flags.ea = 0;
+	flags.f = 0;
+	flags.c = 0;
+
+	while (array[i] && !all_flags_set(&flags))
+	{
+		if (!process_line_from_string(array[i], &flags))
+			return (0);
+		i++;
+	}
+	if (!all_flags_set(&flags))
+	{
+		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("Faltan claves obligatorias", 2);
+		return (0);
+	}
+	return (1);
+}
+
+void trim_newline_from_map(char **map)
+{
+    int i, len;
+
+    if (!map)
+        return;
+    i = 0;
+    while (map[i])
+    {
+        len = ft_strlen(map[i]);
+        if (len > 0 && (map[i][len - 1] == '\n' || map[i][len - 1] == '\r'))
+            map[i][len - 1] = '\0';
+        len--;
+        if (len > 0 && (map[i][len - 1] == '\n' || map[i][len - 1] == '\r'))
+            map[i][len - 1] = '\0';
+        i++;
+    }
 }

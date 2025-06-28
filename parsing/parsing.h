@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 18:50:13 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/28 16:51:59 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ int             parse_rgb(char *str);
 void            free_split(char **arr);
 
 //----parse_map.c----
-int             parse_map(t_node *head);
+void		    clean_line(char *line);
+int             parse_map(char **array);
 void	        free_list(t_node *head);
+void            trim_newline_from_map(char **map);
 
 //----parse_color.c----
 int	            assign_color(t_config *cfg, char *key, char *value);
