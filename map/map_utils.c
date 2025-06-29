@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:13:04 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 21:23:30 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 15:59:06 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,18 @@ void free_array(char **array)
         i++;
     }
     free(array);
+}
+
+void free_map(char **map)
+{
+	int i = 0;
+
+	if (!map)
+		return;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }

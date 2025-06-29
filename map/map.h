@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/29 10:55:50 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 17:15:51 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,10 @@ int			find_map_start(char **array);
 int			starts_with_map_char(const char *line);
 int			is_map_line(const char *line);
 int			validate_map_lines(char **map);
-//temporal
-void		print_map_ascii_codes(char **map);
 
 //----map_utils.c----
 void		free_array(char **array);
+void		free_map(char **map);
 
 //----extract_map.c----
 char		**extract_map(char **array, int start);
@@ -85,5 +84,8 @@ int			all_flags_set(t_flags *flags);
 int			is_valid_key(const char *line);
 int			validate_unique_keys(t_node *list);
 
+//----validate.c----
+//int			is_line_closed(char *line);
+int			validate_map(char **map);
 
 #endif 

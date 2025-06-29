@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/29 14:12:16 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 16:31:37 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,13 +135,21 @@ int main(int argc, char **argv)
     }
 
     // Paso 6: Extraer el mapa
-    ft_putendl_fd("Extrae el mapa", 1);
+    ft_putendl_fd("Extrae el mapa main", 1);
     map = extract_map(array, start_index);
-    if (!map)
+//meti aqui mensaje de depuracion xk tengo problemas con que dice que esta vacia la linea de arriba o abajo
+	for (int i = 0; map[i]; i++)
+	{
+	printf("MAP[%d] = \"%s\"\n", i, map[i]);
+	}
+    if (!map || !validate_map(map))
     {
-        free_array(array);
-        return (1);
+        free_map(map);
+        return (0);
     }
+
+//osea que con lo que primero modifico max se acepta el '\n' 
+//pero luego se corta ??asi sirve asi que lo dejare 	
     trim_newline_from_map(map);
     printf("Índice inicio del mapa: %d\n", start_index);
     ft_putendl_fd("Contenido extraído del mapa:", 1);

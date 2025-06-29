@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:13:46 by diana             #+#    #+#             */
-/*   Updated: 2025/06/29 14:37:07 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 16:27:28 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**extract_map(char **array, int start)
 	int		lines;
 	char	**map;
 
-	ft_putendl_fd("Extrae el mapa", 1);
+	//ft_putendl_fd("Extrae el mapa", 1);
 	lines = count_map_lines(array, start);
 	map = malloc(sizeof(char *) * (lines + 1));
 	if (!map)
