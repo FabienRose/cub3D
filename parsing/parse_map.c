@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 15:58:59 by diana             #+#    #+#             */
-/*   Updated: 2025/06/28 16:57:59 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 14:35:40 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static int process_line_from_string(char *line, t_flags *flags)
     clean_line(line);
     if (!check_and_set_flag(line, flags))
     {
+		printf("VIENE DE PROCESS_LINE_FROM_STRING");
         ft_putendl_fd("Error", 2);
         ft_putendl_fd("Clave no reconocida", 2);
         return (0);
@@ -60,32 +61,68 @@ static int process_line_from_string(char *line, t_flags *flags)
 }
 
 
-int	parse_map(char **array)
+int parse_map(char **array)
 {
-	t_flags	flags;
-	int		i;
+    t_flags flags;
+    int i;
 
-	i = 0;
-	flags.no = 0;
-	flags.so = 0;
-	flags.we = 0;
-	flags.ea = 0;
-	flags.f = 0;
-	flags.c = 0;
+    // Inicializa las flags a 0
+    flags.no = 0;
+    flags.so = 0;
+    flags.we = 0;
+    flags.ea = 0;
+    flags.f = 0;
+    flags.c = 0;
 
-	while (array[i] && !all_flags_set(&flags))
-	{
-		if (!process_line_from_string(array[i], &flags))
-			return (0);
-		i++;
-	}
-	if (!all_flags_set(&flags))
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Faltan claves obligatorias", 2);
-		return (0);
-	}
-	return (1);
+    i = 0;
+    // Procesa líneas hasta que todas las flags estén puestas
+    // o encuentre la primera línea de mapa válida
+    while (array[i] && !all_flags_set(&flags))
+    {
+		printf("line %d = %s\n", i, array[i]);
+        if (!process_line_from_string(array[i], &flags))
+            return (0); // error en clave o línea
+        i++;
+    }
+
+    // Si no se completaron las flags obligatorias y no hay mapa, error
+    if (!all_flags_set(&flags))
+    {
+		printf("flags.no = %d\n", flags.no);
+		printf("flags.so = %d\n", flags.so);
+		printf("flags.we = %d\n", flags.we);
+		printf("flags.ea = %d\n", flags.ea);
+		printf("flags.f  = %d\n", flags.f);
+		printf("flags.c  = %d\n", flags.c);
+		ft_putendl_fd("VIENE DE PARSE MAP - ALL_FLAGS", 2);
+        ft_putendl_fd("Error", 2);
+        ft_putendl_fd("Faltan claves obligatorias", 2);
+        return (0);
+    }
+
+    // A partir de aquí todas las líneas deben ser líneas válidas de mapa (o vacías permitidas)
+    while (array[i])
+    {
+        // Si línea vacía o sólo espacios la ignoramos
+        if (is_line_empty_or_spaces_only(array[i]))
+        {
+            i++;
+            continue;
+        }
+
+        // Si no es línea válida de mapa, error
+        if (!is_map_line(array[i]))
+        {
+			//printf("%s", array[i]);
+			ft_putendl_fd("VIENE DE PARSE MAP -MAP_LINE", 2);
+            ft_putendl_fd("Error", 2);
+            ft_putendl_fd("Línea inválida dentro del mapa", 2);
+            return (0);
+        }
+        i++;
+    }
+
+    return (1);
 }
 
 void trim_newline_from_map(char **map)

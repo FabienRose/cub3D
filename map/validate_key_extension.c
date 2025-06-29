@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:27:27 by diana             #+#    #+#             */
-/*   Updated: 2025/06/28 16:13:16 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 13:51:08 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,14 @@ int	validate_unique_keys(t_node *list)
 				key_count[key_index - 1]++;
 				if (key_count[key_index - 1] > 1)
 				{
+					printf("VIENE DE VALIDATE_UNIQUE_KEYS");
 					printf("Clave duplicada: %s\n", current->line);
 					return (0);
 				}
 			}
 			else if (!ft_isdigit(current->line[0]) && current->line[0] != ' ')
 			{
+				printf("VIENE DE VALIDATE_UNIQUE_KEYS");
 				printf("Clave no reconocida: %s\n", current->line);
 				return (0);
 			}
@@ -97,6 +99,7 @@ int	validate_unique_keys(t_node *list)
 	{
 		if (key_count[i] == 0)
 		{
+			printf("VIENE DE VALIDATE_UNIQUE_KEYS");
 			printf("Falta clave %d\n", i + 1);
 			return (0);
 		}

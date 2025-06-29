@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/28 17:02:58 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 14:12:16 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,39 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Paso 1: Leer archivo a lista enlazada
+    // Paso 1: Leer archivo y guardar en lista enlazada
     lines = read_file_to_list(argv[1]);
     if (!lines)
         return (1);
+//archivo en ascii para ver si los espacios son solo espacios o porque no esta reconociendo la segunda linea del mapa:
+// Imprimir mapa en ASCII para debug
+// Imprimir mapa en ASCII decimal para debug
+	/*ft_putendl_fd("Contenido del archivo (.cub) en ASCII decimal:", 1);
+	t_node *tmp = lines;
+	while (tmp)
+	{
+		int i = 0;
+		while (tmp->line[i])
+		{
+			printf("%d ", (unsigned char)tmp->line[i]);
+			i++;
+		}
+		printf("\n");
+		tmp = tmp->next;
+	}*/
 
-    // ** VALIDACIÓN CLAVES ÚNICAS E INVÁLIDAS **
+
+// impresion normal
+   /* ft_putendl_fd("Contenido del archivo (.cub):", 1);
+    t_node *tmp = lines;
+    while (tmp)
+    {
+        printf("'%s'\n", tmp->line);
+        tmp = tmp->next;
+    }*/
+
+
+    // Paso 2: Validar claves únicas y sin errores
     if (!validate_unique_keys(lines))
     {
         ft_putendl_fd("Error\nClaves inválidas o duplicadas en el archivo .cub", 2);
@@ -83,13 +110,13 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Paso 2: Convertir lista a array de strings
+    // Paso 3: Convertir lista a array de strings
     array = linked_list_to_array(lines);
     free_list(lines);
     if (!array)
         return (1);
 
-    // Paso 3: Validar claves obligatorias (usa clean_line internamente)
+    // Paso 4: Validar formato general de configuración
     if (!parse_map(array))
     {
         ft_putendl_fd("Error\nFaltan claves obligatorias o alguna es inválida", 2);
@@ -98,9 +125,8 @@ int main(int argc, char **argv)
     }
     ft_putendl_fd("Configuración básica válida", 1);
 
-    // Paso 4: Encontrar índice de inicio del mapa
+    // Paso 5: Encontrar índice de inicio del mapa
     start_index = find_map_start(array);
-
     if (start_index == -1)
     {
         ft_putendl_fd("Error\nNo se encontró el inicio del mapa", 2);
@@ -108,7 +134,7 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Paso 5: Extraer el mapa
+    // Paso 6: Extraer el mapa
     ft_putendl_fd("Extrae el mapa", 1);
     map = extract_map(array, start_index);
     if (!map)
@@ -119,12 +145,10 @@ int main(int argc, char **argv)
     trim_newline_from_map(map);
     printf("Índice inicio del mapa: %d\n", start_index);
     ft_putendl_fd("Contenido extraído del mapa:", 1);
-    for (int i = 0; map[i] != NULL; i++)
-    {
+    for (int i = 0; map[i]; i++)
         printf("Mapa línea %d: '%s'\n", i, map[i]);
-    }
 
-    // Paso 6: Validar que las líneas del mapa sean correctas
+    // Paso 7: Validar las líneas del mapa
     if (validate_map_lines(map) != 0)
     {
         ft_putendl_fd("Error\nMapa inválido", 2);
@@ -133,7 +157,7 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Paso 7: Extraer líneas de configuración (antes del mapa)
+    // Paso 8: Extraer líneas de configuración (antes del mapa)
     ft_putendl_fd("Extrae las líneas de configuración", 1);
     config = extract_config_lines(array, start_index);
     if (!config)
@@ -143,7 +167,7 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Paso 8: Parsear configuración a estructura
+    // Paso 9: Parsear configuración a estructura
     config_data = parse_config(config);
     if (!config_data)
     {
@@ -154,10 +178,10 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    // Paso 9: Mostrar éxito (puedes quitar estos mensajes más adelante)
+    // Paso 10: Éxito
     ft_putendl_fd("Configuración válida", 1);
 
-    // Paso 10: Liberar memoria
+    // Paso 11: Liberar memoria
     free_array(config);
     free_array(map);
     free_array(array);
@@ -169,3 +193,4 @@ int main(int argc, char **argv)
 
     return (0);
 }
+

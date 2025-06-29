@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:24:03 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/28 16:58:08 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 14:28:58 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int is_map_line(const char *line)
         if (line[i] == '1' || line[i] == '0' ||
             line[i] == 'N' || line[i] == 'S' ||
             line[i] == 'E' || line[i] == 'W' ||
-            line[i] == ' ')
+            line[i] == ' ' || line[i] == '\n')
             i++;
         else
             return (0);
@@ -52,11 +52,13 @@ int find_map_start(char **array)
         }
         if (map_started && array[i][0] == '\0')
         {
+			printf("VIENE DE FIND_MAP_START");
             fprintf(stderr, "Error: mapa interrumpido por línea vacía\n");
             return -1;
         }
         i++;
     }
+	printf("VIENE DE FIND_MAP_START");
     fprintf(stderr, "Error: no se encontró el mapa\n");
     return -1;
 }
@@ -72,6 +74,7 @@ int	validate_map_lines(char **map)
 	{
 		if (!is_map_line(map[i]))
 		{
+			printf("VIENE DE VALIDATE_MAP");
 			fprintf(stderr, "Error: línea %d del mapa contiene caracteres inválidos\n", i);
 			return (1);
 		}

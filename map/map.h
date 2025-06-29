@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/28 16:33:50 by diana            ###   ########.fr       */
+/*   Updated: 2025/06/29 10:55:50 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ char		*ft_strtrim_whitespace(const char *s);
 int			ends_with_cub(const char *filename);
 int			check_and_set_flag(const char *line, t_flags *flags);
 int			all_flags_set(t_flags *flags);
+int			is_valid_key(const char *line);
 int			validate_unique_keys(t_node *list);
 
 
