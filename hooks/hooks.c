@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/22 17:18:37 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/22 17:18:37 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/28 17:18:06 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/28 17:23:18 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 #include <stdlib.h>
 #include <X11/keysym.h>
 
-int	handle_window_close(void *param)
+static int	handle_window_close(void *param)
 {
 	(void)param;
 	exit(0);
 	return (0);
 }
 
-int key_press(int keycode, void *param)
+static int key_press(int keycode, void *param)
 {
 	t_game *game = (t_game *)param;
 	if (keycode == XK_w)
@@ -41,7 +41,7 @@ int key_press(int keycode, void *param)
 	return (0);
 }
 
-int key_release(int keycode, void *param)
+static int key_release(int keycode, void *param)
 {
 	t_game *game = (t_game *)param;
 	if (keycode == XK_w)
@@ -59,7 +59,7 @@ int key_release(int keycode, void *param)
 	return (0);
 }
 
-void	setup_hooks(void *win_ptr, t_game *game)
+void	hooks_setup(void *win_ptr, t_game *game)
 {
 	mlx_hook(win_ptr, 17, 0, handle_window_close, NULL);
 	mlx_hook(win_ptr, 2, 1L << 0, key_press, game);

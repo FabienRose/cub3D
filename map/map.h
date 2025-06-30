@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 16/06/2025 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 16/06/2025 22:27:53 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/06/28 17:27:46 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/06/28 17:27:50 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 # define MAP_H
 
 # include "../cub3d.h"
-
-// Map validation functions
-int	check_extension(char *filename);
 
 #endif 

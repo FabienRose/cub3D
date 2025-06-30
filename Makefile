@@ -29,7 +29,10 @@ SRCS=	main.c \
 		map/map.c \
 		hooks/hooks.c \
 		render/render.c \
-		player/player.c
+		player/player.c \
+		player/player_rays.c \
+		game/game.c \
+		game/game_movement.c
 
 #----- Objects -----
 OBJS=$(SRCS:.c=.o)
