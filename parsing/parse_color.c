@@ -6,11 +6,11 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:19:25 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 19:42:50 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/01 14:13:11 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../cub3d.h"
+#include "../cub3d.h"
 
 static char	*clean_part(char *part)
 {
@@ -22,12 +22,34 @@ static char	*clean_part(char *part)
 	return (clean);
 }
 
+static char	*process_and_concat_part(char *result, char *part, int i)
+{
+	char	*clean;
+	char	*tmp;
+	char	*new_result;
+
+	clean = clean_part(part);
+	if (!clean)
+	{
+		free(result);
+		return (NULL);
+	}
+	if (i == 0)
+		new_result = ft_strdup(clean);
+	else
+	{
+		tmp = result;
+		new_result = ft_strjoin_three(tmp, ",", clean);
+		free(tmp);
+	}
+	free(clean);
+	return (new_result);
+}
+
 static char	*rebuild_clean_rgb(char **parts)
 {
-	char	*tmp;
 	char	*result;
 	int		i;
-	char	*clean;
 
 	if (!parts)
 		return (NULL);
@@ -35,16 +57,7 @@ static char	*rebuild_clean_rgb(char **parts)
 	i = 0;
 	while (parts[i])
 	{
-		clean = clean_part(parts[i]);
-		if (!clean)
-			return (free(result), NULL);
-		tmp = result;
-		if (i == 0)
-			result = ft_strdup(clean);
-		else
-			result = ft_strjoin_three(tmp, ",", clean);
-		free(tmp);
-		free(clean);
+		result = process_and_concat_part(result, parts[i], i);
 		if (!result)
 			return (NULL);
 		i++;
@@ -52,16 +65,11 @@ static char	*rebuild_clean_rgb(char **parts)
 	return (result);
 }
 
-int	assign_color(t_config *cfg, char *key, char *value)
+static int	process_rgb_color(char *value, int *color)
 {
 	char	**parts;
 	char	*cleaned;
-	int		color;
 
-	if (!cfg || !key || !value)
-		return (1);
-	if (!is_valid_rgb(value))
-		return (1);
 	parts = ft_split(value, ',');
 	if (!parts)
 		return (1);
@@ -69,9 +77,22 @@ int	assign_color(t_config *cfg, char *key, char *value)
 	free_split(parts);
 	if (!cleaned)
 		return (1);
-	color = parse_rgb(cleaned);
+	*color = parse_rgb(cleaned);
 	free(cleaned);
-	if (color == -1)
+	if (*color == -1)
+		return (1);
+	return (0);
+}
+
+int	assign_color(t_config *cfg, char *key, char *value)
+{
+	int	color;
+
+	if (!cfg || !key || !value)
+		return (1);
+	if (!is_valid_rgb(value))
+		return (1);
+	if (process_rgb_color(value, &color))
 		return (1);
 	if (ft_strncmp(key, "F", 2) == 0)
 		cfg->floor_color = color;

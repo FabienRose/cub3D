@@ -6,16 +6,16 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 15:46:58 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 18:19:47 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/01 13:36:16 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../cub3d.h"
+#include "../cub3d.h"
 
 void	free_config(t_config *cfg)
 {
 	if (!cfg)
-		return;
+		return ;
 	if (cfg->no_texture)
 		free(cfg->no_texture);
 	if (cfg->so_texture)
@@ -27,7 +27,7 @@ void	free_config(t_config *cfg)
 	free(cfg);
 }
 
-char *ft_strjoin_three(char *s1, char *s2, char *s3)
+char	*ft_strjoin_three(char *s1, char *s2, char *s3)
 {
 	char	*tmp;
 	char	*result;
@@ -42,14 +42,53 @@ char *ft_strjoin_three(char *s1, char *s2, char *s3)
 
 int	missing_fields(t_config *cfg)
 {
-	if (!cfg->no_texture) printf("Falta NO\n");
-	if (!cfg->so_texture) printf("Falta SO\n");
-	if (!cfg->ea_texture) printf("Falta EA\n");
-	if (!cfg->we_texture) printf("Falta WE\n");
-	if (cfg->floor_color == -1) printf("Falta Floor\n");
-	if (cfg->ceiling_color == -1) printf("Falta Ceiling\n");
-
-	return (!cfg->no_texture || !cfg->so_texture
-		|| !cfg->ea_texture || !cfg->we_texture
+	if (!cfg->no_texture)
+		printf("Missing NO\n");
+	if (!cfg->so_texture)
+		printf("Missing SO\n");
+	if (!cfg->ea_texture)
+		printf("Missing EA\n");
+	if (!cfg->we_texture)
+		printf("Missing WE\n");
+	if (cfg->floor_color == -1)
+		printf("Missing Floor\n");
+	if (cfg->ceiling_color == -1)
+		printf("Missing Ceiling\n");
+	return (!cfg->no_texture || !cfg->so_texture \
+		|| !cfg->ea_texture || !cfg->we_texture \
 		|| cfg->floor_color == -1 || cfg->ceiling_color == -1);
+}
+
+void	free_list(t_node *head)
+{
+	t_node	*tmp;
+
+	while (head)
+	{
+		tmp = head->next;
+		if (head->line)
+			free(head->line);
+		free(head);
+		head = tmp;
+	}
+}
+
+void	trim_newline_from_map(char **map)
+{
+	int	i;
+	int	len;
+
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+	{
+		len = ft_strlen(map[i]);
+		if (len > 0 && (map[i][len - 1] == '\n' || map[i][len - 1] == '\r'))
+			map[i][len - 1] = '\0';
+		len--;
+		if (len > 0 && (map[i][len - 1] == '\n' || map[i][len - 1] == '\r'))
+			map[i][len - 1] = '\0';
+		i++;
+	}
 }

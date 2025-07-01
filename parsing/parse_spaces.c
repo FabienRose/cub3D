@@ -6,11 +6,11 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 16:07:21 by diana             #+#    #+#             */
-/*   Updated: 2025/06/27 18:23:43 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/01 13:21:06 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../cub3d.h"
+#include "../cub3d.h"
 
 int	is_space_tab(char c)
 {
@@ -48,44 +48,12 @@ int	count_clean_len(char *str)
 	return (len);
 }
 
-char	*ft_reduce_spaces(char *str)
-{
-	int		i;
-	int		j;
-	int		space;
-	char	*new;
-
-	i = 0;
-	j = 0;
-	space = 1;
-	new = malloc(sizeof(char) * (count_clean_len(str) + 1));
-	if (!new)
-		return (NULL);
-	while (str[i])
-	{
-		if (!is_space_tab(str[i]))
-		{
-			new[j++] = str[i];
-			space = 0;
-		}
-		else if (!space)
-		{
-			new[j++] = ' ';
-			space = 1;
-		}
-		i++;
-	}
-	if (j > 0 && new[j - 1] == ' ')
-		j--;
-	new[j] = '\0';
-	return (new);
-}
-
 char	*ft_clean_path(const char *str)
 {
 	char	*clean;
-	int		i = 0;
+	int		i;
 
+	i = 0;
 	clean = malloc(ft_strlen(str) + 1);
 	if (!clean)
 		return (NULL);

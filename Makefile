@@ -29,13 +29,21 @@ SRCS=	./main.c \
 		./conversion/linked_list.c \
 		./conversion/list_to_array.c \
 		./map/extract_map.c \
+		./map/espaces_and_empty.c \
 		./map/map.c \
+		./map/main_utils.c \
+		./map/main_utils_2.c \
 		./map/map_utils.c \
 		./map/rgb.c \
-		./map/validate.c \
+		./map/rgb_utils.c \
+		./map/validate_map.c \
+		./map/validate_map_utils.c \
+		./map/validate_utils.c \
 		./map/validate_key_extension.c \
 		./map/extract_config_lines.c \
+		./parsing/parse_spaces_utils.c \
 		./parsing/parsing.c \
+		./parsing/parse_texture.c \
 		./parsing/parsing_utils.c \
 		./parsing/parse_rgb.c \
 		./parsing/parse_map.c \

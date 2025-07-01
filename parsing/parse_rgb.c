@@ -6,11 +6,11 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:37:35 by diana             #+#    #+#             */
-/*   Updated: 2025/06/24 20:01:04 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/01 13:13:31 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../cub3d.h"
+#include "../cub3d.h"
 
 int	ft_isdigit_str(char *str)
 {
@@ -33,7 +33,7 @@ int	clean_component(char *str)
 	trimmed = ft_strtrim(str, " \t\n\r\v\f");
 	if (!trimmed)
 		return (-1);
-	if (!ft_isdigit_str(trimmed)) // asegúrate de que no hay letras, signos, etc.
+	if (!ft_isdigit_str(trimmed))
 	{
 		free(trimmed);
 		return (-1);
@@ -45,17 +45,17 @@ int	clean_component(char *str)
 	return (value);
 }
 
-
 int	parse_rgb(char *str)
 {
 	char	**components;
-	int		r, g, b;
+	int		r;
+	int		g;
+	int		b;
 	int		result;
 
 	components = ft_split(str, ',');
 	if (!components)
 		return (-1);
-	// Deben ser exactamente 3 componentes
 	if (!components[0] || !components[1] || !components[2] || components[3])
 	{
 		free_split(components);
@@ -68,12 +68,14 @@ int	parse_rgb(char *str)
 	if (r == -1 || g == -1 || b == -1)
 		return (-1);
 	result = (r << 16) | (g << 8) | b;
-	return result;
+	return (result);
 }
 
 void	free_split(char **arr)
 {
-	int	i = 0;
+	int	i;
+
+	i = 0;
 	while (arr[i])
 	{
 		free(arr[i]);

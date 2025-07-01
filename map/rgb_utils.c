@@ -1,60 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_validate.c                                   :+:      :+:    :+:   */
+/*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/27 18:45:35 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 13:30:52 by diana            ###   ########.fr       */
+/*   Created: 2025/06/30 17:09:18 by diana             #+#    #+#             */
+/*   Updated: 2025/06/30 17:10:54 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	is_valid_xpm_path(char *path)
+static int	are_parts_valid(char **parts)
 {
-	int	len;
-
-	if (!path)
-		return (0);
-	len = ft_strlen(path);
-	if (len < 5)
-		return (0);
-	return (ft_strncmp(path + len - 4, ".xpm", 4) == 0);
-}
-
-int	check_rgb_parts(char **parts)
-{
-	int	i;
-	int	value;
+	int		i;
+	char	*trimmed_part;
 
 	i = 0;
 	while (i < 3)
 	{
 		if (!parts[i])
 			return (0);
-		value = ft_atoi(parts[i]);
-		if (value < 0 || value > 255)
+		trimmed_part = ft_strtrim_whitespace(parts[i]);
+		if (!trimmed_part || !is_valid_component(trimmed_part))
+		{
+			free(trimmed_part);
 			return (0);
+		}
+		free(trimmed_part);
 		i++;
 	}
-	if (parts[i])
-		return (0);
 	return (1);
 }
 
-int	is_valid_rgb(char *str)
+static int	has_correct_number_of_components(char **parts)
+{
+	return (parts[3] == NULL);
+}
+
+int	validate_rgb_format(char *line)
 {
 	char	**parts;
-	int		result;
+	int		valid;
 
-	if (!str)
-		return (0);
-	parts = ft_split(str, ',');
+	parts = ft_split(line, ',');
 	if (!parts)
 		return (0);
-	result = check_rgb_parts(parts);
+	valid = are_parts_valid(parts);
+	if (valid)
+		valid = has_correct_number_of_components(parts);
 	free_array(parts);
-	return (result);
+	return (valid);
 }

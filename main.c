@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/29 16:31:37 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/01 16:29:07 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,31 @@ int	main(int argc, char **argv)
 }
 */
 
+int	main(int argc, char **argv)
+{
+	char		**array;
+	char		**map;
+	char		**config;
+	int			start_index;
+	t_config	*config_data;
+
+	check_args(argc, argv);
+	array = load_file_to_array(argv[1]);
+	start_index = get_map_start_index(array);
+	map = extract_and_validate_map(array, start_index);
+	config = get_config_lines(array, map, start_index);
+	config_data = parse_config_data(config, map, array);
+	ft_putendl_fd("Configuración válida", 1);
+	free_array(config);
+	free_array(map);
+	free_array(array);
+	free_config_data(config_data);
+	return (0);
+}
+
+
+
+/* version antes de crear funciones
 //IMPORTANTE SIEMPRE EJECUTAR VALIDATE UNIQUE KEYS ANTES DE ENTRAR A PARSE CONFIG
 int main(int argc, char **argv)
 {
@@ -74,33 +99,6 @@ int main(int argc, char **argv)
     lines = read_file_to_list(argv[1]);
     if (!lines)
         return (1);
-//archivo en ascii para ver si los espacios son solo espacios o porque no esta reconociendo la segunda linea del mapa:
-// Imprimir mapa en ASCII para debug
-// Imprimir mapa en ASCII decimal para debug
-	/*ft_putendl_fd("Contenido del archivo (.cub) en ASCII decimal:", 1);
-	t_node *tmp = lines;
-	while (tmp)
-	{
-		int i = 0;
-		while (tmp->line[i])
-		{
-			printf("%d ", (unsigned char)tmp->line[i]);
-			i++;
-		}
-		printf("\n");
-		tmp = tmp->next;
-	}*/
-
-
-// impresion normal
-   /* ft_putendl_fd("Contenido del archivo (.cub):", 1);
-    t_node *tmp = lines;
-    while (tmp)
-    {
-        printf("'%s'\n", tmp->line);
-        tmp = tmp->next;
-    }*/
-
 
     // Paso 2: Validar claves únicas y sin errores
     if (!validate_unique_keys(lines))
@@ -200,5 +198,5 @@ int main(int argc, char **argv)
     free(config_data);
 
     return (0);
-}
+}*/
 
