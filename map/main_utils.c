@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 16:07:54 by diana             #+#    #+#             */
-/*   Updated: 2025/07/02 16:42:12 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/02 17:33:38 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,25 @@ char	**extract_and_validate_map(char **array, int start_index)
 		exit(EXIT_FAILURE);
 	}
 // de aqui 
-	print_map_debug(map, "MAPA ORIGINAL");
-	rectangular_map = make_map_rectangular(map);
-	print_map_debug(rectangular_map, "MAPA RECTANGULAR");
-	if (!rectangular_map)
+	print_map_debug(map, "MAPA ORIGINAL");//debug mapa rectangular
+	rectangular_map = make_map_rectangular(map);//debug mapa rectangular
+	print_map_debug(rectangular_map, "MAPA RECTANGULAR");//debug mapa rectangular
+	if (!rectangular_map)//debug mapa rectangular
 	{
-		ft_putendl_fd("Error\nFailed to make map rectangular", 2);
+		ft_putendl_fd("Error\nFailed to make map rectangular", 2);//debug mapa rectangular
+		free_array(map);//debug mapa rectangular
+		free_array(array);//debug mapa rectangular
+		exit(EXIT_FAILURE);//debug mapa rectangular
+	}
+	if (!validate_rectangular_map(rectangular_map))
+	{
+		ft_putendl_fd("Error\nMap is not rectangular", 2);
+		free_array(rectangular_map);
 		free_array(map);
 		free_array(array);
 		exit(EXIT_FAILURE);
 	}
-	free_array(map);
+	free_array(map);//debug mapa rectangular/esto debe conservarse para la otra validacion validate_rectangular map
 	return (rectangular_map);//a aqui tambien 
 	//return(map); descomentar cuando quite el debugg
 }

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/01 16:33:10 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/02 20:31:35 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ typedef struct s_flags
 	int	c;
 }	t_flags;
 
+typedef struct s_flood_data
+{
+	char	**map;
+	int		width;
+	int		height;
+}			t_flood_data;
+
 //----espaces_and_empty.c----
 int			is_line_empty_or_spaces_only(const char *line);
 int			count_non_empty_lines(char **array, int start_index);
@@ -53,6 +60,12 @@ char		**make_map_rectangular(char **map);
 
 //----debug_map.c----
 void		print_map_debug(char **map, char *title);
+
+//----validate_leaks.c----
+int			validate_no_leaks(char **map);
+
+//----validate_rectangular.c----
+int			validate_rectangular_map(char **map);
 
 //----main_utils_2.c----
 char		**get_config_lines(char **array, char **map, int start_index);
@@ -82,6 +95,9 @@ int			validate_rgb_format(char *line);
 
 //----rgb.c----
 int			rgb_to_int(char *rgb_str);
+
+//----utils.c----
+char		**copy_map(char **map);
 
 //----validate_utils.c----
 int			ends_with_cub(const char *filename);

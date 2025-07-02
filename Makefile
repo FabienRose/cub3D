@@ -31,12 +31,15 @@ SRCS=	./main.c \
 		./map/extract_map.c \
 		./map/make_rectangular.c \
 		./map/debug_map.c \
+		./map/validate_leaks.c \
+		./map/validate_rectangular.c \
 		./map/espaces_and_empty.c \
 		./map/map.c \
 		./map/main_utils.c \
 		./map/main_utils_2.c \
 		./map/map_utils.c \
 		./map/rgb.c \
+		./map/utils.c \
 		./map/rgb_utils.c \
 		./map/validate_map.c \
 		./map/validate_map_utils.c \

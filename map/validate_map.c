@@ -115,5 +115,7 @@ int	validate_map(char **map)
 		return (0);
 	if (!check_player_count(map))
 		return (0);
+	if (!validate_no_leaks(map))
+		return (0);
 	return (1);
 }
