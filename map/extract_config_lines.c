@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:21:30 by diana             #+#    #+#             */
-/*   Updated: 2025/06/30 10:12:58 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/02 22:04:24 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	**fill_config_array(char **config, char **array, int start_index)
 
 	i = 0;
 	j = 0;
+	if (!array)//es redundante? sugerencia de max
+		return NULL;
 	while (i < start_index)
 	{
 		if (!is_line_empty_or_spaces_only(array[i]))

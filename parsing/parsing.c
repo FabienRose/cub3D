@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 13:59:46 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/02 22:56:38 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,10 @@ t_config	*parse_config(char **config_lines)
 		return (NULL);
 	if (!process_config_lines(cfg, config_lines))
 		return (NULL);
+	//if (!validate_texture_files(cfg)) descomentar cuando tenga ya los archiuvos reales de texture 
+	//{
+		//free_config(cfg);
+		//return (NULL);
+	//}
 	return (cfg);
 }
