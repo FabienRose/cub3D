@@ -48,6 +48,12 @@ char		**extract_config_lines(char **array, int start_index);
 //----extract_map.c----
 char		**extract_map(char **array, int start);
 
+//----make_rectangular.c----
+char		**make_map_rectangular(char **map);
+
+//----debug_map.c----
+void		print_map_debug(char **map, char *title);
+
 //----main_utils_2.c----
 char		**get_config_lines(char **array, char **map, int start_index);
 t_config	*parse_config_data(char **config, char **map, char **array);

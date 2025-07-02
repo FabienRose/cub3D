@@ -29,6 +29,8 @@ SRCS=	./main.c \
 		./conversion/linked_list.c \
 		./conversion/list_to_array.c \
 		./map/extract_map.c \
+		./map/make_rectangular.c \
+		./map/debug_map.c \
 		./map/espaces_and_empty.c \
 		./map/map.c \
 		./map/main_utils.c \

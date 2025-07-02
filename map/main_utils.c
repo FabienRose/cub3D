@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 16:07:54 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 16:24:29 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/02 16:42:12 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	get_map_start_index(char **array)
 char	**extract_and_validate_map(char **array, int start_index)
 {
 	char	**map;
+	char	**rectangular_map;//esto es para el debugg del mapa rectangular
 
 	map = extract_map(array, start_index);
 	if (!map || !validate_map(map))
@@ -86,5 +87,18 @@ char	**extract_and_validate_map(char **array, int start_index)
 		free_array(array);
 		exit(EXIT_FAILURE);
 	}
-	return (map);
+// de aqui 
+	print_map_debug(map, "MAPA ORIGINAL");
+	rectangular_map = make_map_rectangular(map);
+	print_map_debug(rectangular_map, "MAPA RECTANGULAR");
+	if (!rectangular_map)
+	{
+		ft_putendl_fd("Error\nFailed to make map rectangular", 2);
+		free_array(map);
+		free_array(array);
+		exit(EXIT_FAILURE);
+	}
+	free_array(map);
+	return (rectangular_map);//a aqui tambien 
+	//return(map); descomentar cuando quite el debugg
 }
