@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/02 22:05:34 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/03 16:23:30 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ int	main(int argc, char **argv)
 	// Print the configuration data using our new function
 	print_config_data(config_data);
 	ft_putendl_fd("Configuración válida", 1);
+
+	// Test the new map functions
+	t_game_map *game_map = init_game_map(map);
+	if (game_map)
+	{
+		printf("\n--- Map Information ---\n");
+		printf("Map dimensions: %d x %d\n", game_map->width, game_map->height);
+		printf("Player position: (%.1f, %.1f)\n", game_map->player.x, game_map->player.y);
+		printf("Player direction: %c (%.2f radians)\n", game_map->player.dir_char, game_map->player.dir);
+		
+		// Test get_map_cell function
+		int px = (int)game_map->player.x;
+		int py = (int)game_map->player.y;
+		printf("Map cell at player position: %c\n", get_map_cell(game_map, px, py));
+		
+		free_game_map(game_map);
+	}
 	
 	free_array(config);
 	free_array(map);

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:29:15 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/01 15:38:35 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/03 16:25:19 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include "minilibx_macopen/mlx.h"
 # include <stdio.h>
+# include <math.h>
 # include <string.h> //quitar mas adelante
 # include "libft/libft.h"
 # include "map/map.h"

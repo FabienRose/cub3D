@@ -35,6 +35,8 @@ SRCS=	./main.c \
 		./map/validate_rectangular.c \
 		./map/espaces_and_empty.c \
 		./map/map.c \
+		./map/map_dimensions.c \
+		./map/map_dimensions_utils.c \
 		./map/main_utils.c \
 		./map/main_utils_2.c \
 		./map/map_utils.c \
