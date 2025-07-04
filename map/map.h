@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/03 16:24:31 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/04 14:27:25 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ typedef struct s_player
 typedef struct s_game_map
 {
         char            **map_data;
-        int                     width;
-        int                     height;
+        int             width;
+        int             height;
         t_player        player;
-}                       t_game_map;
+}       t_game_map;
 
 //----map_dimensions.c----
 t_game_map      *init_game_map(char **map_data);
@@ -153,5 +153,11 @@ int                     check_and_set_flag(const char *line, t_flags *flags);
 int                     all_flags_set(t_flags *flags);
 int                     is_valid_key(const char *line);
 int                     is_unrecognized_key(const char *line);
+
+//----collision.c----
+int                     is_wall(t_game_map *game_map, int x, int y);
+int                     is_position_valid(t_game_map *game_map, double x, double y);
+int                     can_move_to(t_game_map *game_map, double new_x, double new_y);
+int                     move_player(t_game_map *game_map, double new_x, double new_y);
 
 #endif 

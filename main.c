@@ -53,6 +53,12 @@ int	main(int argc, char **argv)
 		int py = (int)game_map->player.y;
 		printf("Map cell at player position: %c\n", get_map_cell(game_map, px, py));
 		
+		// Test collision functions
+		printf("\n--- Collision Tests ---\n");
+		printf("Current position valid: %s\n", can_move_to(game_map, game_map->player.x, game_map->player.y) ? "YES" : "NO");
+		printf("Can move forward 0.5: %s\n", can_move_to(game_map, game_map->player.x + 0.5, game_map->player.y) ? "YES" : "NO");
+		printf("Can move to wall (1,1): %s\n", can_move_to(game_map, 1.0, 1.0) ? "YES" : "NO");
+		
 		free_game_map(game_map);
 	}
 	

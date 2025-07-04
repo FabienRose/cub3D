@@ -48,6 +48,7 @@ SRCS=	./main.c \
 		./map/validate_utils.c \
 		./map/validate_key_extension.c \
 		./map/extract_config_lines.c \
+		./map/collision.c \
 		./parsing/parse_spaces_utils.c \
 		./parsing/parsing.c \
 		./parsing/parse_texture.c \
