@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 23:47:17 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/28 23:49:00 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/02 18:37:48 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/02 23:22:52 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	game_init(t_game *game)
 	game->map = map;
 	game->move_speed = 2.0f;
 	game->rot_speed = 0.05f;
-	game->cell_size = WINDOW_WIDTH / 32;
+	game->cell_size = WINDOW_WIDTH / 45;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
 	game->img.img = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -37,7 +37,7 @@ void	game_init(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 }
 
-int game_loop(void *param)
+int	game_loop(void *param)
 {
 	t_game	*game;
 	int		i;
@@ -47,6 +47,8 @@ int game_loop(void *param)
 	game_movement(game);
 	ft_bzero(game->img.data, WINDOW_WIDTH * WINDOW_HEIGHT
 		* (game->img.bpp / 8));
+	draw_background(game);
+	cast_rays_3d(game);
 	i = 0;
 	while (game->map[i])
 	{
@@ -61,11 +63,6 @@ int game_loop(void *param)
 		i++;
 	}
 	draw_square((int)game->player.x - 5, (int)game->player.y - 5, game, 10, 0x00FF00);
-	cast_rays_90_degrees(game);
-	char distance_str[50];
-	//To remove
-	sprintf(distance_str, "90-degree FOV rays cast");
-	mlx_string_put(game->mlx, game->win, 10, 20, 0xFFFFFF, distance_str);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 08:43:11 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/30 19:13:50 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/02 18:02:08 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/02 18:02:47 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	is_wall_collision(float new_x, float new_y, t_game *game)
 	int	cell_size;
 	int	radius;
 
-	radius = 6;
-	cell_size = WINDOW_WIDTH / 32;
+	radius = 7;
+	cell_size = game->cell_size;
 	if (game->map[(int)new_y / cell_size] && game->map[(int)new_y
 			/ cell_size][(int)new_x / cell_size] == '1')
 		return (1);

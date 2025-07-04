@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 08:44:17 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/30 08:44:17 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/01 16:08:38 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/01 16:09:18 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,16 @@ void	game_move_down(t_game *game)
 		game->player.y = new_y;
 	}
 }
+
 void	game_move_left(t_game *game)
 {
 	float	new_x;
 	float	new_y;
 
-	new_x = game->player.x + cosf(game->player.angle - PI / 2) * game->move_speed;
-	new_y = game->player.y + sinf(game->player.angle - PI / 2) * game->move_speed;
+	new_x = game->player.x + cosf(game->player.angle - PI / 2)
+		* game->move_speed;
+	new_y = game->player.y + sinf(game->player.angle - PI / 2)
+		* game->move_speed;
 	if (!is_wall_collision(new_x, new_y, game))
 	{
 		game->player.x = new_x;

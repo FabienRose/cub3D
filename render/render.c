@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 18:49:37 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/28 18:49:47 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/02 23:26:39 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/02 23:32:20 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,15 @@ void	draw_line(int x1, int y1, int x2, int y2, t_game *game, int color)
 	int	err = dx - dy;
 	int	x = x1;
 	int	y = y1;
+	int	e2;
 
 	while (1)
 	{
 		if (x >= 0 && x < WINDOW_WIDTH && y >= 0 && y < WINDOW_HEIGHT)
 			put_pixel(&game->img, x, y, color);
-		
 		if (x == x2 && y == y2)
-			break;
-		
-		int	e2 = 2 * err;
+			break ;
+		e2 = 2 * err;
 		if (e2 > -dy)
 		{
 			err -= dy;
@@ -69,5 +68,33 @@ void	draw_line(int x1, int y1, int x2, int y2, t_game *game, int color)
 			err += dx;
 			y += sy;
 		}
+	}
+}
+
+void	draw_background(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < WINDOW_HEIGHT / 2)
+	{
+		x = 0;
+		while (x < WINDOW_WIDTH)
+		{
+			put_pixel(&game->img, x, y, 0x666666);
+			x++;
+		}
+		y++;
+	}
+	while (y < WINDOW_HEIGHT)
+	{
+		x = 0;
+		while (x < WINDOW_WIDTH)
+		{
+			put_pixel(&game->img, x, y, 0x999999);
+			x++;
+		}
+		y++;
 	}
 }

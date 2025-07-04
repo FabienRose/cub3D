@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 17:18:06 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/28 17:23:18 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/02 23:37:43 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/02 23:42:52 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ static int	handle_window_close(void *param)
 	return (0);
 }
 
-static int key_press(int keycode, void *param)
+static int	key_press(int keycode, void *param)
 {
-	t_game *game = (t_game *)param;
+	t_game	*game;
+
+	game = (t_game *)param;
 	if (keycode == XK_w)
 		game->player.key_up = 1;
 	else if (keycode == XK_s)
@@ -41,9 +43,11 @@ static int key_press(int keycode, void *param)
 	return (0);
 }
 
-static int key_release(int keycode, void *param)
+static int	key_release(int keycode, void *param)
 {
-	t_game *game = (t_game *)param;
+	t_game	*game;
+
+	game = (t_game *)param;
 	if (keycode == XK_w)
 		game->player.key_up = 0;
 	else if (keycode == XK_s)
