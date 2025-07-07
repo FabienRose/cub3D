@@ -16,7 +16,6 @@ RM_FLAGS=-f
 SAN_FLAGS=-fsanitize=address -fsanitize=leak
 
 #----- Minilibx directory and library -----
-MLX_DIR=minilibx_macopen
 MLX=$(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
@@ -32,7 +31,7 @@ SRCS=	main.c \
 		player/player.c \
 		player/player_rays.c \
 		game/game.c \
-		game/game_movement.c
+		game/game_movement.c \
 		conversion/linked_list.c \
 		conversion/list_to_array.c \
 		map/extract_map.c \
