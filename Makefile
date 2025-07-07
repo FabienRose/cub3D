@@ -16,9 +16,9 @@ RM_FLAGS=-f
 SAN_FLAGS=-fsanitize=address -fsanitize=leak
 
 #----- Minilibx directory and library -----
-MLX_DIR=minilibx-linux
+MLX_DIR=minilibx_macopen
 MLX=$(MLX_DIR)/libmlx.a
-MLX_FLAGS=-L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 #--------------------------------------------------
 #              SOURCES AND OBJECTS
@@ -33,6 +33,41 @@ SRCS=	main.c \
 		player/player_rays.c \
 		game/game.c \
 		game/game_movement.c
+		conversion/linked_list.c \
+		conversion/list_to_array.c \
+		map/extract_map.c \
+		map/make_rectangular.c \
+		map/debug_map.c \
+		map/validate_leaks.c \
+		map/validate_rectangular.c \
+		map/espaces_and_empty.c \
+		map/map.c \
+		map/map_dimensions.c \
+		map/map_dimensions_utils.c \
+		map/main_utils.c \
+		map/main_utils_2.c \
+		map/map_utils.c \
+		map/rgb.c \
+		map/utils.c \
+		map/rgb_utils.c \
+		map/validate_map.c \
+		map/validate_map_utils.c \
+		map/validate_utils.c \
+		ap/validate_key_extension.c \
+		map/extract_config_lines.c \
+		ap/collision.c \
+		parsing/parse_spaces_utils.c \
+		parsing/parsing.c \
+		arsing/parse_texture.c \
+		parsing/parsing_utils.c \
+		parsing/parse_rgb.c \
+		parsing/parse_map.c \
+		parsing/parse_spaces.c \
+		parsing/parse_color.c \
+		parsing/parse_validate.c \
+		parsing/validate_texture_files.c \
+		parsing/config_getters.c \
+		parsing/example_usage.c \
 
 #----- Objects -----
 OBJDIR = obj
