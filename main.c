@@ -5,15 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2015/06/20 18:33:05 by fmixtur           #+#    #+#             */
 /*   Updated: 2025/07/03 16:23:30 by diana            ###   ########.fr       */
+=======
+/*   Created: 2025/06/28 21:33:05 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/02 08:21:25 by fmixtur          ###   ########.ch       */
+>>>>>>> fabien
 /*                                                                            */
 /* ************************************************************************** */
 
+#define _USE_MATH_DEFINES
 #include "cub3d.h"
 
 int	main(int argc, char **argv)
 {
+<<<<<<< HEAD
 	char		**array;
 	char		**map;
 	char		**config;
@@ -66,5 +73,16 @@ int	main(int argc, char **argv)
 	free_array(map);
 	free_array(array);
 	free_config_data(config_data);
+=======
+	t_game	game;
+
+	(void)argc;
+	(void)argv;
+	game_init(&game);
+	player_find_and_init(game.map, game.cell_size, &game);
+	hooks_setup(game.win, &game);
+	mlx_loop_hook(game.mlx, game_loop, &game);
+	mlx_loop(game.mlx);
+>>>>>>> fabien
 	return (0);
 }

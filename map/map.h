@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 22:23:56 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/04 14:27:25 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/07 10:04:37 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ typedef struct s_game_map
 
 //----map_dimensions.c----
 t_game_map      *init_game_map(char **map_data);
-int                     get_map_height(char **map);
-int                     get_map_width(char **map);
+int             get_map_height(char **map);
+int             get_map_width(char **map);
 char            get_map_cell(t_game_map *game_map, int x, int y);
 t_player        get_player_info(char **map);
 void            free_game_map(t_game_map *game_map);
 
 //----espaces_and_empty.c----
-int                     is_line_empty_or_spaces_only(const char *line);
-int                     count_non_empty_lines(char **array, int start_index);
+int             is_line_empty_or_spaces_only(const char *line);
+int             count_non_empty_lines(char **array, int start_index);
 char            *ft_strtrim_whitespace(const char *s);
 
 //----extract_config_line.c----
@@ -86,10 +86,10 @@ char            **make_map_rectangular(char **map);
 void            print_map_debug(char **map, char *title);
 
 //----validate_leaks.c----
-int                     validate_no_leaks(char **map);
+int             validate_no_leaks(char **map);
 
 //----validate_rectangular.c----
-int                     validate_rectangular_map(char **map);
+int             validate_rectangular_map(char **map);
 
 //----main_utils_2.c----
 char            **get_config_lines(char **array, char **map, int start_index);
@@ -100,64 +100,64 @@ void            free_config_data(t_config *data);
 void            exit_with_message(char *msg);
 void            check_args(int argc, char **argv);
 char            **load_file_to_array(char *filename);
-int                     get_map_start_index(char **array);
+int             get_map_start_index(char **array);
 char            **extract_and_validate_map(char **array, int start_index);
 
 //----map_utils.c----
 void            free_array(char **array);
 void            free_map(char **map);
-int                     is_valid_component(char *str);
+int             is_valid_component(char *str);
 
 //----map.c----
-int                     find_map_start(char **array);
-int                     starts_with_map_char(const char *line);
-int                     is_map_line(const char *line);
-int                     validate_map_lines(char **map);
+int             find_map_start(char **array);
+int             starts_with_map_char(const char *line);
+int             is_map_line(const char *line);
+int             validate_map_lines(char **map);
 
 //----rgb_utils.c----
-int                     validate_rgb_format(char *line);
+int             validate_rgb_format(char *line);
 
 //----rgb.c----
-int                     rgb_to_int(char *rgb_str);
+int             rgb_to_int(char *rgb_str);
 
 //----utils.c----
 char            **copy_map(char **map);
 
 //----validate_utils.c----
-int                     ends_with_cub(const char *filename);
-int                     check_and_set_flag(const char *line, t_flags *flags);
-int                     all_flags_set(t_flags *flags);
-int                     is_valid_key(const char *line);
-int                     is_unrecognized_key(const char *line);
+int             ends_with_cub(const char *filename);
+int             check_and_set_flag(const char *line, t_flags *flags);
+int             all_flags_set(t_flags *flags);
+int             is_valid_key(const char *line);
+int             is_unrecognized_key(const char *line);
 
 //----validate_key_extension.c----
-int                     validate_unique_keys(t_node *list);
+int             validate_unique_keys(t_node *list);
 
 //----validate_map_utils.c----
-int                     is_first_char_valid(char *line, int *i);
-int                     is_last_char_valid(char *line, int i);
-int                     is_line_closed(char *line);
-int                     has_wall_boundaries(char *line);
-int                     check_empty_lines(char **map);
+int             is_first_char_valid(char *line, int *i);
+int             is_last_char_valid(char *line, int i);
+int             is_line_closed(char *line);
+int             has_wall_boundaries(char *line);
+int             check_empty_lines(char **map);
 
 //----validate_map.c----
-int                     count_players(char **map);
-int                     check_top_and_bottom_closed(char **map, int line_count);
-int                     check_side_boundaries(char **map, int line_count);
-int                     check_player_count(char **map);
-int                     validate_map(char **map);
+int             count_players(char **map);
+int             check_top_and_bottom_closed(char **map, int line_count);
+int             check_side_boundaries(char **map, int line_count);
+int             check_player_count(char **map);
+int             validate_map(char **map);
 
 //----validate_utils.c----
-int                     ends_with_cub(const char *filename);
-int                     check_and_set_flag(const char *line, t_flags *flags);
-int                     all_flags_set(t_flags *flags);
-int                     is_valid_key(const char *line);
-int                     is_unrecognized_key(const char *line);
+int             ends_with_cub(const char *filename);
+int             check_and_set_flag(const char *line, t_flags *flags);
+int             all_flags_set(t_flags *flags);
+int             is_valid_key(const char *line);
+int             is_unrecognized_key(const char *line);
 
 //----collision.c----
-int                     is_wall(t_game_map *game_map, int x, int y);
-int                     is_position_valid(t_game_map *game_map, double x, double y);
-int                     can_move_to(t_game_map *game_map, double new_x, double new_y);
-int                     move_player(t_game_map *game_map, double new_x, double new_y);
+int             is_wall(t_game_map *game_map, int x, int y);
+int             is_position_valid(t_game_map *game_map, double x, double y);
+int             can_move_to(t_game_map *game_map, double new_x, double new_y);
+int             move_player(t_game_map *game_map, double new_x, double new_y);
 
 #endif 
