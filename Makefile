@@ -35,7 +35,8 @@ SRCS=	main.c \
 		game/game_movement.c
 
 #----- Objects -----
-OBJS=$(SRCS:.c=.o)
+OBJDIR = obj
+OBJS=$(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 #--------------------------------------------------
 #              DEPENDENCIES (LIBS)
@@ -124,7 +125,8 @@ sanitize: fclean
 	@printf "\033[u[\033[1m\033[34mOK\033[0m]        \n\033[s"
 	@$(MAKE) --no-print-directory SAN_ACTIVE=true
 
-%.o: %.c
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	$(call init_bar)
 	$(call next_bar)
 	@$(CPL) $(CPL_FLAGS) -I./ -c $< -o $@
