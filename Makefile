@@ -146,23 +146,24 @@ $(LIBFT_PATH)$(LIBFT_NAME):
 clean:
 	@printf "%-101s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mClean\033[0m]: Cleaning object files")"
 	@$(MAKE) -C $(MLX_DIR) clean
-	@rm $(RM_FLAGS) $(OBJS)
+	@rm -rf $(OBJDIR)
 	@printf "\033[u[\033[1m\033[34mOK\033[0m]        \n\033[s"
-	@printf "\n%-123s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mClean\033[0m]: '\033[1m\033[4m\033[36mlibft.a\033[24m\033[0m' cleaning started")"
+	@printf "\n%-123s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mClean\033[0m]: '[\033[1m\033[4m\033[36mlibft.a\033[24m\033[0m' cleaning started")"
 	@printf "\033[u[\033[1m\033[34mOK\033[0m]        \n\033[s"
 	@$(MAKE) --no-print-directory -C $(LIBFT_PATH) clean
-	@printf "%-123s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mClean\033[0m]: '\033[1m\033[4m\033[36mlibft.a\033[24m\033[0m' cleaning ended")"
+	@printf "%-123s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mClean\033[0m]: '[\033[1m\033[4m\033[36mlibft.a\033[24m\033[0m' cleaning ended")"
 	@printf "\033[u[\033[1m\033[34mOK\033[0m]        \n\033[s\n"
 
 fclean: clean
 	@printf "%-101s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mFclean\033[0m]: Removing all generated files")"
 	@$(MAKE) -C $(MLX_DIR) clean
 	@rm $(RM_FLAGS) $(PNAME)
+	@rm -rf $(OBJDIR)
 	@printf "\033[u[\033[1m\033[34mOK\033[0m]        \n\033[s"
-	@printf "\n%-123s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mFclean\033[0m]: '\033[1m\033[4m\033[36mlibft.a\033[24m\033[0m' full cleaning started")"
+	@printf "\n%-123s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mFclean\033[0m]: '[\033[1m\033[4m\033[36mlibft.a\033[24m\033[0m' full cleaning started")"
 	@printf "\033[u[\033[1m\033[34mOK\033[0m]        \n\033[s"
 	@$(MAKE) --no-print-directory -C $(LIBFT_PATH) fclean
-	@printf "%-123s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mFclean\033[0m]: '\033[1m\033[4m\033[36mlibft.a\033[24m\033[0m' full cleaning ended")"
+	@printf "%-123s\033[s[\033[1m\033[33mWORKING\033[0m]" "$$(printf "[\033[1m\033[34mMAKEFILE\033[0m - \033[1m\033[36mFclean\033[0m]: '[\033[1m\033[4m\033[36mlibft.a\033[24m\033[0m' full cleaning ended")"
 	@printf "\033[u[\033[1m\033[34mOK\033[0m]        \n\033[s\n"
 
 #--------------------------------------------------
