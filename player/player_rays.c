@@ -25,7 +25,7 @@ static int	raycast_loop(t_game *game, t_ray *ray)
 		map_x = (int)(ray->ray_x) / game->cell_size;
 		map_y = (int)(ray->ray_y) / game->cell_size;
 		if (map_y < 0 || !game->map[map_y]
-			|| map_x < 0 || !game->map[map_y][map_x])
+			|| map_x < 0 || map_x >= (int)ft_strlen(game->map[map_y]))
 			return (0);
 		if (game->map[map_y][map_x] == '1')
 			return (1);
@@ -107,8 +107,12 @@ float raycast_hit_dda(t_game *game, t_ray *ray, float *hit_x, float *hit_y)
 			map_y += step_y;
 			side = 1;
 		}
-		if (map_y >= 0 && map_x >= 0 && game->map[map_y] && game->map[map_y][map_x] == '1')
+		if (map_y >= 0 && map_x >= 0 && game->map[map_y] && 
+			map_x < (int)ft_strlen(game->map[map_y]) && game->map[map_y][map_x] == '1')
 			hit = 1;
+		if (map_y < 0 || !game->map[map_y] || map_x < 0 || 
+			map_x >= (int)ft_strlen(game->map[map_y]))
+			break;
 	}
 
 	if (side == 0)

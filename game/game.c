@@ -57,6 +57,12 @@ int	game_loop(void *param)
 			if (game->map[i][j] == '1')
 				draw_square(j * game->cell_size, i * game->cell_size,
 					game, game->cell_size, 0xAAAAAA);
+			else if (game->map[i][j] == '0')
+				draw_square(j * game->cell_size, i * game->cell_size,
+					game, game->cell_size, 0x444444);
+			else if (game->map[i][j] == ' ')
+				draw_square(j * game->cell_size, i * game->cell_size,
+					game, game->cell_size, 0x222222);
 			j++;
 		}
 		i++;

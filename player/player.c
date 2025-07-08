@@ -47,7 +47,8 @@ int	player_find_and_init(char **map, int cell_size, t_game *game)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j])
+			if (map[i][j] == 'N' || map[i][j] == 'S' || 
+				map[i][j] == 'E' || map[i][j] == 'W')
 			{
 				player_init(j * cell_size + cell_size / 2,
 					i * cell_size + cell_size / 2, map[i][j], game);
@@ -97,7 +98,8 @@ int	is_wall_collision(float new_x, float new_y, t_game *game)
 		map_x = (int)(new_x + dx[i]) / game->cell_size;
 		map_y = (int)(new_y + dy[i]) / game->cell_size;
 		if (map_x >= 0 && map_y >= 0
-			&& game->map[map_y] && game->map[map_y][map_x] == '1')
+			&& game->map[map_y] && map_x < (int)ft_strlen(game->map[map_y])
+			&& game->map[map_y][map_x] == '1')
 			return (1);
 		i++;
 	}
