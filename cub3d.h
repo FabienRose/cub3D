@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   settings.json                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 00:05:37 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 00:06:45 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/08 00:26:02 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/08 00:27:17 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include "minilibx-linux/mlx.h"
 # include "libft/libft.h"
 # include "map/map.h"
 # include "player/player.h"

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 00:10:11 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 00:10:11 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/08 00:30:12 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/08 00:30:23 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../conversion/conversion.h"
 # include "../parsing/parsing.h"
+# include <stdio.h>
 
 typedef struct s_file_content
 {
@@ -39,20 +40,11 @@ typedef struct s_flood_data
         int             height;
 }                       t_flood_data;
 
-typedef struct s_player
-{
-        double  x;        // Player X position
-        double  y;        // Player Y position
-        double  dir;      // Direction angle in radians (0 = East, PI/2 = North, PI = West, 3PI/2 = South)
-        char    dir_char; // Original direction character from map (N, S, E, W)
-}       t_player;
-
 typedef struct s_game_map
 {
         char            **map_data;
         int             width;
         int             height;
-        t_player        player;
 }       t_game_map;
 
 //----map_dimensions.c----
@@ -60,8 +52,7 @@ t_game_map      *init_game_map(char **map_data);
 int                     get_map_height(char **map);
 int                     get_map_width(char **map);
 char            get_map_cell(t_game_map *game_map, int x, int y);
-t_player        get_player_info(char **map);
-void            free_game_map(t_game_map *game_map);
+void            free_game_map(char **map);
 
 //----espaces_and_empty.c----
 int                     is_line_empty_or_spaces_only(const char *line);

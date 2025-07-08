@@ -16,8 +16,9 @@ RM_FLAGS=-f
 SAN_FLAGS=-fsanitize=address -fsanitize=leak
 
 #----- Minilibx directory and library -----
+MLX_DIR=minilibx-linux
 MLX=$(MLX_DIR)/libmlx.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
 
 #--------------------------------------------------
 #              SOURCES AND OBJECTS
@@ -40,7 +41,6 @@ SRCS=	main.c \
 		map/validate_leaks.c \
 		map/validate_rectangular.c \
 		map/espaces_and_empty.c \
-		map/map.c \
 		map/map_dimensions.c \
 		map/map_dimensions_utils.c \
 		map/main_utils.c \
@@ -52,12 +52,12 @@ SRCS=	main.c \
 		map/validate_map.c \
 		map/validate_map_utils.c \
 		map/validate_utils.c \
-		ap/validate_key_extension.c \
+		map/validate_key_extension.c \
 		map/extract_config_lines.c \
-		ap/collision.c \
+		map/collision.c \
 		parsing/parse_spaces_utils.c \
 		parsing/parsing.c \
-		arsing/parse_texture.c \
+		parsing/parse_texture.c \
 		parsing/parsing_utils.c \
 		parsing/parse_rgb.c \
 		parsing/parse_map.c \
