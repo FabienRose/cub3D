@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 08:56:28 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 08:56:35 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/08 17:50:39 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/08 17:50:53 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	game_init(t_game *game)
 int	game_loop(void *param)
 {
 	t_game	*game;
-	int		i;
-	int		j;
 
 	game = (t_game *)param;
 	game_movement(game);
@@ -48,25 +46,7 @@ int	game_loop(void *param)
 		* (game->img.bpp / 8));
 	draw_background(game);
 	cast_rays_3d(game);
-	i = 0;
-	while (game->map[i])
-	{
-		j = 0;
-		while (game->map[i][j])
-		{
-			if (game->map[i][j] == '1')
-				draw_square(j * game->cell_size, i * game->cell_size,
-					game, game->cell_size, 0xAAAAAA);
-			else if (game->map[i][j] == '0')
-				draw_square(j * game->cell_size, i * game->cell_size,
-					game, game->cell_size, 0x444444);
-			else if (game->map[i][j] == ' ')
-				draw_square(j * game->cell_size, i * game->cell_size,
-					game, game->cell_size, 0x222222);
-			j++;
-		}
-		i++;
-	}
+	draw_map(game);
 	draw_square((int)game->player.x - 5, (int)game->player.y - 5, game, 10, 0x00FF00);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);

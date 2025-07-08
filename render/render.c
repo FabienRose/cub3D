@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 23:26:39 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/02 23:32:20 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/08 17:48:47 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/08 17:50:29 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,32 @@ void	draw_background(t_game *game)
 			x++;
 		}
 		y++;
+	}
+}
+
+void	draw_map(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == '1')
+				draw_square(j * game->cell_size, i * game->cell_size,
+					game, game->cell_size, 0xAAAAAA);
+			else if (game->map[i][j] == ' ')
+				draw_square(j * game->cell_size, i * game->cell_size,
+					game, game->cell_size, 0x222222);
+			else
+				draw_square(j * game->cell_size, i * game->cell_size,
+					game, game->cell_size, 0x444444);
+			j++;
+		}
+		i++;
 	}
 }
