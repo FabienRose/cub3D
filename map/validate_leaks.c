@@ -14,15 +14,31 @@
 
 static void	flood_fill(t_flood_data *data, int x, int y)
 {
+	int	stack[data->width * data->height * 2];
+	int	top;
+	int	cur_x, cur_y;
+
 	if (x < 0 || y < 0 || x >= data->width || y >= data->height)
 		return ;
 	if (data->map[y][x] == '1' || data->map[y][x] == 'X')
 		return ;
-	data->map[y][x] = 'X';
-	flood_fill(data, x + 1, y);
-	flood_fill(data, x - 1, y);
-	flood_fill(data, x, y + 1);
-	flood_fill(data, x, y - 1);
+	top = 0;
+	stack[top++] = x;
+	stack[top++] = y;
+	while (top > 0)
+	{
+		cur_y = stack[--top];
+		cur_x = stack[--top];
+		if (cur_x < 0 || cur_y < 0 || cur_x >= data->width || cur_y >= data->height)
+			continue ;
+		if (data->map[cur_y][cur_x] == '1' || data->map[cur_y][cur_x] == 'X')
+			continue ;
+		data->map[cur_y][cur_x] = 'X';
+		stack[top++] = cur_x + 1; stack[top++] = cur_y;
+		stack[top++] = cur_x - 1; stack[top++] = cur_y;
+		stack[top++] = cur_x; stack[top++] = cur_y + 1;
+		stack[top++] = cur_x; stack[top++] = cur_y - 1;
+	}
 }
 
 static int	find_player_pos(char **map, int *px, int *py)
