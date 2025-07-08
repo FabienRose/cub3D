@@ -7,7 +7,7 @@ CPL=cc
 CPL_FLAGS=-Wall -Wextra -Werror
 
 #----- Program informations -----
-PNAME=cub3D
+PNAME=cub3d
 
 #----- RM Command -----
 RM_FLAGS=-f
@@ -16,14 +16,15 @@ RM_FLAGS=-f
 SAN_FLAGS=-fsanitize=address -fsanitize=leak
 
 #----- Minilibx directory and library -----
-MLX_DIR=minilibx-linux
-MLX=$(MLX_DIR)/libmlx.a
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
+    MLX_DIR=minilibx-linux
     MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
 else
+    MLX_DIR=minilibx_macopen
     MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 endif
+MLX=$(MLX_DIR)/libmlx.a
 
 #--------------------------------------------------
 #              SOURCES AND OBJECTS
