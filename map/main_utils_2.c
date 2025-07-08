@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 16:08:42 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 16:26:37 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/08 18:25:11 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_config	*parse_config_data(char **config, char **map, char **array)
 	data = parse_config(config);
 	if (!data)
 	{
-		ft_putendl_fd("Error\nConfiguración inválida", 2);
+		ft_putendl_fd("Error\nInvalid configuration", 2);
 		free_array(config);
 		free_array(map);
 		free_array(array);
