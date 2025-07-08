@@ -5,14 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 23:37:43 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/02 23:42:52 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/08 10:27:24 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/08 10:27:24 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hooks.h"
 #include <stdlib.h>
-#include <X11/keysym.h>
 
 static int	handle_window_close(void *param)
 {
@@ -26,19 +25,19 @@ static int	key_press(int keycode, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	if (keycode == XK_w)
+	if (keycode == KEY_W)
 		game->player.key_up = 1;
-	else if (keycode == XK_s)
+	else if (keycode == KEY_S)
 		game->player.key_down = 1;
-	else if (keycode == XK_a)
+	else if (keycode == KEY_A)
 		game->player.key_left = 1;
-	else if (keycode == XK_d)
+	else if (keycode == KEY_D)
 		game->player.key_right = 1;
-	else if (keycode == XK_Left)
+	else if (keycode == KEY_LEFT)
 		game->player.left_rotate = 1;
-	else if (keycode == XK_Right)
+	else if (keycode == KEY_RIGHT)
 		game->player.right_rotate = 1;
-	else if (keycode == XK_Escape)
+	else if (keycode == KEY_ESC)
 		exit(0);
 	return (0);
 }
@@ -48,17 +47,17 @@ static int	key_release(int keycode, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	if (keycode == XK_w)
+	if (keycode == KEY_W)
 		game->player.key_up = 0;
-	else if (keycode == XK_s)
+	else if (keycode == KEY_S)
 		game->player.key_down = 0;
-	else if (keycode == XK_a)
+	else if (keycode == KEY_A)
 		game->player.key_left = 0;
-	else if (keycode == XK_d)
+	else if (keycode == KEY_D)
 		game->player.key_right = 0;
-	else if (keycode == XK_Left)
+	else if (keycode == KEY_LEFT)
 		game->player.left_rotate = 0;
-	else if (keycode == XK_Right)
+	else if (keycode == KEY_RIGHT)
 		game->player.right_rotate = 0;
 	return (0);
 }
