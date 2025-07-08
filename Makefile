@@ -18,7 +18,12 @@ SAN_FLAGS=-fsanitize=address -fsanitize=leak
 #----- Minilibx directory and library -----
 MLX_DIR=minilibx-linux
 MLX=$(MLX_DIR)/libmlx.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+    MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/include/../lib -lXext -lX11 -lm -lbsd
+else
+    MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+endif
 
 #--------------------------------------------------
 #              SOURCES AND OBJECTS
