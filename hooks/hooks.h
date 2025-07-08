@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 17:23:39 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 10:27:11 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/08 11:15:20 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define KEY_D 2
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
+# define KEY_UP 126
+# define KEY_DOWN 125
 # define KEY_ESC 53
 #endif
 

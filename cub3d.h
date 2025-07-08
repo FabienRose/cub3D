@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.json                                      :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 00:26:02 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 00:27:17 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/08 11:23:33 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_player
 	int		key_right;
 	int		left_rotate;
 	int		right_rotate;
+	int		up_rotate;
+	int 	down_rotate;
 }	t_player;
 
 typedef struct s_game

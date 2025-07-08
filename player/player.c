@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:00:01 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/07 17:11:16 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/08 11:29:31 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	player_init(int x, int y, char angle, t_game *game)
 	game->player.key_right = 0;
 	game->player.left_rotate = 0;
 	game->player.right_rotate = 0;
+	game->player.up_rotate = 0;
+	game->player.down_rotate = 0;
 	draw_square(game->player.x, game->player.y, game,
 		WINDOW_WIDTH / 10, 0x00FF00);
 }

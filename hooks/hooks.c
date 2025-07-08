@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 10:27:24 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 10:27:24 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/08 11:25:25 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ static int	key_press(int keycode, void *param)
 		game->player.left_rotate = 1;
 	else if (keycode == KEY_RIGHT)
 		game->player.right_rotate = 1;
+	else if (keycode == KEY_UP)
+		game->player.up_rotate = 1;
+	else if (keycode == KEY_DOWN)
+		game->player.down_rotate = 1;
 	else if (keycode == KEY_ESC)
 		exit(0);
 	return (0);
@@ -59,6 +63,10 @@ static int	key_release(int keycode, void *param)
 		game->player.left_rotate = 0;
 	else if (keycode == KEY_RIGHT)
 		game->player.right_rotate = 0;
+		else if (keycode == KEY_UP)
+		game->player.up_rotate = 1;
+	else if (keycode == KEY_DOWN)
+		game->player.down_rotate = 1;
 	return (0);
 }
 
