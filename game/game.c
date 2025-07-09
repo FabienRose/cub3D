@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 17:50:39 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 17:50:53 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/09 10:57:31 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/09 10:57:31 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	game_init(t_game *game)
 {
 	game->move_speed = 2.0f;
 	game->rot_speed = 0.05f;
-	game->cell_size = WINDOW_WIDTH / 45;
+	game->cell_size = WINDOW_WIDTH / 100;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
 	game->img.img = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
