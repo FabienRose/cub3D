@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:38:28 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 11:21:11 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 16:10:39 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ int	count_players(char **map)
 	}
 	return (count);
 }
-//eliminar despues de las pruebas 
-/*
-static void	print_ascii(const char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		printf("%d ", (unsigned char)str[i]);
-		i++;
-	}
-	printf("\n");
-}*/
 
 int	check_top_and_bottom_closed(char **map, int line_count)
 {
@@ -86,7 +72,6 @@ int	check_player_count(char **map)
 	int	player_count;
 
 	player_count = count_players(map);
-	//printf("Number of players found = %d\n", player_count);mensaje depuracion eliminar despues
 	if (player_count != 1)
 	{
 		printf("Error: There must be exactly one player (N, S, E o W)\n");

@@ -6,17 +6,17 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:10:22 by diana             #+#    #+#             */
-/*   Updated: 2025/06/28 15:50:26 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 14:40:54 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../cub3d.h"
+#include "../cub3d.h"
 
-#include <stdlib.h>
-
-int list_size(t_node *head)
+int	list_size(t_node *head)
 {
-	int count = 0;
+	int	count;
+
+	count = 0;
 	while (head)
 	{
 		count++;

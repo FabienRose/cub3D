@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_dimensions_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 00:28:06 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 00:28:31 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/09 15:26:45 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ char	get_map_cell(t_game_map *game_map, int x, int y)
 void	free_game_map(char **map)
 {
 	if (!map)
-		return ;// Note:don't free map_data here
+		return ;
 	free(map);
 }

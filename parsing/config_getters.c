@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:22:36 by diana             #+#    #+#             */
-/*   Updated: 2025/07/02 23:06:07 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 16:51:41 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,4 @@ int	get_floor_color(t_config *cfg)
 	if (!cfg)
 		return (-1);
 	return (cfg->floor_color);
-}
-
-int	get_ceiling_color(t_config *cfg)
-{
-	if (!cfg)
-		return (-1);
-	return (cfg->ceiling_color);
 }

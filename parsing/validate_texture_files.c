@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:00:21 by diana             #+#    #+#             */
-/*   Updated: 2025/07/02 22:18:44 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 16:56:38 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	validate_single_texture(char *texture_path, char *texture_name)
 {
 	if (!file_exists(texture_path))
 	{
-		printf("Error: Texture file '%s' for %s does not exist\n", 
+		printf("Error: Texture file '%s' for %s does not exist\n", \
 			texture_path, texture_name);
 		return (0);
 	}

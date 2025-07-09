@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_rectangular.c                             :+:      :+:    :+:   */
+/*   make_rectangular_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 17:05:10 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 16:11:18 by diana            ###   ########.fr       */
+/*   Created: 2025/07/09 15:08:45 by diana             #+#    #+#             */
+/*   Updated: 2025/07/09 15:23:54 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	validate_rectangular_map(char **map)
+char	**make_map_rectangular(char **map)
 {
-	int	i;
-	int	first_len;
-	int	current_len;
+	int		max_width;
+	int		map_size;
+	char	**new_map;
 
-	if (!map || !map[0])
-		return (0);
-	first_len = ft_strlen(map[0]);
-	i = 1;
-	while (map[i])
-	{
-		current_len = ft_strlen(map[i]);
-		if (current_len != first_len)
-		{
-			printf("Error: Line %d has length %d, expected %d\n", \
-				i, current_len, first_len);
-			return (0);
-		}
-		i++;
-	}
-	return (1);
+	if (!map)
+		return (NULL);
+	max_width = calculate_max_width(map);
+	map_size = 0;
+	while (map[map_size])
+		map_size++;
+	new_map = allocate_memory_for_new_map(map_size);
+	if (!new_map)
+		return (NULL);
+	new_map = fill_new_map_with_padding(map, new_map, max_width);
+	return (new_map);
 }

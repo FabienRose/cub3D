@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_dimensions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 00:31:23 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 00:31:51 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/09 15:28:09 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
 
 t_game_map	*init_game_map(char **map_data)
 {

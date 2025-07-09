@@ -59,30 +59,41 @@ static char	*pad_line_with_spaces(char *line, int target_width)
 	return (new_line);
 }
 
-char	**make_map_rectangular(char **map)
+int	calculate_max_width(char **map)
 {
-	int		max_width;
-	int		i;
-	char	**new_map;
-	int		map_size;
+	int	max_width;
 
-	if (!map)
-		return (NULL);
 	max_width = find_max_width(map);
-	map_size = 0;
-	while (map[map_size])
-		map_size++;
+	return (max_width);
+}
+
+char	**allocate_memory_for_new_map(int map_size)
+{
+	char	**new_map;
+
 	new_map = malloc(sizeof(char *) * (map_size + 1));
 	if (!new_map)
 		return (NULL);
+	return (new_map);
+}
+
+char	**fill_new_map_with_padding(char **map, char **new_map, int max_width)
+{
+	int	i;
+	int	j;
+
 	i = 0;
 	while (map[i])
 	{
 		new_map[i] = pad_line_with_spaces(map[i], max_width);
 		if (!new_map[i])
 		{
-			while (--i >= 0)
-				free(new_map[i]);
+			j = 0;
+			while (j < i)
+			{
+				free(new_map[j]);
+				j++;
+			}
 			free(new_map);
 			return (NULL);
 		}

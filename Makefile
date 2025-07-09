@@ -43,13 +43,14 @@ SRCS=	main.c \
 		conversion/list_to_array.c \
 		map/extract_map.c \
 		map/make_rectangular.c \
-		map/debug_map.c \
 		map/validate_rectangular.c \
-		map/espaces_and_empty.c \
+		map/make_rectangular_utils.c \
+		map/spaces_and_empty.c \
 		map/map_dimensions.c \
 		map/map_dimensions_utils.c \
 		map/main_utils.c \
 		map/main_utils_2.c \
+		map/main_utils_map.c \
 		map/map_utils.c \
 		map/rgb.c \
 		map/utils.c \
@@ -72,7 +73,7 @@ SRCS=	main.c \
 		parsing/parse_validate.c \
 		parsing/validate_texture_files.c \
 		parsing/config_getters.c \
-		parsing/example_usage.c \
+		parsing/config_getters_utils.c \
 
 #----- Objects -----
 OBJDIR = obj

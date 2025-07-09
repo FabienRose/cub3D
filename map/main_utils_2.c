@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 16:08:42 by diana             #+#    #+#             */
-/*   Updated: 2025/07/08 18:25:11 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 14:47:53 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_config	*parse_config_data(char **config, char **map, char **array)
 void	free_config_data(t_config *data)
 {
 	if (!data)
-		return;
+		return ;
 	free(data->no_texture);
 	free(data->so_texture);
 	free(data->ea_texture);
