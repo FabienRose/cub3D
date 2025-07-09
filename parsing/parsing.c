@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:15:24 by diana             #+#    #+#             */
-/*   Updated: 2025/07/08 18:22:15 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 17:34:16 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	parse_color_line(t_config *cfg, char *line)
 		rgb_string = line + 2;
 		if (!is_valid_rgb(rgb_string) || assign_color(cfg, "F", rgb_string))
 			return (1);
-		printf("DEBUG: Floor color (int) = %d, hex = %#06x\n", \
-		cfg->floor_color, cfg->floor_color);
 		return (0);
 	}
 	if (ft_strncmp(line, "C ", 2) == 0)
@@ -30,8 +28,6 @@ int	parse_color_line(t_config *cfg, char *line)
 		rgb_string = line + 2;
 		if (!is_valid_rgb(rgb_string) || assign_color(cfg, "C", rgb_string))
 			return (1);
-		printf("DEBUG: Ceiling color (int) = %d, hex = %#06x\n", \
-		cfg->ceiling_color, cfg->ceiling_color);
 		return (0);
 	}
 	return (1);

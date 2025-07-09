@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 15:58:59 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 16:54:27 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 21:11:29 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static int	process_config_lines(char **array, t_flags *flags)
 	i = 0;
 	while (array[i] && !all_flags_set(flags))
 	{
-		printf("line %d = %s\n", i, array[i]);
 		if (!process_line_from_string(array[i], flags))
 			return (0);
 		i++;
