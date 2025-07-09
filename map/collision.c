@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 12:11:24 by diana             #+#    #+#             */
-/*   Updated: 2025/07/04 14:20:06 by diana            ###   ########.fr       */
+/*   Created: 2025/07/08 00:35:19 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/08 00:35:19 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,5 @@ int	can_move_to(t_game_map *game_map, double new_x, double new_y)
 		return (0);
 	if (is_wall(game_map, (int)new_x, (int)new_y))
 		return (0);
-	return (1);
-}
-
-/* Actualiza la posición del jugador solo si el movimiento es válido */
-int	move_player(t_game_map *game_map, double new_x, double new_y)
-{
-	if (!can_move_to(game_map, new_x, new_y))
-		return (0);
-	game_map->player.x = new_x;
-	game_map->player.y = new_y;
 	return (1);
 }

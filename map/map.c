@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/20 22:24:03 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/30 10:51:42 by diana            ###   ########.fr       */
+/*   Created: 2025/07/09 10:47:35 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/09 10:47:40 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "map.h"
 
 int	is_map_line(const char *line)
 {

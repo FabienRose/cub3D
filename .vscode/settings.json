@@ -2,6 +2,8 @@
 	"files.associations": {
 		"cub3d.h": "c",
 		"mlx.h": "c",
-		"node.h": "c"
+		"node.h": "c",
+		"hooks.h": "c",
+		"map.h": "c"
 	}
 }

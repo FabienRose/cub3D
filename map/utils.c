@@ -18,6 +18,8 @@ char	**copy_map(char **map)
 	int		size;
 	char	**copy;
 
+	if (!map)
+		return (NULL);
 	size = 0;
 	while (map[size])
 		size++;
@@ -30,8 +32,11 @@ char	**copy_map(char **map)
 		copy[i] = ft_strdup(map[i]);
 		if (!copy[i])
 		{
-			while (--i >= 0)
+			while (i > 0)
+			{
+				i--;
 				free(copy[i]);
+			}
 			free(copy);
 			return (NULL);
 		}

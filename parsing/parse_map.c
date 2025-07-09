@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 15:58:59 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 11:22:37 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 10:50:04 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ static int	validate_lines_map(char **array, int start_index)
 			continue ;
 		}
 		if (!is_map_line(array[i]))
-		{
-			printf("Error: Invalid line within the map\n");
 			return (0);
-		}
 		i++;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:38:28 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 10:00:43 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/09 11:21:11 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ int	validate_map(char **map)
 	if (!check_side_boundaries(map, line_count))
 		return (0);
 	if (!check_player_count(map))
-		return (0);
-	if (!validate_no_leaks(map))
 		return (0);
 	return (1);
 }
