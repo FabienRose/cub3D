@@ -56,6 +56,7 @@ SRCS=	main.c \
 		map/rgb_utils.c \
 		map/validate_map.c \
 		map/validate_map_utils.c \
+		map/validate_irregular_map.c \
 		map/validate_utils.c \
 		map/validate_key_extension.c \
 		map/extract_config_lines.c \

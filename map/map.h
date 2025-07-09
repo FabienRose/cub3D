@@ -138,6 +138,10 @@ int                     check_side_boundaries(char **map, int line_count);
 int                     check_player_count(char **map);
 int                     validate_map(char **map);
 
+//----validate_irregular_map.c----
+int                     validate_irregular_map_borders(char **map);
+int                     validate_surrounded_spaces(char **map);
+
 //----validate_utils.c----
 int                     ends_with_cub(const char *filename);
 int                     check_and_set_flag(const char *line, t_flags *flags);

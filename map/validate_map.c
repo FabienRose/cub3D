@@ -111,7 +111,9 @@ int	validate_map(char **map)
 		line_count++;
 	if (!check_top_and_bottom_closed(map, line_count))
 		return (0);
-	if (!check_side_boundaries(map, line_count))
+	if (!validate_irregular_map_borders(map))
+		return (0);
+	if (!validate_surrounded_spaces(map))
 		return (0);
 	if (!check_player_count(map))
 		return (0);
