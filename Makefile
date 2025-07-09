@@ -44,7 +44,6 @@ SRCS=	main.c \
 		map/extract_map.c \
 		map/make_rectangular.c \
 		map/debug_map.c \
-		map/validate_leaks.c \
 		map/validate_rectangular.c \
 		map/espaces_and_empty.c \
 		map/map_dimensions.c \
