@@ -13,6 +13,8 @@
 #ifndef PARSING_H
 # define PARSING_H
 
+typedef struct s_node t_node;
+
 typedef struct s_config
 {
 	char	*no_texture;

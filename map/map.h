@@ -88,7 +88,7 @@ int				validate_rectangular_map(char **map);
 
 //----main_utils_2.c----
 char			**get_config_lines(char **array, char **map, int start_index);
-t_config		*parse_config_data(char **config, char **map, char **array);
+int				parse_config_data(char **config, char **map, char **array, t_config *cfg);
 void			free_config_data(t_config *data);
 
 //----main_utils_map.c----

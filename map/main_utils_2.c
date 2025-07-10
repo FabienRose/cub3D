@@ -26,20 +26,18 @@ char	**get_config_lines(char **array, char **map, int start_index)
 	return (config);
 }
 
-t_config	*parse_config_data(char **config, char **map, char **array)
+int	parse_config_data(char **config, char **map, char **array, t_config *cfg)
 {
-	t_config	*data;
+	t_config	*temp;
 
-	data = parse_config(config);
-	if (!data)
-	{
-		ft_putendl_fd("Error\nInvalid configuration", 2);
-		free_array(config);
-		free_array(map);
-		free_array(array);
-		exit(EXIT_FAILURE);
-	}
-	return (data);
+	(void)map;
+	(void)array;
+	temp = parse_config(config);
+	if (!temp)
+		return (0);
+	*cfg = *temp;
+	free(temp);
+	return (1);
 }
 
 void	free_config_data(t_config *data)
@@ -50,5 +48,4 @@ void	free_config_data(t_config *data)
 	free(data->so_texture);
 	free(data->ea_texture);
 	free(data->we_texture);
-	free(data);
 }

@@ -25,6 +25,7 @@
 # include "hooks/hooks.h"
 # include "render/render.h"
 # include "game/game.h"
+# include "parsing/parsing.h"
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
@@ -53,6 +54,15 @@ typedef struct s_player
 	int		up_rotate;
 	int 	down_rotate;
 }	t_player;
+
+typedef struct s_parsing_data
+{
+	char		**file_array;
+	char		**map;
+	char		**config_lines;
+	int			map_start_index;
+	t_config	config;
+}	t_parsing_data;
 
 typedef struct s_game
 {

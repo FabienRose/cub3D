@@ -15,37 +15,31 @@
 
 int	main(int argc, char **argv)
 {
-	t_game	game;
-
-	char		**array;
-	char		**map;
-	char		**config;
-	int			start_index;
-	t_config	*config_data;
+	t_parsing_data	parsing;
+	t_game			game;
 
 	check_args(argc, argv);
-	array = load_file_to_array(argv[1]);
-	start_index = get_map_start_index(array);
-	map = extract_and_validate_map(array, start_index);
-	config = get_config_lines(array, map, start_index);
-	config_data = parse_config_data(config, map, array);
-	if (!config_data)
+	parsing.file_array = load_file_to_array(argv[1]);
+	parsing.map_start_index = get_map_start_index(parsing.file_array);
+	parsing.map = extract_and_validate_map(parsing.file_array, parsing.map_start_index);
+	parsing.config_lines = get_config_lines(parsing.file_array, parsing.map, parsing.map_start_index);
+	if (!parse_config_data(parsing.config_lines, parsing.map, parsing.file_array, &parsing.config))
 	{
 		ft_putendl_fd("Error\nInvalid configuration", 2);
-		free_array(config);
-		free_array(map);
-		free_array(array);
+		free_array(parsing.config_lines);
+		free_array(parsing.map);
+		free_array(parsing.file_array);
 		return (1);
 	}
-	game.map = map;
+	game.map = parsing.map;
 	game_init(&game);
 	player_find_and_init(game.map, game.cell_size, &game);
 	hooks_setup(game.win, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);
-	free_array(config);
-	free_array(map);
-	free_array(array);
-	free_config_data(config_data);
+	free_array(parsing.config_lines);
+	free_array(parsing.map);
+	free_array(parsing.file_array);
+	free_config_data(&parsing.config);
 	return (0);
 }
