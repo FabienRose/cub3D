@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 18:45:35 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 13:30:52 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/10 16:46:44 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,47 @@ int	is_valid_rgb(char *str)
 	result = check_rgb_parts(parts);
 	free_array(parts);
 	return (result);
+}
+
+static int	process_color_line(char *clean_line, t_config *cfg)
+{
+	char	*rgb_string;
+
+	if (clean_line && ft_strncmp(clean_line, "F ", 2) == 0)
+	{
+		rgb_string = clean_line + 2;
+		if (!is_valid_rgb(rgb_string) || assign_color(cfg, "F", rgb_string) \
+		!= 0)
+			return (1);
+	}
+	else if (clean_line && ft_strncmp(clean_line, "C ", 2) == 0)
+	{
+		rgb_string = clean_line + 2;
+		if (!is_valid_rgb(rgb_string) || assign_color(cfg, "C", rgb_string) \
+		!= 0)
+			return (1);
+	}
+	return (0);
+}
+
+int	extract_colors(char **config_lines, t_config *cfg)
+{
+	int		i;
+	char	*clean_line;
+
+	i = 0;
+	while (config_lines[i])
+	{
+		clean_line = ft_reduce_spaces(config_lines[i]);
+		if (process_color_line(clean_line, cfg) != 0)
+		{
+			if (clean_line)
+				free(clean_line);
+			return (1);
+		}
+		if (clean_line)
+			free(clean_line);
+		i++;
+	}
+	return (0);
 }

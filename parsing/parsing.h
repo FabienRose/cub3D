@@ -6,14 +6,14 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 17:02:17 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/10 16:48:27 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-typedef struct s_node t_node;
+typedef struct s_node	t_node;
 
 typedef struct s_config
 {
@@ -46,7 +46,14 @@ int				parse_rgb(char *str);
 void			free_split(char **arr);
 
 //----parse_texture.c----
+int				assign_texture(char **field, char *value);
 int				parse_texture_line(t_config *cfg, char *line);
+
+//----extract_textures.c----
+int				extract_north_texture(char **config_lines, t_config *cfg);
+int				extract_south_texture(char **config_lines, t_config *cfg);
+int				extract_west_texture(char **config_lines, t_config *cfg);
+int				extract_east_texture(char **config_lines, t_config *cfg);
 
 //----parse_spaces_utils.c----
 char			*ft_reduce_spaces(char *str);
@@ -60,6 +67,7 @@ char			*ft_clean_path(const char *str);
 int				is_valid_xpm_path(char *path);
 int				check_rgb_parts(char **parts);
 int				is_valid_rgb(char *str);
+int				extract_colors(char **config_lines, t_config *cfg);
 
 //----validate_texture_files.c----
 int				validate_texture_files(t_config *cfg);

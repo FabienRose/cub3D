@@ -6,12 +6,12 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 00:29:45 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/09 17:21:55 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/10 16:38:04 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define _USE_MATH_DEFINES
 #include "cub3d.h"
+#define _USE_MATH_DEFINES
 
 int	main(int argc, char **argv)
 {
@@ -21,14 +21,63 @@ int	main(int argc, char **argv)
 	check_args(argc, argv);
 	parsing.file_array = load_file_to_array(argv[1]);
 	parsing.map_start_index = get_map_start_index(parsing.file_array);
-	parsing.map = extract_and_validate_map(parsing.file_array, parsing.map_start_index);
-	parsing.config_lines = get_config_lines(parsing.file_array, parsing.map, parsing.map_start_index);
-	if (!parse_config_data(parsing.config_lines, parsing.map, parsing.file_array, &parsing.config))
+	parsing.config_lines = get_config_lines(parsing.file_array, NULL, \
+	parsing.map_start_index);
+	if (!initialize_config_data(&parsing.config))
 	{
-		ft_putendl_fd("Error\nInvalid configuration", 2);
+		ft_putendl_fd("Error\nConfig initialization failed", 2);
 		free_array(parsing.config_lines);
-		free_array(parsing.map);
 		free_array(parsing.file_array);
+		return (1);
+	}
+	if (!extract_north_texture(parsing.config_lines, &parsing.config))
+	{
+		ft_putendl_fd("Error\nInvalid north texture", 2);
+		free_array(parsing.config_lines);
+		free_array(parsing.file_array);
+		free_config_data(&parsing.config);
+		return (1);
+	}
+	if (!extract_south_texture(parsing.config_lines, &parsing.config))
+	{
+		ft_putendl_fd("Error\nInvalid south texture", 2);
+		free_array(parsing.config_lines);
+		free_array(parsing.file_array);
+		free_config_data(&parsing.config);
+		return (1);
+	}
+	if (!extract_west_texture(parsing.config_lines, &parsing.config))
+	{
+		ft_putendl_fd("Error\nInvalid west texture", 2);
+		free_array(parsing.config_lines);
+		free_array(parsing.file_array);
+		free_config_data(&parsing.config);
+		return (1);
+	}
+	if (!extract_east_texture(parsing.config_lines, &parsing.config))
+	{
+		ft_putendl_fd("Error\nInvalid east texture", 2);
+		free_array(parsing.config_lines);
+		free_array(parsing.file_array);
+		free_config_data(&parsing.config);
+		return (1);
+	}
+	if (!extract_colors(parsing.config_lines, &parsing.config))
+	{
+		ft_putendl_fd("Error\nInvalid colors", 2);
+		free_array(parsing.config_lines);
+		free_array(parsing.file_array);
+		free_config_data(&parsing.config);
+		return (1);
+	}
+	parsing.map = extract_and_validate_map(parsing.file_array, \
+	parsing.map_start_index);
+	if (!parsing.map)
+	{
+		ft_putendl_fd("Error\nInvalid map", 2);
+		free_array(parsing.config_lines);
+		free_array(parsing.file_array);
+		free_config_data(&parsing.config);
 		return (1);
 	}
 	game.map = parsing.map;

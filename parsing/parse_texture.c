@@ -6,13 +6,13 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:51:41 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 13:52:01 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/10 16:32:37 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int	assign_texture(char **field, char *value)
+int	assign_texture(char **field, char *value)
 {
 	char	*trimmed;
 

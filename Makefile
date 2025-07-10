@@ -65,6 +65,7 @@ SRCS=	main.c \
 		parsing/parse_spaces_utils.c \
 		parsing/parsing.c \
 		parsing/parse_texture.c \
+		parsing/extract_textures.c \
 		parsing/parsing_utils.c \
 		parsing/parse_rgb.c \
 		parsing/parse_map.c \

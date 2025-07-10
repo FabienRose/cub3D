@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 00:30:12 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/09 16:42:42 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/10 16:39:26 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ int				validate_rectangular_map(char **map);
 
 //----main_utils_2.c----
 char			**get_config_lines(char **array, char **map, int start_index);
-int				parse_config_data(char **config, char **map, char **array, t_config *cfg);
+int				parse_config_data(char **config, char **map, char **array, \
+				t_config *cfg);
 void			free_config_data(t_config *data);
+int				initialize_config_data(t_config *cfg);
 
 //----main_utils_map.c----
 char			**extract_and_validate_initial_map(char **array, \

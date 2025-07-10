@@ -49,3 +49,16 @@ void	free_config_data(t_config *data)
 	free(data->ea_texture);
 	free(data->we_texture);
 }
+
+int	initialize_config_data(t_config *cfg)
+{
+	if (!cfg)
+		return (0);
+	cfg->no_texture = NULL;
+	cfg->so_texture = NULL;
+	cfg->ea_texture = NULL;
+	cfg->we_texture = NULL;
+	cfg->floor_color = -1;
+	cfg->ceiling_color = -1;
+	return (1);
+}
