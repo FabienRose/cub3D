@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 00:26:02 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 11:23:33 by diana            ###   ########.fr       */
+/*   Created: 2025/07/11 15:16:58 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/11 15:16:58 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_game
 	void		*win;
 	t_img		img;
 	t_player	player;
+	t_config	config;
 	char		**map;
 	float		move_speed;
 	float		rot_speed;

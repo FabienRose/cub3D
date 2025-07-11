@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 13:51:41 by diana             #+#    #+#             */
-/*   Updated: 2025/07/10 16:32:37 by diana            ###   ########.fr       */
+/*   Created: 2025/07/11 15:05:15 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/11 15:05:37 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ int	assign_texture(char **field, char *value)
 	char	*trimmed;
 
 	if (*field != NULL)
-		return (1);
+		return (0);
 	trimmed = ft_strtrim(value, " \n");
 	if (!trimmed)
-		return (1);
+		return (0);
 	if (!is_valid_xpm_path(trimmed))
 	{
 		free(trimmed);
-		return (1);
+		return (0);
 	}
 	*field = trimmed;
-	return (0);
+	return (1);
 }
 
 int	parse_texture_line(t_config *cfg, char *line)

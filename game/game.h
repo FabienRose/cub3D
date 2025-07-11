@@ -6,7 +6,7 @@
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:27:58 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/06/28 23:42:15 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/11 15:13:18 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct s_player	t_player;
 typedef struct s_img	t_img;
+typedef struct s_config	t_config;
 
 void	game_init(t_game *game);
 int		game_loop(void *param);

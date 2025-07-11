@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_validate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/27 18:45:35 by diana             #+#    #+#             */
-/*   Updated: 2025/07/10 16:46:44 by diana            ###   ########.fr       */
+/*   Created: 2025/07/11 15:08:02 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/11 15:08:02 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ int	extract_colors(char **config_lines, t_config *cfg)
 		{
 			if (clean_line)
 				free(clean_line);
-			return (1);
+			return (0);
 		}
 		if (clean_line)
 			free(clean_line);
 		i++;
 	}
-	return (0);
+	return (1);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 17:48:47 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 17:50:29 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/11 15:25:07 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/11 15:25:58 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	draw_background(t_game *game)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			put_pixel(&game->img, x, y, 0x666666);
+			put_pixel(&game->img, x, y, game->config.ceiling_color);
 			x++;
 		}
 		y++;
@@ -92,7 +92,7 @@ void	draw_background(t_game *game)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			put_pixel(&game->img, x, y, 0x999999);
+			put_pixel(&game->img, x, y, game->config.floor_color);
 			x++;
 		}
 		y++;

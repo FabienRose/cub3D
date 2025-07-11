@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 16:29:35 by diana             #+#    #+#             */
-/*   Updated: 2025/07/10 16:40:39 by diana            ###   ########.fr       */
+/*   Created: 2025/07/11 15:03:39 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/11 15:04:25 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	extract_north_texture(char **config_lines, t_config *cfg)
 				== 0)
 			{
 				free(clean_line);
+				printf("TEST\n");
 				return (0);
 			}
 		}

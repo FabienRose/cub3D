@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 00:29:45 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/10 16:38:04 by diana            ###   ########.fr       */
+/*   Created: 2025/07/11 15:24:32 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/11 15:24:37 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	game.map = parsing.map;
+	game.config = parsing.config;
 	game_init(&game);
 	player_find_and_init(game.map, game.cell_size, &game);
 	hooks_setup(game.win, &game);
