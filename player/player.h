@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/02 09:15:27 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/02 09:16:14 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/15 08:02:39 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/15 08:02:39 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_ray
 	float	fov;
 }	t_ray;
 
-int		player_find_and_init(char **map, int cell_size, t_game *game);
+int	player_find_and_init(char **map, t_game *game);
 int		is_wall_collision(float new_x, float new_y, t_game *game);
 float	raycast_hit(t_game *game, t_ray *ray, float *hit_x, float *hit_y);
 void	draw_single_ray(t_game *game, t_ray *ray);

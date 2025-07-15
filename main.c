@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 	game.map = parsing.map;
 	game.config = parsing.config;
 	game_init(&game);
-	player_find_and_init(game.map, game.cell_size, &game);
+	player_find_and_init(game.map, &game);
 	hooks_setup(game.win, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_loop(game.mlx);

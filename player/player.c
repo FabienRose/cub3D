@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 17:00:01 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/08 11:29:31 by diana            ###   ########.fr       */
+/*   Created: 2025/07/15 07:56:54 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/15 08:03:19 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,18 @@ static void	player_init(int x, int y, char angle, t_game *game)
 	game->player.right_rotate = 0;
 	game->player.up_rotate = 0;
 	game->player.down_rotate = 0;
-	draw_square(game->player.x, game->player.y, game,
-		WINDOW_WIDTH / 10, 0x00FF00);
+	draw_square(
+		(game->player.x / game->cell_size) * game->minimap_cell_size,
+		(game->player.y / game->cell_size) * game->minimap_cell_size,
+		game,
+		game->minimap_cell_size,
+		0x00FF00);
 }
 
-int	player_find_and_init(char **map, int cell_size, t_game *game)
+int	player_find_and_init(char **map, t_game *game)
 {
-	int	i;
-	int	j;
+	int	 i;
+	int	 j;
 
 	i = 0;
 	while (map[i])
@@ -50,8 +54,8 @@ int	player_find_and_init(char **map, int cell_size, t_game *game)
 			if (map[i][j] == 'N' || map[i][j] == 'S' || 
 				map[i][j] == 'E' || map[i][j] == 'W')
 			{
-				player_init(j * cell_size + cell_size / 2,
-					i * cell_size + cell_size / 2, map[i][j], game);
+				player_init(j * game->cell_size + game->cell_size / 2,
+					i * game->cell_size + game->cell_size / 2, map[i][j], game);
 				return (1);
 			}
 			j++;
@@ -91,7 +95,8 @@ int	is_wall_collision(float new_x, float new_y, t_game *game)
 	int	map_x;
 	int	map_y;
 
-	init_collision_offsets(dx, dy, 5);
+	int radius = game->minimap_cell_size;
+	init_collision_offsets(dx, dy, radius);
 	i = 0;
 	while (i < 9)
 	{

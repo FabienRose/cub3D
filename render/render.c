@@ -108,14 +108,14 @@ void	draw_map(t_game *game)
 		while (game->map[i][j])
 		{
 			if (game->map[i][j] == '1')
-				draw_square(j * game->cell_size, i * game->cell_size,
-					game, game->cell_size, 0xAAAAAA);
+				draw_square(j * game->minimap_cell_size, i * game->minimap_cell_size,
+					game, game->minimap_cell_size, 0xAAAAAA);
 			else if (game->map[i][j] == ' ')
-				draw_square(j * game->cell_size, i * game->cell_size,
-					game, game->cell_size, 0x222222);
+				draw_square(j * game->minimap_cell_size, i * game->minimap_cell_size,
+					game, game->minimap_cell_size, 0x222222);
 			else
-				draw_square(j * game->cell_size, i * game->cell_size,
-					game, game->cell_size, 0x444444);
+				draw_square(j * game->minimap_cell_size, i * game->minimap_cell_size,
+					game, game->minimap_cell_size, 0x444444);
 			j++;
 		}
 		i++;

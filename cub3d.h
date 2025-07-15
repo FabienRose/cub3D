@@ -74,7 +74,8 @@ typedef struct s_game
 	char		**map;
 	float		move_speed;
 	float		rot_speed;
-	int			cell_size;
+	int			cell_size; // for raycasting, logic, texture mapping
+	int			minimap_cell_size; // for minimap drawing
 }	t_game;
 
 #endif 
