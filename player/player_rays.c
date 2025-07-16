@@ -6,7 +6,7 @@
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:33:46 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 11:08:57 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/16 11:15:59 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,8 +210,8 @@ void cast_rays_3d(t_game *game)
 			float corrected_distance = distance * cosf(ray.angle - game->player.angle);
 			// Scale the distance for proper wall height calculation
 			wall_height = (int)(WINDOW_HEIGHT * game->cell_size / corrected_distance);
-			if (wall_height > WINDOW_HEIGHT)
-				wall_height = WINDOW_HEIGHT;
+			// if (wall_height > WINDOW_HEIGHT)
+			// 	wall_height = WINDOW_HEIGHT;
 			
 			// Draw textured wall stripe
 			int draw_start = (WINDOW_HEIGHT - wall_height) / 2;
