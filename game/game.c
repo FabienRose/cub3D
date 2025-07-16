@@ -23,6 +23,66 @@
 // 	NULL
 // };
 
+int	load_textures(t_game *game)
+{
+	int	width, height;
+
+	printf("Loading textures...\n");
+	printf("NO texture path: %s\n", game->config.no_texture);
+	printf("SO texture path: %s\n", game->config.so_texture);
+	printf("EA texture path: %s\n", game->config.ea_texture);
+	printf("WE texture path: %s\n", game->config.we_texture);
+
+	// Load North texture (index 0)
+	game->textures[0].img = mlx_xpm_file_to_image(game->mlx, 
+		game->config.no_texture, &width, &height);
+	if (!game->textures[0].img)
+	{
+		printf("Failed to load NO texture: %s\n", game->config.no_texture);
+		return (0);
+	}
+	game->textures[0].data = mlx_get_data_addr(game->textures[0].img, 
+		&game->textures[0].bpp, &game->textures[0].sl, &game->textures[0].endian);
+
+	// Load South texture (index 1)
+	game->textures[1].img = mlx_xpm_file_to_image(game->mlx, 
+		game->config.so_texture, &width, &height);
+	if (!game->textures[1].img)
+	{
+		printf("Failed to load SO texture: %s\n", game->config.so_texture);
+		return (0);
+	}
+	game->textures[1].data = mlx_get_data_addr(game->textures[1].img, 
+		&game->textures[1].bpp, &game->textures[1].sl, &game->textures[1].endian);
+
+	// Load East texture (index 2)
+	game->textures[2].img = mlx_xpm_file_to_image(game->mlx, 
+		game->config.ea_texture, &width, &height);
+	if (!game->textures[2].img)
+	{
+		printf("Failed to load EA texture: %s\n", game->config.ea_texture);
+		return (0);
+	}
+	game->textures[2].data = mlx_get_data_addr(game->textures[2].img, 
+		&game->textures[2].bpp, &game->textures[2].sl, &game->textures[2].endian);
+
+	// Load West texture (index 3)
+	game->textures[3].img = mlx_xpm_file_to_image(game->mlx, 
+		game->config.we_texture, &width, &height);
+	if (!game->textures[3].img)
+	{
+		printf("Failed to load WE texture: %s\n", game->config.we_texture);
+		return (0);
+	}
+	game->textures[3].data = mlx_get_data_addr(game->textures[3].img, 
+		&game->textures[3].bpp, &game->textures[3].sl, &game->textures[3].endian);
+
+	game->texture_width = width;
+	game->texture_height = height;
+	printf("All textures loaded successfully!\n");
+	return (1);
+}
+
 void	game_init(t_game *game)
 {
 	game->move_speed = 5.0f;

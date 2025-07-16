@@ -2,3 +2,4 @@
 .pmn
 .manager
 *.o
+.cursorignore

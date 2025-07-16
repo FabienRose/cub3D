@@ -5,14 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 23:24:31 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/14 23:50:21 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/16 10:53:21 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 10:53:21 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-static void	put_pixel(t_img *img, int x, int y, int color)
+int	get_texture_pixel(t_game *game, int texture_index, int tex_x, int tex_y)
+{
+	int		offset;
+	char	*data;
+	int		color;
+
+	if (texture_index < 0 || texture_index >= 4)
+		return (0);
+	if (tex_x < 0 || tex_x >= game->texture_width || 
+		tex_y < 0 || tex_y >= game->texture_height)
+		return (0);
+
+	data = game->textures[texture_index].data;
+	offset = (tex_y * game->textures[texture_index].sl) + 
+			 (tex_x * (game->textures[texture_index].bpp / 8));
+	color = *(int*)(data + offset);
+	return (color);
+}
+
+void	put_pixel(t_img *img, int x, int y, int color)
 {
 	char	*dest;
 
@@ -70,12 +89,12 @@ static void	draw_horizontal_line(int x1, int x2, int y, t_game *game, int color)
 	}
 }
 
-void	draw_line(int x1, int y1, int x2, int y2, t_game *game, int color)
+void	draw_line(int x0, int y0, int x1, int y1, t_game *game, int color)
 {
-	if (x1 == x2)
-		draw_vertical_line(x1, y1, y2, game, color);
-	else if (y1 == y2)
-		draw_horizontal_line(x1, x2, y1, game, color);
+	if (x0 == x1)
+		draw_vertical_line(x0, y0, y1, game, color);
+	else if (y0 == y1)
+		draw_horizontal_line(x0, x1, y0, game, color);
 }
 
 void	draw_background(t_game *game)

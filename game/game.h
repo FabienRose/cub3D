@@ -20,6 +20,7 @@ typedef struct s_img	t_img;
 typedef struct s_config	t_config;
 
 void	game_init(t_game *game);
+int		load_textures(t_game *game);
 int		game_loop(void *param);
 void	game_move_up(t_game *game);
 void	game_move_down(t_game *game);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 15:24:32 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/11 15:24:37 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/16 10:22:02 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 10:22:02 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,15 @@ int	main(int argc, char **argv)
 	game.map = parsing.map;
 	game.config = parsing.config;
 	game_init(&game);
+	if (!load_textures(&game))
+	{
+		ft_putendl_fd("Error\nFailed to load textures", 2);
+		free_array(parsing.config_lines);
+		free_array(parsing.map);
+		free_array(parsing.file_array);
+		free_config_data(&parsing.config);
+		return (1);
+	}
 	player_find_and_init(game.map, &game);
 	hooks_setup(game.win, &game);
 	mlx_loop_hook(game.mlx, game_loop, &game);

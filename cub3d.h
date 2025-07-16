@@ -76,6 +76,10 @@ typedef struct s_game
 	float		rot_speed;
 	int			cell_size; // for raycasting, logic, texture mapping
 	int			minimap_cell_size; // for minimap drawing
+	// Texture storage
+	t_img		textures[4];	// 0=N, 1=S, 2=E, 3=W
+	int			texture_width;
+	int			texture_height;
 }	t_game;
 
 #endif 
