@@ -27,37 +27,7 @@ void	free_config(t_config *cfg)
 	free(cfg);
 }
 
-char	*ft_strjoin_three(char *s1, char *s2, char *s3)
-{
-	char	*tmp;
-	char	*result;
 
-	tmp = ft_strjoin(s1, s2);
-	if (!tmp)
-		return (NULL);
-	result = ft_strjoin(tmp, s3);
-	free(tmp);
-	return (result);
-}
-
-int	missing_fields(t_config *cfg)
-{
-	if (!cfg->no_texture)
-		printf("Missing NO\n");
-	if (!cfg->so_texture)
-		printf("Missing SO\n");
-	if (!cfg->ea_texture)
-		printf("Missing EA\n");
-	if (!cfg->we_texture)
-		printf("Missing WE\n");
-	if (cfg->floor_color == -1)
-		printf("Missing Floor\n");
-	if (cfg->ceiling_color == -1)
-		printf("Missing Ceiling\n");
-	return (!cfg->no_texture || !cfg->so_texture \
-		|| !cfg->ea_texture || !cfg->we_texture \
-		|| cfg->floor_color == -1 || cfg->ceiling_color == -1);
-}
 
 void	free_list(t_node *head)
 {

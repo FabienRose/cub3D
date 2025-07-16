@@ -35,9 +35,11 @@ SRCS=	main.c \
 		map/map.c \
 		hooks/hooks.c \
 		render/render.c \
+		render/render_draw.c \
 		player/player.c \
 		player/player_rays.c \
 		game/game.c \
+		game/game_texture.c \
 		game/game_movement.c \
 		conversion/linked_list.c \
 		conversion/list_to_array.c \
@@ -46,24 +48,21 @@ SRCS=	main.c \
 		map/validate_rectangular.c \
 		map/make_rectangular_utils.c \
 		map/spaces_and_empty.c \
-		map/map_dimensions.c \
 		map/map_dimensions_utils.c \
 		map/main_utils.c \
 		map/main_utils_2.c \
 		map/main_utils_map.c \
 		map/map_utils.c \
-		map/rgb.c \
 		map/utils.c \
-		map/rgb_utils.c \
 		map/validate_map.c \
 		map/validate_map_utils.c \
 		map/validate_irregular_map.c \
 		map/validate_utils.c \
 		map/validate_key_extension.c \
 		map/extract_config_lines.c \
-		map/collision.c \
 		parsing/parse_spaces_utils.c \
 		parsing/parsing.c \
+		parsing/parsing_init.c \
 		parsing/parse_texture.c \
 		parsing/extract_textures.c \
 		parsing/parsing_utils.c \
@@ -72,9 +71,6 @@ SRCS=	main.c \
 		parsing/parse_spaces.c \
 		parsing/parse_color.c \
 		parsing/parse_validate.c \
-		parsing/validate_texture_files.c \
-		parsing/config_getters.c \
-		parsing/config_getters_utils.c \
 
 #----- Objects -----
 OBJDIR = obj

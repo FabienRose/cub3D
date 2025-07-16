@@ -6,7 +6,7 @@
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 23:27:58 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/11 15:13:18 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/16 22:10:08 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include "../cub3d.h"
 
-typedef struct s_player	t_player;
-typedef struct s_img	t_img;
-typedef struct s_config	t_config;
+typedef struct s_player			t_player;
+typedef struct s_img			t_img;
+typedef struct s_config			t_config;
+typedef struct s_game_map		t_game_map;
+typedef struct s_parsing_data	t_parsing_data;
 
-void	game_init(t_game *game);
+int		game_init(t_game *game, t_parsing_data *parsing);
 int		load_textures(t_game *game);
 int		game_loop(void *param);
 void	game_move_up(t_game *game);

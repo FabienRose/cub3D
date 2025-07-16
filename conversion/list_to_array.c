@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list_to_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/21 19:10:22 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 14:40:54 by diana            ###   ########.fr       */
+/*   Created: 2025/07/16 17:30:55 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 17:32:25 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "conversion.h"
 
 int	list_size(t_node *head)
 {

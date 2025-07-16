@@ -39,8 +39,10 @@ static char	*process_and_concat_part(char *result, char *part, int i)
 	else
 	{
 		tmp = result;
-		new_result = ft_strjoin_three(tmp, ",", clean);
+		char *tmp2 = ft_strjoin(tmp, ",");
+		new_result = ft_strjoin(tmp2, clean);
 		free(tmp);
+		free(tmp2);
 	}
 	free(clean);
 	return (new_result);

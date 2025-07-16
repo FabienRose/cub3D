@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 15:16:58 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/11 15:16:58 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/16 22:31:59 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 22:32:40 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,21 @@
 # include "render/render.h"
 # include "game/game.h"
 # include "parsing/parsing.h"
+# include "conversion/conversion.h"
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 # define PI 3.14159265358979323846
 
+typedef struct s_config
+{
+	char	*no_texture;
+	char	*so_texture;
+	char	*ea_texture;
+	char	*we_texture;
+	int		floor_color;
+	int		ceiling_color;
+}	t_config;
 typedef struct s_img
 {
 	void	*img;
@@ -51,8 +61,6 @@ typedef struct s_player
 	int		key_right;
 	int		left_rotate;
 	int		right_rotate;
-	int		up_rotate;
-	int 	down_rotate;
 }	t_player;
 
 typedef struct s_parsing_data
@@ -64,20 +72,24 @@ typedef struct s_parsing_data
 	t_config	config;
 }	t_parsing_data;
 
+//----parsing_init.c----
+int				initialize_parsing_data(t_parsing_data *parsing, char *filename);
+void			free_parsing_data(t_parsing_data *parsing);
+
 typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
 	t_img		img;
+	int			square_size;
 	t_player	player;
 	t_config	config;
 	char		**map;
 	float		move_speed;
 	float		rot_speed;
-	int			cell_size; // for raycasting, logic, texture mapping
-	int			minimap_cell_size; // for minimap drawing
-	// Texture storage
-	t_img		textures[4];	// 0=N, 1=S, 2=E, 3=W
+	int			cell_size;
+	int			minimap_cell_size;
+	t_img		textures[4];
 	int			texture_width;
 	int			texture_height;
 }	t_game;

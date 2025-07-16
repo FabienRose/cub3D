@@ -12,28 +12,7 @@
 
 #include "../cub3d.h"
 
-char	**copy_map(char **map)
-{
-	char	**copy;
-	int		i;
 
-	i = 0;
-	while (map[i])
-		i++;
-	copy = malloc(sizeof(char *) * (i + 1));
-	if (!copy)
-		return (NULL);
-	i = 0;
-	while (map[i])
-	{
-		copy[i] = ft_strdup(map[i]);
-		if (!copy[i])
-			return (NULL);
-		i++;
-	}
-	copy[i] = NULL;
-	return (copy);
-}
 
 int	get_line_length_trimmed(char *line)
 {

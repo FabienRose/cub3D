@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/21 13:56:51 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 14:39:40 by diana            ###   ########.fr       */
+/*   Created: 2025/07/16 17:30:36 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 17:30:36 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "conversion.h"
 
 t_node	*create_node(char *line)
 {

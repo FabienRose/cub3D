@@ -26,19 +26,7 @@ char	**get_config_lines(char **array, char **map, int start_index)
 	return (config);
 }
 
-int	parse_config_data(char **config, char **map, char **array, t_config *cfg)
-{
-	t_config	*temp;
 
-	(void)map;
-	(void)array;
-	temp = parse_config(config);
-	if (!temp)
-		return (0);
-	*cfg = *temp;
-	free(temp);
-	return (1);
-}
 
 void	free_config_data(t_config *data)
 {

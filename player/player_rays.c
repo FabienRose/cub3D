@@ -5,49 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 10:33:46 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 14:23:45 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/16 23:58:32 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 23:58:32 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
-
-// static int	raycast_loop(t_game *game, t_ray *ray)
-// {
-// 	int	map_x;
-// 	int	map_y;
-
-// 	while (ray->distance < WINDOW_WIDTH)
-// 	{
-// 		ray->ray_x += cosf(ray->angle);
-// 		ray->ray_y += sinf(ray->angle);
-// 		ray->distance += 1.0f;
-// 		map_x = (int)(ray->ray_x) / game->cell_size;
-// 		map_y = (int)(ray->ray_y) / game->cell_size;
-// 		if (map_y < 0 || !game->map[map_y]
-// 			|| map_x < 0 || map_x >= (int)ft_strlen(game->map[map_y]))
-// 			return (0);
-// 		if (game->map[map_y][map_x] == '1')
-// 			return (1);
-// 	}
-// 	return (0);
-// }
-
-// float	raycast_hit(t_game *game, t_ray *ray, float *hit_x, float *hit_y)
-// {
-// 	ray->ray_x = game->player.x;
-// 	ray->ray_y = game->player.y;
-// 	ray->distance = 0.0f;
-// 	if (raycast_loop(game, ray))
-// 	{
-// 		*hit_x = ray->ray_x;
-// 		*hit_y = ray->ray_y;
-// 		return (ray->distance);
-// 	}
-// 	*hit_x = ray->ray_x;
-// 	*hit_y = ray->ray_y;
-// 	return (ray->distance);
-// }
 
 float raycast_hit_dda(t_game *game, t_ray *ray, float *hit_x, float *hit_y)
 {
@@ -146,36 +109,6 @@ float raycast_hit_dda(t_game *game, t_ray *ray, float *hit_x, float *hit_y)
 	return ray->perp_wall_dist;
 }
 
-// void	draw_single_ray(t_game *game, t_ray *ray)
-// {
-// 	float	hit_x;
-// 	float	hit_y;
-
-// 	raycast_hit_dda(game, ray, &hit_x, &hit_y);
-// 	draw_line(game->player.x, game->player.y, hit_x, hit_y, game, 0x0000FF);
-// 	draw_square(hit_x - 2, hit_y - 2, game, 4, 0xFF0000);
-// }
-
-// void	cast_rays_90_degrees(t_game *game)
-// {
-// 	int		num_rays;
-// 	float	angle_step;
-// 	float	start_angle;
-// 	float	current_angle;
-// 	t_ray	ray;
-
-// 	num_rays = WINDOW_WIDTH;
-// 	ray.fov = PI / 3;
-// 	start_angle = game->player.angle - ray.fov / 2;
-// 	angle_step = ray.fov / num_rays;
-// 	while (num_rays)
-// 	{
-// 		current_angle = start_angle + (num_rays * angle_step);
-// 		ray.angle = current_angle;
-// 		draw_single_ray(game, &ray);
-// 		num_rays--;
-// 	}
-// }
 
 void cast_rays_3d(t_game *game)
 {

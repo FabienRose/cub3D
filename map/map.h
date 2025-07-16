@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 00:30:12 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/10 16:39:26 by diana            ###   ########.fr       */
+/*   Created: 2025/07/16 17:29:01 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 17:29:01 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# include "../conversion/conversion.h"
-# include "../parsing/parsing.h"
-# include <stdio.h>
+# include "../cub3d.h"
 
+typedef struct s_config	t_config;
+typedef struct s_node	t_node;
 typedef struct s_file_content
 {
 	char	**config_lines;
@@ -47,8 +47,7 @@ typedef struct s_game_map
 	int		height;
 }	t_game_map;
 
-//----map_dimensions.c----
-t_game_map		*init_game_map(char **map_data);
+//----map_dimensions_utils.c----
 int				get_map_height(char **map);
 int				get_map_width(char **map);
 char			get_map_cell(t_game_map *game_map, int x, int y);
@@ -88,8 +87,6 @@ int				validate_rectangular_map(char **map);
 
 //----main_utils_2.c----
 char			**get_config_lines(char **array, char **map, int start_index);
-int				parse_config_data(char **config, char **map, char **array, \
-				t_config *cfg);
 void			free_config_data(t_config *data);
 int				initialize_config_data(t_config *cfg);
 
@@ -118,14 +115,7 @@ int				starts_with_map_char(const char *line);
 int				is_map_line(const char *line);
 int				validate_map_lines(char **map);
 
-//----rgb_utils.c----
-int				validate_rgb_format(char *line);
-
-//----rgb.c----
-int				rgb_to_int(char *rgb_str);
-
 //----utils.c----
-char			**copy_map(char **map);
 int				get_line_length_trimmed(char *line);
 int				get_first_non_space_pos(char *line);
 int				is_valid_map_neighbor(char **map, int x, int y);
@@ -165,10 +155,6 @@ int				all_flags_set(t_flags *flags);
 int				is_valid_key(const char *line);
 int				is_unrecognized_key(const char *line);
 
-//----collision.c----
-int				is_wall(t_game_map *game_map, int x, int y);
-int				is_position_valid(t_game_map *game_map, double x, double y);
-int				can_move_to(t_game_map *game_map, double new_x, double new_y);
-int				move_player(t_game_map *game_map, double new_x, double new_y);
+
 
 #endif 

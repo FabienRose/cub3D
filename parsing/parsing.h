@@ -3,27 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 14:16:09 by diana             #+#    #+#             */
-/*   Updated: 2025/07/10 16:48:27 by diana            ###   ########.fr       */
+/*   Created: 2025/07/16 17:32:19 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 17:32:22 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-typedef struct s_node	t_node;
+# include "../cub3d.h"
 
-typedef struct s_config
-{
-	char	*no_texture;
-	char	*so_texture;
-	char	*ea_texture;
-	char	*we_texture;
-	int		floor_color;
-	int		ceiling_color;
-}	t_config;
+typedef struct s_node	t_node;
+typedef struct s_config	t_config;
+
 
 typedef struct s_indices
 {
@@ -69,27 +63,16 @@ int				check_rgb_parts(char **parts);
 int				is_valid_rgb(char *str);
 int				extract_colors(char **config_lines, t_config *cfg);
 
-//----validate_texture_files.c----
-int				validate_texture_files(t_config *cfg);
-
-//----config_getters.c----
-char			*get_north_texture(t_config *cfg);
-char			*get_south_texture(t_config *cfg);
-char			*get_west_texture(t_config *cfg);
-char			*get_east_texture(t_config *cfg);
-int				get_floor_color(t_config *cfg);
-int				get_ceiling_color(t_config *cfg);
-
 //----parsing_utils.c----
 void			free_config(t_config *cfg);
-char			*ft_strjoin_three(char *s1, char *s2, char *s3);
-int				missing_fields(t_config *cfg);
 void			free_list(t_node *head);
 void			trim_newline_from_map(char **map);
 
 //----parsing.c----
 int				parse_config_line(t_config *cfg, char *line);
 t_config		*parse_config(char **config_lines);
-void			free_config(t_config *cfg);
+
+int				extract_texture_by_prefix(char **config_lines,
+					char **target_field, const char *prefix);
 
 #endif
