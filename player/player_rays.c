@@ -6,7 +6,7 @@
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:33:46 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 11:15:59 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/16 14:23:45 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ float raycast_hit_dda(t_game *game, t_ray *ray, float *hit_x, float *hit_y)
 	// Get fractional part (position within the cell, 0.0 to 1.0)
 	ray->wall_x = ray->wall_x - floor(ray->wall_x);
 
-	// Calculate texture X coordinate
+	// Calculate texture X coordinate (stretch texture to fit cell)
 	ray->tex_x = (int)(ray->wall_x * game->texture_width);
 	if ((ray->side == 0 && ray->ray_dir_x > 0) || (ray->side == 1 && ray->ray_dir_y < 0))
 		ray->tex_x = game->texture_width - ray->tex_x - 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 16:07:54 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 17:16:04 by diana            ###   ########.fr       */
+/*   Created: 2025/07/16 15:34:38 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/16 15:37:40 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	exit_with_message(char *msg)
 void	check_args(int argc, char **argv)
 {
 	if (argc != 2)
-		exit_with_message("Use: ./parser file.cub");
+		exit_with_message("Use: ./cub3d file.cub");
 	if (!ends_with_cub(argv[1]))
 		exit_with_message("Error\nThe file should end with .cub");
 }
