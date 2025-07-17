@@ -73,8 +73,15 @@ typedef struct s_parsing_data
 }	t_parsing_data;
 
 //----parsing_init.c----
-int				initialize_parsing_data(t_parsing_data *parsing, char *filename);
+int				initialize_parsing_data(t_parsing_data *parsing,
+					char *filename);
 void			free_parsing_data(t_parsing_data *parsing);
+
+//----parsing_init_utils.c----
+int				extract_all_textures(t_parsing_data *parsing);
+int				extract_config_data(t_parsing_data *parsing);
+int				load_and_parse_config(t_parsing_data *parsing);
+int				load_and_validate_map(t_parsing_data *parsing);
 
 typedef struct s_game
 {

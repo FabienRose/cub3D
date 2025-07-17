@@ -63,16 +63,3 @@ t_node	*read_file_to_list(const char *filename)
 	close(fd);
 	return (head);
 }
-
-void	free_linked_list(t_node *head)
-{
-	t_node	*tmp;
-
-	while (head)
-	{
-		tmp = head->next;
-		free(head->line);
-		free(head);
-		head = tmp;
-	}
-}

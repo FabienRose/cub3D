@@ -12,8 +12,6 @@
 
 #include "../cub3d.h"
 
-
-
 int	get_line_length_trimmed(char *line)
 {
 	int	len;

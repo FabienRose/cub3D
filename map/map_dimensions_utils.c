@@ -43,18 +43,3 @@ int	get_map_width(char **map)
 	}
 	return (max_width);
 }
-
-char	get_map_cell(t_game_map *game_map, int x, int y)
-{
-	if (!game_map || !game_map->map_data || x < 0 || y < 0 || \
-		x >= game_map->width || y >= game_map->height)
-		return ('\0');
-	return (game_map->map_data[y][x]);
-}
-
-void	free_game_map(char **map)
-{
-	if (!map)
-		return ;
-	free(map);
-}

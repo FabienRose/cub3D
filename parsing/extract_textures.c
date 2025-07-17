@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 17:20:07 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 17:20:46 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/17 12:03:19 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/17 12:03:19 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	extract_texture_by_prefix(char **config_lines, char **target_field,
 {
 	int		i;
 	char	*clean_line;
+	char	*clean_path;
 
 	i = 0;
 	while (config_lines[i])
@@ -24,7 +25,7 @@ int	extract_texture_by_prefix(char **config_lines, char **target_field,
 		clean_line = ft_reduce_spaces(config_lines[i]);
 		if (clean_line && ft_strncmp(clean_line, prefix, 3) == 0)
 		{
-			char *clean_path = ft_clean_path(clean_line + 3);
+			clean_path = ft_clean_path(clean_line + 3);
 			if (assign_texture(target_field, clean_path) == 0)
 			{
 				free(clean_path);
@@ -38,24 +39,4 @@ int	extract_texture_by_prefix(char **config_lines, char **target_field,
 		i++;
 	}
 	return (1);
-}
-
-int	extract_north_texture(char **config_lines, t_config *cfg)
-{
-	return (extract_texture_by_prefix(config_lines, &cfg->no_texture, "NO "));
-}
-
-int	extract_south_texture(char **config_lines, t_config *cfg)
-{
-	return (extract_texture_by_prefix(config_lines, &cfg->so_texture, "SO "));
-}
-
-int	extract_west_texture(char **config_lines, t_config *cfg)
-{
-	return (extract_texture_by_prefix(config_lines, &cfg->we_texture, "WE "));
-}
-
-int	extract_east_texture(char **config_lines, t_config *cfg)
-{
-	return (extract_texture_by_prefix(config_lines, &cfg->ea_texture, "EA "));
 }

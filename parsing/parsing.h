@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 17:32:19 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 17:32:22 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/17 12:03:30 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/17 12:03:30 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 typedef struct s_node	t_node;
 typedef struct s_config	t_config;
-
 
 typedef struct s_indices
 {
@@ -42,12 +41,6 @@ void			free_split(char **arr);
 //----parse_texture.c----
 int				assign_texture(char **field, char *value);
 int				parse_texture_line(t_config *cfg, char *line);
-
-//----extract_textures.c----
-int				extract_north_texture(char **config_lines, t_config *cfg);
-int				extract_south_texture(char **config_lines, t_config *cfg);
-int				extract_west_texture(char **config_lines, t_config *cfg);
-int				extract_east_texture(char **config_lines, t_config *cfg);
 
 //----parse_spaces_utils.c----
 char			*ft_reduce_spaces(char *str);

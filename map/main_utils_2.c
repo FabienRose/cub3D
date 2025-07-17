@@ -26,8 +26,6 @@ char	**get_config_lines(char **array, char **map, int start_index)
 	return (config);
 }
 
-
-
 void	free_config_data(t_config *data)
 {
 	if (!data)

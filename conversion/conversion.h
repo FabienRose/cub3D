@@ -25,7 +25,6 @@ typedef struct s_node
 t_node			*create_node(char *line);
 void			append_node(t_node **head, char *line);
 t_node			*read_file_to_list(const char *filename);
-void			free_linked_list(t_node *head);
 
 //----list_to_array.c----
 int				list_size(t_node *head);

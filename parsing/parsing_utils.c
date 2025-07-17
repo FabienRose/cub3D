@@ -27,8 +27,6 @@ void	free_config(t_config *cfg)
 	free(cfg);
 }
 
-
-
 void	free_list(t_node *head)
 {
 	t_node	*tmp;

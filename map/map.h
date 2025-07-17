@@ -50,8 +50,6 @@ typedef struct s_game_map
 //----map_dimensions_utils.c----
 int				get_map_height(char **map);
 int				get_map_width(char **map);
-char			get_map_cell(t_game_map *game_map, int x, int y);
-void			free_game_map(char **map);
 
 //----espaces_and_empty.c----
 int				is_line_empty_or_spaces_only(const char *line);
@@ -154,7 +152,5 @@ int				check_and_set_flag(const char *line, t_flags *flags);
 int				all_flags_set(t_flags *flags);
 int				is_valid_key(const char *line);
 int				is_unrecognized_key(const char *line);
-
-
 
 #endif 

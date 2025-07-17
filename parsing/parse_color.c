@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_color.c                                      :+:      :+:    :+:   */
+/*   parsing_init_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/27 18:19:25 by diana             #+#    #+#             */
-/*   Updated: 2025/07/01 14:13:11 by diana            ###   ########.fr       */
+/*   Created: 2025/07/17 11:28:01 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/17 11:28:01 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static char	*process_and_concat_part(char *result, char *part, int i)
 {
 	char	*clean;
 	char	*tmp;
+	char	*tmp2;
 	char	*new_result;
 
 	clean = clean_part(part);
@@ -39,7 +40,7 @@ static char	*process_and_concat_part(char *result, char *part, int i)
 	else
 	{
 		tmp = result;
-		char *tmp2 = ft_strjoin(tmp, ",");
+		tmp2 = ft_strjoin(tmp, ",");
 		new_result = ft_strjoin(tmp2, clean);
 		free(tmp);
 		free(tmp2);
