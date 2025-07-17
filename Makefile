@@ -38,6 +38,8 @@ SRCS=	main.c \
 		render/render_draw.c \
 		player/player.c \
 		player/player_rays.c \
+		player/player_raycast_dda.c \
+		player/player_raycast_utils.c \
 		game/game.c \
 		game/game_texture.c \
 		game/game_movement.c \
