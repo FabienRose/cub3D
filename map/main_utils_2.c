@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_utils_2.c                                     :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 10:53:11 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/19 11:04:41 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/19 16:02:08 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/19 16:02:17 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	**get_config_lines(char **array, char **map, int start_index)
+char	**get_config_lines(char **array, int start_index)
 {
 	char	**config;
 
 	config = extract_config_lines(array, start_index);
 	if (!config)
 	{
-		free_array(map);
 		free_array(array);
 		return (NULL);
 	}

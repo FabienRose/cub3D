@@ -18,6 +18,8 @@ int	initialize_parsing_data(t_parsing_data *parsing, char *filename)
 	if (!parsing->file_array)
 		return (0);
 	parsing->map_start_index = get_map_start_index(parsing->file_array);
+	if (parsing->map_start_index == -1)
+		return (0);
 	if (!load_and_parse_config(parsing))
 		return (0);
 	if (!load_and_validate_map(parsing))

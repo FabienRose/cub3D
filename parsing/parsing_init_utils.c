@@ -6,7 +6,7 @@
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 10:52:18 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/19 10:52:18 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/19 16:02:38 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	extract_config_data(t_parsing_data *parsing)
 
 int	load_and_parse_config(t_parsing_data *parsing)
 {
-	parsing->config_lines = get_config_lines(parsing->file_array, NULL,
+	parsing->config_lines = get_config_lines(parsing->file_array,
 			parsing->map_start_index);
 	if (!parsing->config_lines)
 	{

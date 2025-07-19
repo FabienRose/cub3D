@@ -1,17 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 11:00:10 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/19 11:00:16 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/19 13:56:41 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/19 13:56:41 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #define _USE_MATH_DEFINES
+
+void	game_launch(t_game *game)
+{
+	player_find_and_init(game->map, game);
+	hooks_setup(game->win, game);
+	mlx_loop_hook(game->mlx, game_loop, game);
+	mlx_loop(game->mlx);
+}
 
 int	main(int argc, char **argv)
 {
@@ -28,19 +36,10 @@ int	main(int argc, char **argv)
 	if (!game_init(&game, &parsing))
 	{
 		free_parsing_data(&parsing);
-		return (1);
-	}
-	if (!load_textures(&game))
-	{
-		ft_putendl_fd("Error\nFailed to load textures", 2);
 		cleanup_game(&game);
-		free_parsing_data(&parsing);
 		return (1);
 	}
-	player_find_and_init(game.map, &game);
-	hooks_setup(game.win, &game);
-	mlx_loop_hook(game.mlx, game_loop, &game);
-	mlx_loop(game.mlx);
+	game_launch(&game);
 	cleanup_game(&game);
 	free_parsing_data(&parsing);
 	return (0);

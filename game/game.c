@@ -5,32 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 10:14:45 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/19 10:15:12 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/19 14:03:29 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/19 14:03:58 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-void	cleanup_game(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (game->textures[i].img)
-			mlx_destroy_image(game->mlx, game->textures[i].img);
-		i++;
-	}
-	if (game->img.img)
-		mlx_destroy_image(game->mlx, game->img.img);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-}
-
-int	game_init(t_game *game, t_parsing_data *parsing)
+void	setup_game(t_game *game, t_parsing_data *parsing)
 {
 	game->config = parsing->config;
 	game->map = parsing->map;
@@ -39,6 +21,35 @@ int	game_init(t_game *game, t_parsing_data *parsing)
 	game->cell_size = 64;
 	game->minimap_cell_size = WINDOW_WIDTH / 100;
 	game->mlx = mlx_init();
+}
+
+void	cleanup_game(t_game *game)
+{
+	int	i;
+
+	if (!game)
+		return ;
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textures[i].img && game->mlx)
+			mlx_destroy_image(game->mlx, game->textures[i].img);
+		i++;
+	}
+	if (game->mlx)
+	{
+		if (game->img.img)
+			mlx_destroy_image(game->mlx, game->img.img);
+		if (game->win)
+			mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+}
+
+int	game_init(t_game *game, t_parsing_data *parsing)
+{
+	setup_game(game, parsing);
 	if (!game->mlx)
 		return (0);
 	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
@@ -52,6 +63,12 @@ int	game_init(t_game *game, t_parsing_data *parsing)
 	if (!game->img.data)
 		return (0);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+	if (!load_textures(game))
+	{
+		ft_putendl_fd("Error\nFailed to load textures", 2);
+		cleanup_game(game);
+		return (0);
+	}
 	return (1);
 }
 

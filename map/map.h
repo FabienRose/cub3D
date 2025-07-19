@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 17:29:01 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 17:29:01 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/19 16:02:30 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/19 16:02:30 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int				validate_no_leaks(char **map);
 int				validate_rectangular_map(char **map);
 
 //----main_utils_2.c----
-char			**get_config_lines(char **array, char **map, int start_index);
+char			**get_config_lines(char **array, int start_index);
 void			free_config_data(t_config *data);
 int				initialize_config_data(t_config *cfg);
 
