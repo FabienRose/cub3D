@@ -23,6 +23,7 @@ typedef struct s_parsing_data	t_parsing_data;
 
 int		game_init(t_game *game, t_parsing_data *parsing);
 int		load_textures(t_game *game);
+void	cleanup_game(t_game *game);
 int		game_loop(void *param);
 void	game_move_up(t_game *game);
 void	game_move_down(t_game *game);

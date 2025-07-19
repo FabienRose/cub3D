@@ -5,12 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 22:45:08 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 22:46:08 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/19 10:14:45 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/19 10:15:12 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+
+void	cleanup_game(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textures[i].img)
+			mlx_destroy_image(game->mlx, game->textures[i].img);
+		i++;
+	}
+	if (game->img.img)
+		mlx_destroy_image(game->mlx, game->img.img);
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+}
 
 int	game_init(t_game *game, t_parsing_data *parsing)
 {

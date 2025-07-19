@@ -21,7 +21,7 @@ char	**extract_and_validate_initial_map(char **array, int start_index)
 	{
 		free_map(map);
 		free_array(array);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	return (map);
 }
@@ -34,7 +34,7 @@ char	**trim_and_validate_map_lines(char **map, char **array)
 		ft_putendl_fd("Error\nMap not valid", 2);
 		free_array(map);
 		free_array(array);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	return (map);
 }
@@ -49,15 +49,15 @@ char	**make_and_validate_rectangular_map(char **map, char **array)
 		ft_putendl_fd("Error\nFailed to make map rectangular", 2);
 		free_array(map);
 		free_array(array);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	if (!validate_rectangular_map(rectangular_map))
 	{
-		ft_putendl_fd("Error\nMap is not rectangular", 2);
+		ft_putendl_fd("Error\nMap not rectangular", 2);
 		free_array(rectangular_map);
 		free_array(map);
 		free_array(array);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	free_array(map);
 	return (rectangular_map);

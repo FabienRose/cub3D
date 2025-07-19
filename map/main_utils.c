@@ -12,18 +12,19 @@
 
 #include "../cub3d.h"
 
-void	exit_with_message(char *msg)
-{
-	ft_putendl_fd(msg, 2);
-	exit(EXIT_FAILURE);
-}
-
-void	check_args(int argc, char **argv)
+int	check_args(int argc, char **argv)
 {
 	if (argc != 2)
-		exit_with_message("Use: ./cub3d file.cub");
+	{
+		ft_putendl_fd("Use: ./cub3d file.cub", 2);
+		return (0);
+	}
 	if (!ends_with_cub(argv[1]))
-		exit_with_message("Error\nThe file should end with .cub");
+	{
+		ft_putendl_fd("Error\nThe file should end with .cub", 2);
+		return (0);
+	}
+	return (1);
 }
 
 char	**load_file_to_array(char *filename)
@@ -33,17 +34,17 @@ char	**load_file_to_array(char *filename)
 
 	lines = read_file_to_list(filename);
 	if (!lines)
-		exit(EXIT_FAILURE);
+		return (NULL);
 	if (!validate_unique_keys(lines))
 	{
 		ft_putendl_fd("Error\nInvalid or duplicate keys in the file .cub", 2);
 		free_list(lines);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	array = linked_list_to_array(lines);
 	free_list(lines);
 	if (!array)
-		exit(EXIT_FAILURE);
+		return (NULL);
 	return (array);
 }
 
@@ -55,14 +56,14 @@ int	get_map_start_index(char **array)
 	{
 		ft_putendl_fd("Error\nRequired keys are missing or one is invalid.", 2);
 		free_array(array);
-		exit(EXIT_FAILURE);
+		return (-1);
 	}
 	index = find_map_start(array);
 	if (index == -1)
 	{
 		ft_putendl_fd("Error\nThe start of the map was not found.", 2);
 		free_array(array);
-		exit(EXIT_FAILURE);
+		return (-1);
 	}
 	return (index);
 }

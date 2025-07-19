@@ -97,7 +97,7 @@ char			**extract_and_validate_map(char **array, int start_index);
 
 //----main_utils.c----
 void			exit_with_message(char *msg);
-void			check_args(int argc, char **argv);
+int				check_args(int argc, char **argv);
 char			**load_file_to_array(char *filename);
 int				get_map_start_index(char **array);
 char			**extract_and_validate_map(char **array, int start_index);

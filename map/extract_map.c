@@ -49,7 +49,7 @@ char	**extract_map(char **array, int start)
 	if (!map)
 	{
 		ft_putendl_fd("Error: malloc failure", 2);
-		exit(1);
+		return (NULL);
 	}
 	fill_map(map, array, start);
 	return (map);

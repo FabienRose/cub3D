@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 16:08:42 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 14:47:53 by diana            ###   ########.fr       */
+/*   Created: 2025/07/19 10:53:11 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/19 11:04:41 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**get_config_lines(char **array, char **map, int start_index)
 	{
 		free_array(map);
 		free_array(array);
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	return (config);
 }
