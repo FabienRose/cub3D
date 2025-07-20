@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 14:03:29 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/19 14:03:58 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/21 01:07:14 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/21 01:07:14 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	cleanup_game(t_game *game)
 
 int	game_init(t_game *game, t_parsing_data *parsing)
 {
+	ft_bzero(game, sizeof(t_game));
 	setup_game(game, parsing);
 	if (!game->mlx)
 		return (0);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 17:22:41 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 17:22:41 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/21 01:04:33 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/21 01:04:33 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	initialize_parsing_data(t_parsing_data *parsing, char *filename)
 {
+	ft_bzero(parsing, sizeof(t_parsing_data));
 	parsing->file_array = load_file_to_array(filename);
 	if (!parsing->file_array)
 		return (0);

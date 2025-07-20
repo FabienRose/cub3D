@@ -19,7 +19,6 @@ char	**get_config_lines(char **array, int start_index)
 	config = extract_config_lines(array, start_index);
 	if (!config)
 	{
-		free_array(array);
 		return (NULL);
 	}
 	return (config);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 16:02:30 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/19 16:02:30 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/21 00:42:23 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/21 00:42:23 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int				initialize_config_data(t_config *cfg);
 //----main_utils_map.c----
 char			**extract_and_validate_initial_map(char **array, \
 				int start_index);
-char			**trim_and_validate_map_lines(char **map, char **array);
-char			**make_and_validate_rectangular_map(char **map, char **array);
+char			**trim_and_validate_map_lines(char **map);
+char			**make_and_validate_rectangular_map(char **map);
 char			**extract_and_validate_map(char **array, int start_index);
 
 //----main_utils.c----

@@ -6,7 +6,7 @@
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:34:38 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/16 15:37:40 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/21 00:40:05 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,12 @@ int	get_map_start_index(char **array)
 	if (!parse_map(array))
 	{
 		ft_putendl_fd("Error\nRequired keys are missing or one is invalid.", 2);
-		free_array(array);
 		return (-1);
 	}
 	index = find_map_start(array);
 	if (index == -1)
 	{
 		ft_putendl_fd("Error\nThe start of the map was not found.", 2);
-		free_array(array);
 		return (-1);
 	}
 	return (index);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   parsing_init_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 10:52:18 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/19 16:02:38 by fmixtur          ###   ########.ch       */
+/*   Created: 2025/07/21 00:44:00 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/21 00:44:00 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int	load_and_validate_map(t_parsing_data *parsing)
 	if (!parsing->map)
 	{
 		ft_putendl_fd("Error\nInvalid map", 2);
-		free_parsing_data(parsing);
 		return (0);
 	}
 	return (1);

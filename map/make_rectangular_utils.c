@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_rectangular_utils.c                           :+:      :+:    :+:   */
+/*   main_utils_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 15:08:45 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 15:23:54 by diana            ###   ########.fr       */
+/*   Created: 2025/07/21 00:52:37 by fmixtur           #+#    #+#             */
+/*   Updated: 2025/07/21 00:52:37 by fmixtur          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char	**make_map_rectangular(char **map)
 	if (!new_map)
 		return (NULL);
 	new_map = fill_new_map_with_padding(map, new_map, max_width);
+	free_array(map);
 	return (new_map);
 }
