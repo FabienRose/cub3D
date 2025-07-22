@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 10:47:35 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/09 10:47:40 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/22 11:33:06 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	is_map_line(const char *line)
 	while (line[i])
 	{
 		if (line[i] == '1' || line[i] == '0' || \
-			line[i] == 'N' || line[i] == 'S' || \
-			line[i] == 'E' || line[i] == 'W' || \
-			line[i] == ' ' || line[i] == '\n')
+line[i] == 'N' || line[i] == 'S' || \
+line[i] == 'E' || line[i] == 'W' || \
+line[i] == ' ' || line[i] == '\n')
 			i++;
 		else
 			return (0);

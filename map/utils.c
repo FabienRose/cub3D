@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 20:30:28 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 16:06:46 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/22 11:37:14 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	is_valid_map_neighbor(char **map, int x, int y)
 	if (!map[y] || x < 0 || x >= (int)ft_strlen(map[y]))
 		return (0);
 	if (map[y][x] == '1' || map[y][x] == '0' || \
-		map[y][x] == 'N' || map[y][x] == 'S' || \
-		map[y][x] == 'E' || map[y][x] == 'W')
+map[y][x] == 'N' || map[y][x] == 'S' || \
+map[y][x] == 'E' || map[y][x] == 'W')
 		return (1);
 	return (0);
 }

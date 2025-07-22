@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   espaces_and_empty.c                                :+:      :+:    :+:   */
+/*   spaces_and_empty.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:14:28 by diana             #+#    #+#             */
-/*   Updated: 2025/06/30 16:37:16 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/22 11:34:48 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	count_non_empty_lines(char **array, int start_index)
 static int	ft_is_whitespace(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n' || \
-			c == '\r' || c == '\v' || c == '\f');
+c == '\r' || c == '\v' || c == '\f');
 }
 
 char	*ft_strtrim_whitespace(const char *s)

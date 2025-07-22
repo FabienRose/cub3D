@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_irregular_map.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 00:00:00 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 16:08:50 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/22 11:38:32 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ int	validate_irregular_map_borders(char **map)
 int	validate_position(char **map, int i, int j)
 {
 	if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S' || \
-	map[i][j] == 'E' || map[i][j] == 'W')
+map[i][j] == 'E' || map[i][j] == 'W')
 	{
 		if (!is_valid_map_neighbor(map, j - 1, i) || \
-			!is_valid_map_neighbor(map, j + 1, i) || \
-			!is_valid_map_neighbor(map, j, i - 1) || \
-			!is_valid_map_neighbor(map, j, i + 1))
+!is_valid_map_neighbor(map, j + 1, i) || \
+!is_valid_map_neighbor(map, j, i - 1) || \
+!is_valid_map_neighbor(map, j, i + 1))
 		{
 			printf("Error: Space at (%d,%d) not surrounded\n", j, i);
 			return (0);

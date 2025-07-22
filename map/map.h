@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 00:42:23 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/21 00:42:23 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/22 10:15:09 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ char			*ft_strtrim_whitespace(const char *s);
 char			**allocate_config_array(int count);
 void			free_config_on_failure(char **config, int j);
 char			**fill_config_array(char **config, char **array, \
-				int start_index);
+int start_index);
 char			**allocate_and_fill_config(char **array, int start_index, \
-				int count);
+int count);
 char			**extract_config_lines(char **array, int start_index);
 
 //----extract_map.c----
@@ -75,7 +75,7 @@ char			**make_map_rectangular(char **map);
 int				calculate_max_width(char **map);
 char			**allocate_memory_for_new_map(int map_size);
 char			**fill_new_map_with_padding(char **map, char **new_map, \
-				int max_width);
+int max_width);
 
 //----validate_leaks.c----
 int				validate_no_leaks(char **map);
@@ -90,7 +90,7 @@ int				initialize_config_data(t_config *cfg);
 
 //----main_utils_map.c----
 char			**extract_and_validate_initial_map(char **array, \
-				int start_index);
+int start_index);
 char			**trim_and_validate_map_lines(char **map);
 char			**make_and_validate_rectangular_map(char **map);
 char			**extract_and_validate_map(char **array, int start_index);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:38:28 by diana             #+#    #+#             */
-/*   Updated: 2025/07/09 16:10:39 by diana            ###   ########.fr       */
+/*   Updated: 2025/07/22 11:38:58 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	count_players(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S' || \
-				map[i][j] == 'E' || map[i][j] == 'W')
+map[i][j] == 'E' || map[i][j] == 'W')
 				count++;
 			j++;
 		}

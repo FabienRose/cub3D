@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 01:07:14 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/21 01:07:14 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/22 11:29:36 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	game_init(t_game *game, t_parsing_data *parsing)
 	if (!load_textures(game))
 	{
 		ft_putendl_fd("Error\nFailed to load textures", 2);
-		cleanup_game(game);
 		return (0);
 	}
 	return (1);

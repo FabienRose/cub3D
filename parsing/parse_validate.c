@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_validate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 15:08:02 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/11 15:08:02 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/22 10:13:27 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ static int	process_color_line(char *clean_line, t_config *cfg)
 	{
 		rgb_string = clean_line + 2;
 		if (!is_valid_rgb(rgb_string) || assign_color(cfg, "F", rgb_string) \
-		!= 0)
+!= 0)
 			return (1);
 	}
 	else if (clean_line && ft_strncmp(clean_line, "C ", 2) == 0)
 	{
 		rgb_string = clean_line + 2;
 		if (!is_valid_rgb(rgb_string) || assign_color(cfg, "C", rgb_string) \
-		!= 0)
+!= 0)
 			return (1);
 	}
 	return (0);
