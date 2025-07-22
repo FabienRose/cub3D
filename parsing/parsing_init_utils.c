@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_init_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <fmixtur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: diramire <diramire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 00:44:00 by fmixtur           #+#    #+#             */
-/*   Updated: 2025/07/21 00:44:00 by fmixtur          ###   ########.ch       */
+/*   Updated: 2025/07/22 12:15:56 by diramire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	load_and_parse_config(t_parsing_data *parsing)
 	}
 	if (!extract_config_data(parsing))
 	{
-		free_parsing_data(parsing);
 		return (0);
 	}
 	return (1);
