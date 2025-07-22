@@ -3,3 +3,5 @@
 .manager
 *.o
 .cursorignore
+.vscode
+.DS_Store
